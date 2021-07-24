@@ -1,0 +1,122 @@
+{
+    "name": "wechat-cloud-mpp",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "lint": "vue-cli-service lint src",
+        "build-dev:h5": "cross-env VUE_APP_ENV=dev NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
+        "build-dev:mp-weixin": "cross-env VUE_APP_ENV=dev NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+        "build-test:app-plus": "cross-env VUE_APP_ENV=test NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
+        "build-test:h5": "cross-env VUE_APP_ENV=test NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
+        "build-test:mp-weixin": "cross-env VUE_APP_ENV=test NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+        "build:app-plus": "cross-env VUE_APP_ENV=prod NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
+        "build:h5": "cross-env VUE_APP_ENV=prod NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
+        "build:mp-weixin": "cross-env VUE_APP_ENV=prod NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build",
+        "preview-dev:mp-weixin": "cross-env VUE_APP_ENV=dev NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build && node upload.js --robot=2",
+        "preview-test:mp-weixin": "cross-env VUE_APP_ENV=test NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build && node upload.js --robot=2",
+        "preview:mp-weixin": "cross-env VUE_APP_ENV=prod NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build && node upload.js --robot=2",
+        "cz": "npm run log && git add . && git cz",
+        "dev": "cross-env VUE_APP_ENV=dev NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
+        "dev:app-plus": "cross-env VUE_APP_ENV=dev NODE_ENV=development UNI_PLATFORM=app-plus vue-cli-service uni-build --watch",
+        "dev:h5": "cross-env VUE_APP_ENV=dev NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve",
+        "dev:mp-weixin": "cross-env VUE_APP_ENV=dev NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch",
+        "hotfix": "standard-version -t '' -r patch",
+        "info": "node node_modules/@dcloudio/vue-cli-plugin-uni/commands/info.js",
+        "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
+        "release": "standard-version -t ''"
+    },
+    "dependencies": {
+        "@dcloudio/uni-app-plus": "^2.0.0-31720210330003",
+        "@dcloudio/uni-h5": "^2.0.0-31720210330003",
+        "@dcloudio/uni-helper-json": "*",
+        "@dcloudio/uni-mp-360": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-alipay": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-baidu": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-qq": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-toutiao": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-vue": "^2.0.0-31720210330003",
+        "@dcloudio/uni-mp-weixin": "^2.0.0-31720210330003",
+        "@dcloudio/uni-quickapp-native": "^2.0.0-31720210330003",
+        "@dcloudio/uni-quickapp-webview": "^2.0.0-31720210330003",
+        "@dcloudio/uni-stat": "^2.0.0-31720210330003",
+        "@vue/shared": "^3.0.0",
+        "big.js": "^6.0.3",
+        "core-js": "^3.6.5",
+        "crypto-js": "^3.1.2",
+        "dayjs": "^1.10.4",
+        "flyio": "^0.6.2",
+        "pako": "^2.0.3",
+        "regenerator-runtime": "^0.12.1",
+        "solarlunar": "^2.0.7",
+        "uview-ui": "^1.8.4",
+        "vue": "^2.6.11",
+        "vuex": "^3.2.0"
+    },
+    "devDependencies": {
+        "@babel/runtime": "~7.12.0",
+        "@commitlint/cli": "^12.1.1",
+        "@commitlint/config-conventional": "^12.1.1",
+        "@dcloudio/types": "*",
+        "@dcloudio/uni-automator": "^2.0.0-31720210330003",
+        "@dcloudio/uni-cli-shared": "^2.0.0-31720210330003",
+        "@dcloudio/uni-migration": "^2.0.0-31720210330003",
+        "@dcloudio/uni-template-compiler": "^2.0.0-31720210330003",
+        "@dcloudio/vue-cli-plugin-hbuilderx": "^2.0.0-31720210330003",
+        "@dcloudio/vue-cli-plugin-uni": "^2.0.0-31720210330003",
+        "@dcloudio/vue-cli-plugin-uni-optimize": "^2.0.0-31720210330003",
+        "@dcloudio/webpack-uni-mp-loader": "^2.0.0-31720210330003",
+        "@dcloudio/webpack-uni-pages-loader": "^2.0.0-31720210330003",
+        "@vue/babel-preset-app": "^4.5.12",
+        "@vue/cli-plugin-babel": "~4.5.0",
+        "@vue/cli-plugin-eslint": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "@vue/eslint-config-standard": "^5.1.2",
+        "babel-eslint": "^10.1.0",
+        "babel-plugin-import": "^1.11.0",
+        "commitizen": "^4.0.3",
+        "commitlint": "^8.2.0",
+        "conventional-changelog-cli": "^2.0.28",
+        "cross-env": "^7.0.2",
+        "eslint": "^7.30.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "eslint-plugin-vue": "^6.2.2",
+        "jest": "^25.4.0",
+        "less": "^4.1.1",
+        "less-loader": "^5.0.0",
+        "lint-staged": "^10.5.4",
+        "mini-types": "*",
+        "miniprogram-api-typings": "*",
+        "miniprogram-ci": "^1.2.3",
+        "mockjs": "^1.1.0",
+        "node-sass": "^4.0.0",
+        "postcss-comment": "^2.0.0",
+        "sass-loader": "^8.0.0",
+        "standard-version": "^9.1.1",
+        "vue-cli-plugin-commitlint": "~1.0.12",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "browserslist": [
+        "Android >= 4",
+        "ios >= 8"
+    ],
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"
+        }
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E GIT_PARAMS"
+    },
+    "lint-staged": {
+        "src/**/*.{js,vue}": [
+            "vue-cli-service lint"
+        ]
+    },
+    "uni-app": {
+        "scripts": {}
+    }
+}

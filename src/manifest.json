@@ -1,0 +1,181 @@
+{
+    "name" : "弱视训练宝",
+    "appid" : "__UNI__8389D3A",
+    "description" : "弱视训练宝",
+    "versionName" : "1.0.0",
+    "versionCode" : 4,
+    "transformPx" : false,
+    "app-plus" : {
+        "optimization" : {
+            "subPackages" : true
+        },
+        "screenOrientation" : [ "portrait-primary" ],
+        "safearea" : {
+            "bottom" : {
+                "offset" : "none"
+            }
+        },
+        "compilerVersion" : 3,
+        "compatible" : {
+            "ignoreVersion" : true
+        },
+        "usingComponents" : true,
+        "splashscreen" : {
+            "alwaysShowBeforeRender" : true,
+            "waiting" : true,
+            "autoclose" : true,
+            "delay" : 0
+        },
+        "modules" : {
+            "Contacts" : {},
+            "Share" : {},
+            "Push" : {}
+        },
+        "distribute" : {
+            "android" : {
+                "permissions" : [
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ],
+                "abiFilters" : [],
+                "schemes" : ""
+            },
+            "ios" : {
+                "privacyDescription" : {
+                    "NSPhotoLibraryUsageDescription" : "弱视训练宝需访问您的相册，以便您正常的使用图片上传，图片保存等服务",
+                    "NSPhotoLibraryAddUsageDescription" : "弱视训练宝需访问您的相册，以便您正常的使用图片上传，图片保存等服务",
+                    "NSCameraUsageDescription" : "弱视训练宝需要使用您的相机，允许吗？",
+                    "NSLocationWhenInUseUsageDescription" : "弱视训练宝需要使用您的地理位置，允许吗？",
+                    "NSLocationAlwaysAndWhenInUseUsageDescription" : "弱视训练宝需要使用您的地理位置，允许吗？",
+                    "NSContactsUsageDescription" : "弱视训练宝需要访问您的联系人信息，以便您正常使用联系人上传服务",
+                    "NSCalendarsUsageDescription" : "弱视训练宝需要访问您的日历，以便您正常使用日历提醒服务"
+                },
+                "urltypes" : "qlite",
+                "idfa" : false
+            },
+            "sdkConfigs" : {
+                "ad" : {},
+                "share" : {},
+                "push" : {
+                    "unipush" : {}
+                },
+                "payment" : {}
+            },
+            "icons" : {
+                "android" : {
+                    "hdpi" : "unpackage/res/icons/Android/mipmap-hdpi/ic_launcher.png",
+                    "xhdpi" : "unpackage/res/icons/Android/mipmap-xhdpi/ic_launcher.png",
+                    "xxhdpi" : "unpackage/res/icons/Android/mipmap-xxhdpi/ic_launcher.png",
+                    "xxxhdpi" : "unpackage/res/icons/Android/mipmap-xxxhdpi/ic_launcher.png"
+                },
+                "ios" : {
+                    "appstore" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ios-marketing-1024x1024.png",
+                    "ipad" : {
+                        "app" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-76x76.png",
+                        "app@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-76x76@2x.png",
+                        "notification" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-20x20.png",
+                        "notification@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-20x20@2x.png",
+                        "proapp@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-83.5x83.5@2x.png",
+                        "settings" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-29x29.png",
+                        "settings@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-29x29@2x.png",
+                        "spotlight" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/ipad-40x40@2x.png"
+                    },
+                    "iphone" : {
+                        "app@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-60x60@2x.png",
+                        "app@3x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-60x60@3x.png",
+                        "notification@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-20x20@2x.png",
+                        "notification@3x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-20x20@3x.png",
+                        "settings@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-29x29@2x.png",
+                        "settings@3x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-29x29@3x.png",
+                        "spotlight@2x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-40x40@2x.png",
+                        "spotlight@3x" : "unpackage/res/icons/Apple/iPhone/AppIcon.appiconset/iphone-40x40@3x.png"
+                    }
+                }
+            },
+            "splashscreen" : {
+                "androidStyle" : "common",
+                "iosStyle" : "common"
+            }
+        },
+        "error" : {
+            "url" : ""
+        },
+        "nvueLaunchMode" : "",
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "quickapp" : {},
+    "mp-weixin" : {
+        "appid" : "wx6db2e40f820b9c1d",
+        "setting" : {
+            "urlCheck" : false,
+            "checkSiteMap" : false,
+            "minified" : true,
+            "es6" : false,
+            "postcss" : false
+        },
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "你的位置信息将用于小程序位置接口的效果展示"
+            }
+        },
+        "optimization" : {
+            "subPackages" : true
+        },
+        "cloudfunctionRoot" : "cloudfunctions/",
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "mp-qq" : {
+        "usingComponents" : true
+    },
+    "h5" : {
+        "devServer" : {
+            "port" : 8289,
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/api" : {
+                    "target" : "https://app.ruoshixunlianbao.com/",
+                    "changeOrigin" : true,
+                    "secure" : false
+                }
+            }
+        },
+        "title" : "弱视训练宝",
+        "uniStatistics" : {
+            "enable" : true
+        }
+    }
+}

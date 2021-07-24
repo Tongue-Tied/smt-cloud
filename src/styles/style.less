@@ -1,0 +1,162 @@
+/**
+* 全局样式
+*/
+@import './variables.less';
+
+.u-bold {
+    font-weight: bold;
+}
+.u-flex-row{
+    display: flex;
+    align-items: center;
+}
+.u-block {
+    display: block;
+}
+.u-type-extra-primary {
+    // color: @u-type-extra-primary;
+    // &:active {
+    //     color: mix(@u-main-color, @u-type-extra-primary, 20%);
+    // }
+}
+.m-linear-btn .u-btn {
+    // background: linear-gradient(90deg, #e056e0 0%, @u-type-primary 100%);
+}
+
+/**
+* cell
+*/
+.u-border-top,
+.u-border-bottom {
+    &::after {
+        height: 100%;
+        transform: none;
+        width: initial;
+        left: 0;
+        right: 0;
+        border-color: #eee;
+    }
+}
+
+.u-cell,
+.m-field-panel,
+.u-cell-item-box,
+.u-field {
+    &.u-border-top::after,
+    &.u-border-bottom::after {
+        left: 30rpx;
+        right: 30rpx;
+        border-color: #eee;
+    }
+}
+
+.u-cell {
+    line-height: 60rpx !important;
+    .u-cell__value {
+        line-height: 1.5 !important;
+    }
+}
+.u-field .fild-body {
+    height: 72rpx;
+}
+.m-field {
+    .fild-body {
+        position: relative;
+    }
+    .m-field-right {
+        position: absolute;
+        right: 30rpx;
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+        z-index: 1;
+    }
+    .u-field__input-wrap {
+        z-index: 2;
+    }
+    &.m-field-active {
+        .m-field-right {
+            display: block;
+        }
+        .u-field__input-wrap {
+            opacity: 0;
+        }
+    }
+}
+
+/* #ifdef H5 */
+.uni-body {
+    background-color: @background-color;
+}
+/**
+* button
+*/
+.m-btn--default,
+.m-btn--cancel {
+    background-color: rgba(238, 238, 238, 0.5) !important;
+    height: 100rpx !important;
+    font-size: 34rpx !important;
+    border-radius: 20rpx !important;
+    &::after {
+        display: none;
+    }
+}
+.m-btn--default:not([disabled]) {
+    // color: @u-type-extra-primary !important;
+}
+.m-btn--cancel:not([disabled]) {
+    color: @u-tips-color !important;
+}
+/* #endif */
+/* #ifndef H5 */
+/**
+* button
+*/
+.m-btn--default,
+.m-btn--cancel {
+    .u-btn--default {
+        background-color: rgba(238, 238, 238, 0.5) !important;
+        height: 100rpx !important;
+        font-size: 34rpx !important;
+        border-radius: 20rpx !important;
+        &::after {
+            display: none;
+        }
+    }
+}
+.m-btn--default {
+    .u-btn--default:not([disabled]) {
+        color: @u-type-extra-primary !important;
+    }
+}
+.m-btn--cancel {
+    .u-btn--default:not([disabled]) {
+        color: @u-tips-color !important;
+    }
+}
+/* #endif */
+.m-plain-primary .u-btn {
+    background: #fff !important;
+    color: @u-type-primary !important;
+    border-color: @u-type-primary!important;
+    border: 1px solid currentColor !important;
+    &::after {
+        border: none !important;
+    }
+}
+
+.u-size-large {
+    height: 100rpx;
+    width: 570rpx;
+    border-radius: 45rpx;
+}
+.m-cell-shadow {
+    box-shadow: @m-box-shadow;
+}
+.m-popup-maxheight {
+    min-height: 200rpx;
+    max-height: 600rpx;
+}
+.u-col-stretch {
+    align-items: stretch;
+}
