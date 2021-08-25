@@ -1,27 +1,33 @@
 <template>
     <div class="mine_container" v-if="flag">
         <div class="mine_container_box">
-            <div class="mc_top" :style="'background-image:url('+ require('@/static/imgs/training/bgMy_02.png') +')'">
+            <div class="mc_top" :style="'background-image:url(https://img.ruoshixunlianbao.com/bgMy_02.png)'">
                 <div class="mc_top_info">
                     <div class="mc_top_info_img">
-                        <image :src="userInfo.headImg"></image>
+                        <!-- <image v-if="userInfo" :src="userInfo.headImg"></image> -->
+                        <u-avatar size="150" :src="userInfo ? userInfo.headImg : ''"></u-avatar>
                     </div>
-                    <div class="mc_top_info_title">
-                        <div>{{userInfo.userNick}}</div>
+                    <div v-if="userInfo" class="mc_top_info_title">
+                        <div>{{userInfo.userNick || ''}}</div>
                         <div>
                             <image style="width:24rpx;height:24rpx" :src="require('@/static/imgs/index/会员icon.png')" alt="">
-                            <span>{{userInfo.vipTime}}会员到期</span>
+                            <span v-if="userInfo">{{userInfo.vipTime || ''}}会员到期</span>
                         </div>
-                        <div>立即续费</div>
+                        <div @click="toRenew">立即续费</div>
+                    </div>
+                    <div class="mc_top_info_title" v-else>
+                        <div class="login_now">
+                            <WeixinLogin @upDate="upDate" class="weixin_login" />
+                        </div>
                     </div>
                 </div>
-                <div class="mc_top_score">
+                <div class="mc_top_score" v-if="userInfo">
                     <div>
                         <image style="width:36rpx;height:36rpx" :src="require('@/static/imgs/my/coin.png')"></image>
                     </div>
                     <div>当前积分</div>
-                    <div>{{userInfo.shopScore}}</div>
-                    <div>去兑换</div>
+                    <div v-if="userInfo">{{userInfo.shopScore || 0}}</div>
+                    <div @click="toScoreShop">去兑换</div>
                 </div>
             </div>
             <div class="mc_middle_container">
@@ -39,7 +45,7 @@
                     <div class="mc_list_container">
                         <div class="mlc_item" v-for="(item, index) in bottomList" :key="index">
                             <!-- {{item.text}} -->
-                            <u-cell-item arrow-direction="right" :border-bottom="(index+1) !== bottomList.length" >
+                            <u-cell-item @click="btClick(index)" arrow-direction="right" :border-bottom="(index+1) !== bottomList.length" >
                                 <!-- <div slot="icon"></div> -->
                                 <div slot="icon" class="cell_left">
                                     <div><image style="width:38rpx;height:38rpx" :src="item.icon"></image></div>
@@ -50,15 +56,21 @@
                     </div>
                 </div>
             </div>
-            <div class="logout">
+            <!-- <div class="logout">
                 <div @click="show = true">退出登录</div>
-            </div>
+            </div> -->
+        </div>
+        <div class="msg_box" @click="toMsg">
+            <u-icon name="email" color="#ffffff" size="50"></u-icon>
+            <div class="msg_num" v-if="msgLength">{{msgLength || ''}}</div>
         </div>
         <u-modal v-model="show" content="确认退出登录吗？" :show-cancel-button="true" @confirm="confirm" ref="uModal" :async-close="true"></u-modal>
     </div>
     <div v-else></div>
 </template>
 <script>
+import api from '@/services/api.public.js';
+import WeixinLogin from '@/components/wxLogin';
 export default {
     data() {
         return {
@@ -116,34 +128,99 @@ export default {
                 }
             ],
             show: false,
-            flag: false
+            flag: false,
+            msgLength: 0
         };
     },
+    components: {
+        WeixinLogin
+    },
     onShow() {
+        if (!uni.getStorageSync('token')) {
+            return (this.flag = true);
+        }
         this.$loading.open();
         this.$store.dispatch('loadUser').then(
             res => {
                 if (res) {
-                    this.flag = true;
                     this.$loading.close();
                     this.userInfo = this.$state().user;
+                    this.getData();
+                } else {
+                    this.$loading.close();
+                }
+            }
+        );
+    },
+    onPullDownRefresh() {
+        if (!uni.getStorageSync('token')) {
+            return (this.flag = true);
+        }
+        this.$store.dispatch('loadUser').then(
+            res => {
+                if (res) {
+                    this.userInfo = this.$state().user;
+                    this.getData();
+                    uni.stopPullDownRefresh();
                 }
             }
         );
     },
     methods: {
+        upDate(e) {
+            this.flag = false;
+            setTimeout(() => {
+                this.userInfo = this.$state().user;
+                // this.getData();
+                this.flag = true;
+            }, 10);
+        },
+        isLogin() {
+            if (!uni.getStorageSync('token')) {
+                return false;
+            } else {
+                return true;
+            }
+        },
+        async getData() {
+            const res = await api.getMsgList({
+                page: 1,
+                pageSize: 100
+            });
+            let arr = res.retObj.items;
+            try {
+                if (res.code === 1) {
+                    this.msgLength = 0;
+                    for (let i = 0; i < arr.length; i++) {
+                        console.log(arr[i]);
+                        if (arr[i].isRead === 1) {
+                            this.msgLength += 1;
+                        }
+                    }
+                }
+            } catch (error) {
+
+            }
+            console.log(this.msgLength);
+            this.flag = true;
+        },
         topJump(index) {
+            if (!this.isLogin()) {
+                return this.$toast('您还未登陆，请先登陆');
+            }
             switch (index) {
                 case 0:
-                    console.log(0);
+                    uni.navigateTo({ url: '/pages/mine/views/my-order' });
                     break;
                 case 1:
-                    console.log(1);
+                    uni.navigateTo({ url: '/pages/group/my-group' });
                     break;
                 case 2:
-                    uni.navigateTo({ url: '/pages/index/shopping-car/shopping-car' });
+                    console.log(123);
+                    uni.navigateTo({ url: '/pages/shopping-car/shopping-car' });
                     break;
                 case 3:
+                    uni.navigateTo({ url: '/pages/mine/views/redeem' });
                     console.log(3);
                     break;
                 default:
@@ -153,6 +230,46 @@ export default {
         confirm() {
             uni.clearStorageSync();
             uni.reLaunch({ url: '/pages/login/login' });
+        },
+        btClick(index) {
+            console.log(index);
+            switch (index) {
+                case 0:
+                    this.isLogin() ? uni.navigateTo({ url: '/pages/score/exchange' }) : this.$toast('您还未登陆，请先登陆');
+                    break;
+                case 1:
+                    this.isLogin() ? uni.navigateTo({ url: '/pages/score/score-record' }) : this.$toast('您还未登陆，请先登陆');
+                    break;
+                case 2:
+                    uni.navigateTo({ url: '/pages/mine/views/tutor' });
+                    break;
+                case 3:
+                    this.isLogin() ? uni.navigateTo({ url: '/pages/mine/views/information' }) : this.$toast('您还未登陆，请先登陆');
+                    break;
+                case 4:
+                    this.isLogin() ? uni.navigateTo({ url: '/pages/mine/views/account' }) : this.$toast('您还未登陆，请先登陆');
+                    break;
+                case 5:
+                    this.isLogin() ? uni.navigateTo({ url: '/pages/mine/views/help' }) : this.$toast('您还未登陆，请先登陆');
+                    break;
+                case 6:
+                    uni.navigateTo({ url: '/pages/mine/views/about' });
+                    break;
+                case 7:
+                    uni.navigateTo({ url: '/pages/mine/views/user-know' });
+                    break;
+                default:
+                    break;
+            }
+        },
+        toScoreShop() {
+            uni.navigateTo({ url: '/pages/score/score-shop' });
+        },
+        toRenew() {
+            uni.navigateTo({ url: '/pages/renew/index' });
+        },
+        toMsg() {
+            this.isLogin() ? uni.navigateTo({ url: '/pages/mine/views/message' }) : this.$toast('您还未登陆，请先登陆');
         }
     }
 };
@@ -160,7 +277,7 @@ export default {
 
 <style lang="less">
 page{
-    padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+    // padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
 }
 .mine_container{
     .mine_container_box{
@@ -168,7 +285,7 @@ page{
             width: 100%;
             height: 476rpx;
             background-size: contain;
-            background-repeat: no-repeat;
+            background-repeat: repeat;
             padding: 0 30rpx 0 30rpx;
             .mc_top_info{
                 display: flex;
@@ -192,6 +309,19 @@ page{
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+                    .login_now{
+                        display: flex;
+                        height: 100%;
+                        align-items: center;
+                        font-size: 30rpx !important;
+                        .weixin_login /deep/ div{
+                            font-size: 28rpx !important;
+                            padding: 5rpx 20rpx;
+                            border: 3rpx solid #ffffff;
+                            color: #ffffff;
+                            border-radius: 40rpx;
+                        }
+                    }
                     :nth-child(1){
                         font-size: 40rpx;
                     }
@@ -272,7 +402,12 @@ page{
             }
         }
         .logout{
-            height: 80rpx;
+            // #if H5
+            height: 70rpx;
+            // #endif
+            // #if MP-WEIXIN
+            height: 140rpx;
+            // #endif
             background: #ffffff;
             padding: 20rpx 30rpx 40rpx 30rpx;
             div{
@@ -286,6 +421,24 @@ page{
                 border: 1rpx solid #ff2724;
                 color: #ff2724;
             }
+        }
+    }
+    .msg_box{
+        position: fixed;
+        right: 30rpx;
+        top: calc(105rpx + env(safe-area-inset-top));
+        .msg_num{
+            position: absolute;
+            right: -20rpx;
+            top: -10rpx;
+            width: 30rpx;
+            height: 30rpx;
+            background: #FFCE11;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff2742;
         }
     }
 }

@@ -1,0 +1,182 @@
+page {
+  background: #f5f5f5;
+}
+.group_detail .swipe_box .swiper-box {
+  height: 760rpx !important;
+}
+.group_detail .swipe_box .swiper-box .swiper-item {
+  height: 100%;
+}
+.group_detail .swipe_box .swiper-box .swiper-item .swiper-item_img {
+  width: 100% !important;
+  height: 100% !important;
+}
+.group_detail .info_box {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 18rpx;
+  color: #ffffff;
+}
+.group_detail .info_box .info_top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.group_detail .info_box .info_top .it_left :nth-child(2) {
+  font-size: 36rpx;
+  padding-right: 20rpx;
+}
+.group_detail .info_box .info_top .it_left :nth-child(3) {
+  font-size: 26rpx;
+  text-decoration: line-through;
+}
+.group_detail .info_box .info_top .it_right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 26rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.group_detail .info_box .info_top .it_right image {
+  padding-right: 10rpx;
+}
+.group_detail .title {
+  font-size: 30rpx;
+  padding: 40rpx 18rpx;
+  background: #ffffff;
+}
+.group_detail .title :nth-child(2) {
+  color: #999999;
+  font-size: 24rpx;
+}
+.group_detail .group_list {
+  height: 480rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+  padding-bottom: 50rpx;
+}
+.group_detail .group_list .list_title {
+  padding: 30rpx 0 10rpx 30rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+.group_detail .group_list .scroll {
+  height: 85%;
+  background: #ffffff;
+}
+.group_detail .group_list .scroll .scroll-view-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 20rpx 30rpx 0 30rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.group_detail .group_list .scroll .scroll-view-item .left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.group_detail .group_list .scroll .scroll-view-item .left image {
+  width: 110rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+.group_detail .group_list .scroll .scroll-view-item .left ._div {
+  width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.group_detail .group_list .scroll .scroll-view-item .right {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.group_detail .group_list .scroll .scroll-view-item .right .time {
+  margin-right: 20rpx;
+}
+.group_detail .group_list .scroll .scroll-view-item .right .time ._div,
+.group_detail .group_list .scroll .scroll-view-item .right .time ._span {
+  font-size: 22rpx;
+}
+.group_detail .group_list .scroll .scroll-view-item .right .btn_box {
+  background: #ff2724;
+  padding: 10rpx 20rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+  color: #ffffff;
+}
+.group_detail .content {
+  padding: 30rpx 18rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom));
+}
+.group_detail .content ._img {
+  width: 100% !important;
+}
+.group_detail .content .content_title {
+  font-size: 32rpx;
+  color: #333333;
+  padding-bottom: 35rpx;
+}
+.group_detail .content .content_container .rich-img {
+  width: 100% !important;
+}
+.group_detail .fix_box {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.group_detail .fix_box ._div {
+  -webkit-box-flex: 50%;
+  -webkit-flex: 50%;
+          flex: 50%;
+  color: #ffffff;
+  font-size: 28rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.group_detail .fix_box .solo_pay {
+  background: #FF6F8A;
+}
+.group_detail .fix_box .group_pay {
+  background: #FF003B;
+}
+/**
+* 颜色定义
+*/
+

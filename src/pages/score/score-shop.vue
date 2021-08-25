@@ -1,6 +1,6 @@
 <template>
     <div class="score_shop" v-if="flag">
-        <div class="info_box">
+        <div class="info_box" :style="'background-image:url(https://img.ruoshixunlianbao.com/bgMy_02.png)'">
             <div class="info_center">
                 <div class="avatar">
                     <div style="width:170rpx;height:170rpx;background:#ffffff;display:flex;align-items: center;justify-content: center;border-radius: 100%;">
@@ -19,7 +19,7 @@
             </div>
             <div class="score_box">
             <div class="score_num">
-                <div>{{$state().user.shopScore}}</div>
+                <div style="font-size:64rpx">{{$state().user.shopScore}}</div>
                 <div class="score_num_bottom">
                     <div>积分</div>
                 </div>
@@ -83,6 +83,9 @@
             </div>
         </div>
         <u-popup class="my_popup" v-model="popupShow" mode="center" v-if="goodsItem">
+            <div class="top_img">
+                <image style="width:200rpx;height:200rpx" :src="require('@/static/imgs/score/tanTop.png')"></image>
+            </div>
             <div class="pop_container">
                 <div class="pc_top" :style="{backgroundImage:`url(${require('@/static/imgs/score/cloud.png')})`}">
                 </div>
@@ -90,7 +93,7 @@
                     <div>兑换确认</div>
                     <div>确认用 <span>{{goodsItem.goodsScore || goodsItem.cardScore}}</span>积分兑换{{goodsItem.title || goodsItem.name}}吗?</div>
                     <div>
-                        <image v-if="goodsItem" style="width:225rpx;height:225rpx" :src="goodsItem.img"></image>
+                        <image v-if="goodsItem" style="width:225rpx;height:225rpx;" :src="goodsItem.img"></image>
                     </div>
                 </div>
                 <div class="pc_address">
@@ -115,9 +118,6 @@
                         <div @click="popupShow = false">再想想</div>
                         <div @click="redeemGoods">立即兑换</div>
                     </div>
-                </div>
-                <div class="top_img">
-                    <image style="width:200rpx;height:200rpx" :src="require('@/static/imgs/score/tanTop.png')"></image>
                 </div>
                 <div class="close_icon" @click="popupShow = false">
                     <u-icon color="#9F9396" size="50" name="close-circle"></u-icon>
@@ -255,17 +255,19 @@ export default {
 
 <style lang="less">
 page{
+    background: #f5f5f5;
     padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
 }
 .score_shop{
+    div,span{
+        font-size: 28rpx;
+    }
     .info_box{
         width: 100%;
         height: 356rpx;
-        background-image: url('@/static/imgs/training/bgMy_02.png');
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
-        justify-content: center;
         position: relative;
         .info_center{
             width: 100%;
@@ -311,6 +313,7 @@ page{
             margin: 0 auto;
             background: rgb(255, 255, 255);
             border-radius: 80rpx;
+            justify-content: space-between;
             display: flex;
             .score_num{
                 color: #ff2724;
@@ -388,6 +391,7 @@ page{
                 padding: 30rpx;
                 margin-top: 30rpx;
                 border-radius: 60rpx;
+                box-shadow: 0 3.5rpx 3.5rpx rgba(182, 182, 182, 0.75);
                 .card_img{
                     image{
                         width: 260rpx;
@@ -399,11 +403,13 @@ page{
                     display: flex;
                     flex: 1;
                     flex-direction: column;
-                    justify-content: space-between;
+                    justify-content: center;
                     padding-left: 40rpx;
+                    height: 260rpx;
                     .my_score{
                         display: flex;
                         align-items: center;
+                        padding: 10rpx 0;
                         .score_num{
                             font-size: 26rpx;
                             :nth-child(1){
@@ -424,6 +430,8 @@ page{
                         width: 100%;
                         display: flex;
                         align-items: center;
+                        justify-content: center;
+                        padding-top: 20rpx;
                         div{
                             background: #ff2724;
                             font-size: 26rpx;
@@ -444,7 +452,6 @@ page{
     }
     .pop_container{
         width: 600rpx;
-        position: relative;
         background: rgba(226, 223, 223, 0);
         .pc_top{
             width: 100%;
@@ -461,6 +468,9 @@ page{
             background: #ffffff;
             text-align: center;
             padding-top: 60rpx;
+            image{
+                border-radius: 20rpx;
+            }
             :nth-child(1){
                 width: 100%;
                 color: #ff4060;
@@ -558,27 +568,30 @@ page{
                 }
             }
         }
-        .top_img{
-            position: absolute;
-            left: 50%;
-            top: -116rpx;
-            z-index: 1000;
-            transform: translate(-50%,0);
-        }
         .close_icon{
             position: absolute;
             right: 20rpx;
             top: -80rpx;
         }
     }
+    .top_img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(0,46%);
+        padding-left: 30rpx;
+        image{
+            // z-index: 1000000000000000;
+        }
+    }
     .my_popup{
         /deep/ .u-drawer-content {
             display: flex;
             .u-mode-center-box{
-                background-color: #99999900 !important;
+                background-color: #99999900!important;
             }
             .uni-scroll-view{
-                overflow: visible !important;
+                overflow: visible!important;
             }
         }
     }

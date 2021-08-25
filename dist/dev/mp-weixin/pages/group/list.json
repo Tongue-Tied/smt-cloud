@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "超值拼团",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-count-down": "/node-modules/uview-ui/components/u-count-down/u-count-down",
+    "m-notice": "/components/m-notice"
+  }
+}

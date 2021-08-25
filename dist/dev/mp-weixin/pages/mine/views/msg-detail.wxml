@@ -1,0 +1,1 @@
+<view class="message_detail _div"><view class="m_item _div"><view class="top _div"><view class="_div">{{info.title}}</view><view class="_div">{{info.createTime}}</view></view><view class="bottom _div">{{''+info.content+''}}</view></view></view>

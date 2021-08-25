@@ -1,0 +1,95 @@
+page {
+  background: #ffffff;
+}
+.update-phone .bind_phone_box {
+  width: 100%;
+  text-align: center;
+  padding: 30rpx 0;
+  border-top: 2rpx solid #e0e0e0;
+}
+.update-phone .code_box {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-bottom: 2rpx solid #e0e0e0;
+}
+.update-phone .code_box .u-size-mini {
+  background: #FFE0E7;
+  color: #ff2724;
+  border-radius: 40rpx;
+}
+.update-phone .code_box .code_left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.update-phone .code_box .code_left .select {
+  position: relative;
+  padding: 0 10rpx;
+}
+.update-phone .code_box .code_left .select .fixed_box {
+  position: absolute;
+  width: 300rpx;
+  top: 60rpx;
+  left: 0;
+  background: #ffffff;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  box-shadow: 0 0 70rpx 5rpx #eeeeee;
+  z-index: 1000000;
+  padding: 0 30rpx;
+}
+.update-phone .code_box .code_left .select .fixed_box .s_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 100rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  border-bottom: 2rpx solid #eeeeee;
+}
+.update-phone .code_box .code_left .select .icon_box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.update-phone .code_box .u-field {
+  padding-left: 0;
+}
+.update-phone .sure {
+  width: 90%;
+  margin: 0 auto;
+  height: 80rpx;
+  background: #ff2724;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #ffffff;
+  border-radius: 40rpx;
+  margin-top: 80rpx;
+}
+/**
+* 颜色定义
+*/
+

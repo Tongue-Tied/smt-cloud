@@ -1,15 +1,17 @@
 import Vue from 'vue';
-function request(method, url, data) {
+function request(method, url, data, p) {
     // 加密
     return new Promise((resolve, reject) => {
         if (!data) {
             data = {};
         }
-        if (uni.getStorageSync('token')) {
-            data._token_ = uni.getStorageSync('token');
-        }
-        if (uni.getStorageSync('uid')) {
-            data._uid_ = uni.getStorageSync('uid');
+        if (!p) {
+            if (uni.getStorageSync('token')) {
+                data._token_ = uni.getStorageSync('token');
+            }
+            if (uni.getStorageSync('uid')) {
+                data._uid_ = uni.getStorageSync('uid');
+            }
         }
         uni.request({
             // #ifdef H5
@@ -30,18 +32,27 @@ function request(method, url, data) {
             success(res) {
                 if (res.data.code !== 44003) {
                     resolve(res.data);
+                } else if (res.data.msg === '账号异常' || res.data.msg === '账号在别处登录') {
+                    Vue.prototype.$toast(res.data.msg);
+                    uni.clearStorage();
+                    Vue.prototype.$store.commit('updateUser', null);
+                    setTimeout(function() {
+                        uni.reLaunch({
+                            url: '/pages/index/index'
+                        });
+                    }, 3000);
                 } else {
                     Vue.prototype.$toast(res.data.msg);
+                    Vue.prototype.$store.commit('updateUser', null);
+                    uni.clearStorage();
                     setTimeout(function() {
-                        uni.clearStorage();
                         uni.reLaunch({
-                            url: '/pages/login/login'
+                            url: '/pages/index/index'
                         });
                     }, 3000);
                 }
             },
             fail(err) {
-                console.log(err);
                 reject({});
             }
         });

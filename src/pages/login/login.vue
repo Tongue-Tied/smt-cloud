@@ -24,11 +24,10 @@
                 type="number"
                 class="my_input"
                 icon="account"
-                @blur="authCaptcha"
                 placeholder="请输入手机号/用户名"
             >
             </u-field>
-            <div v-if="loginType == 1">
+            <div>
                 <u-field
                     v-model="form.password"
                     class="my_input"
@@ -38,189 +37,58 @@
                     placeholder="请输入密码"
                 >
                 </u-field>
-                <!-- <u-field v-model="form.passwordImgValue"
-                         label-width="0"
-                         placeholder="请输入图形验证码"
-                         v-if="passwordImg">
-                    <div slot="right"
-                         class="ll-img-code"
-                         @click="getCode(false)">
-                        <img :src="passwordImg"
-                             alt=""
-                             mode="heightFix"
-                             style="height: 100%;">
-                    </div>
-                </u-field> -->
             </div>
-            <view v-if="loginType == 2" class="">
-                <u-field
-                    v-model="form.codeImgValue"
-                    label-width="0"
-                    placeholder="请输入图形验证码"
-                    v-if="codeImg"
-                >
-                    <div
-                        slot="right"
-                        class="ll-img-code"
-                        @click="getCode(false)"
-                    >
-                        <img
-                            :src="codeImg"
-                            alt=""
-                            mode="heightFix"
-                            style="height: 100%;"
-                        />
-                    </div>
-                </u-field>
-                <view class="u-flex u-p-r-30">
-                    <u-field
-                        v-model="form.code"
-                        label-width="0"
-                        type="number"
-                        class="u-flex-1"
-                        placeholder="请输入验证码"
-                    >
-                    </u-field>
-                    <div class="ll-code">
-                        <u-button
-                            type="primary"
-                            size="medium"
-                            @click="getCode"
-                            >{{ tips }}</u-button
-                        >
-                    </div>
-                </view>
-            </view>
-            <view v-if="loginType == 3" class="">
-                <u-field
-                    v-model="form.forgetImgValue"
-                    label-width="0"
-                    placeholder="请输入图形验证码"
-                    v-if="forgetImg"
-                >
-                    <div
-                        slot="right"
-                        class="ll-img-code"
-                        @click="getCode(false)"
-                    >
-                        <img
-                            :src="forgetImg"
-                            alt=""
-                            mode="heightFix"
-                            style="height: 100%;"
-                        />
-                    </div>
-                </u-field>
-                <view class="u-flex u-p-r-30">
-                    <u-field
-                        v-model="form.forgetCode"
-                        label-width="0"
-                        type="number"
-                        class="u-flex-1"
-                        placeholder="请输入验证码"
-                    >
-                    </u-field>
-                    <div class="ll-code">
-                        <u-button
-                            type="primary"
-                            size="medium"
-                            @click="getCode"
-                            >{{ tips }}</u-button
-                        >
-                    </div>
-                </view>
-                <u-field
-                    v-model="form.newPassword"
-                    label-width="0"
-                    type="password"
-                    placeholder="请输入新密码"
-                >
-                </u-field>
-                <u-field
-                    v-model="form.newPassword2"
-                    label-width="0"
-                    type="password"
-                    placeholder="请再次输入新密码"
-                >
-                </u-field>
-            </view>
         </div>
         <div v-show="current === 1">
             <!-- <div style="padding:0;background:black">
                 <minput></minput>
             </div> -->
-            <u-field
-                v-model="form.password"
-                class="my_input"
-                label-width="0"
-                type="number"
-                icon="account"
-                placeholder="请输入手机号"
-            >
-            </u-field>
-            <u-field
-                v-model="form.password"
-                class="my_input"
-                label-width="0"
-                type="password"
-                icon="lock"
-                placeholder="请输入密码"
-            >
-            </u-field>
-            <view>
-                <view class="u-flex u-p-r-30">
+            <div class="code_input">
+                <div class="type_icon">
+                    <u-icon name="phone"></u-icon>
+                    <div class="type_box" @click="selectShow = !selectShow">
+                        <span class="type_num">+{{myValue}}</span>
+                        <u-icon name="arrow-down-fill" color="#DDDFE0" size="16"></u-icon>
+                    </div>
+                    <div class="fixed_box" v-if="selectShow">
+                        <div class="s_item" @click="cellClick(index,item)"
+                                            v-for="(item, index) in typeList"
+                                            :key="index">
+                            <span :style="!item.checked || 'color:#ff2724'">{{item.name}}</span>
+                            <u-icon v-if="item.checked" color="#ff2724" size="30" name="checkbox-mark"></u-icon>
+                        </div>
+                    </div>
+                </div>
+                <u-input placeholder-style="color:grey" v-model="form.phone" type="number" placeholder="请输入手机号"  />
+            </div>
+            <div>
+                <div style="position:relative">
                     <u-field
                         v-model="form.code"
+                        class="my_input u-flex-1"
                         label-width="0"
                         type="number"
-                        class="u-flex-1"
+                        :border-bottom="false"
+                        icon="lock"
+                        :clearable="false"
                         placeholder="请输入验证码"
-                    >
-                    </u-field>
-                    <div class="ll-code">
+                    ></u-field>
+                    <div class="code_box">
                         <u-button
-                            type="primary"
-                            size="medium"
-                            @click="getCode"
-                            >{{ tips }}</u-button
-                        >
+                        type="primary"
+                        size="medium"
+                        @click="getCode"
+                        >{{ tips }}</u-button
+                    >
                     </div>
-                </view>
-            </view>
-        </div>
-        <!-- <div class="ll-btns">
-            <div class="u-font-24 u-flex llb-cont">
-                <template v-if="ptype != 1">
-                    <div class="u-type-extra-primary"
-                         @click="changeType(2)"
-                         v-if="loginType == 1">
-                        使用验证码登录
-                    </div>
-                    <div class="u-type-extra-primary"
-                         @click="changeType(1)"
-                         v-else>
-                        使用密码登录
-                    </div>
-                </template>
-                <div class="u-flex-1"></div>
-                <div v-if="loginType == 1"
-                     class="u-type-extra-primary"
-                     @click="changeType(3)">忘记密码？</div>
-                <div v-else
-                     class="u-type-extra-primary"
-                     @click="voiceClick">使用语音验证码</div>
+                </div>
             </div>
-            <u-button type="primary"
-                      size="large"
-                      @click="loginClick"
-                      :loading="loading"
-                      v-if="loginType == 1 || loginType == 2">登录</u-button>
-            <u-button type="primary"
-                      size="large"
-                      @click="savePassword"
-                      :loading="loading"
-                      v-else>确认修改</u-button>
-        </div> -->
+            <u-verification-code
+                :seconds="seconds"
+                ref="uCode"
+                @change="codeChange">
+            </u-verification-code>
+        </div>
         <u-button
             type="primary"
             style="margin-top:20rpx;font-size:15px"
@@ -229,21 +97,22 @@
             :loading="loading"
             >登录</u-button
         >
-        <!-- <u-button
-            type="primary"
-            style="margin-top:20rpx;font-size:15px"
-            size="large"
-            @click="test"
-            :loading="loading"
-            >test</u-button -->
+        <div class="forget_box">
+            <div class="forget" @click="toForget">忘记密码</div>
+            <div class="register">
+                <span>我是新用户，</span><span @click="toRegister">去注册</span>
+            </div>
+        </div>
+        <div class="wechat_icon">
+            <label for="" @tap="getUserProfile">
+                <u-icon color="#51AA38" name="weixin-circle-fill" size="50"></u-icon>
+                <div>微信授权登录</div>
+            </label>
+        </div>
     </div>
 </template>
 <script>
 import apiLogin from '@/services/api.login.js';
-// import minput from '@/components/m-input.vue';
-/**
- * @query ptype 1 忘记密码
- */
 export default {
     name: 'login',
     mixins: [],
@@ -252,11 +121,10 @@ export default {
     computed: {},
     data() {
         return {
-            ptype: undefined,
             url: undefined,
             loading: false,
             loginType: 1,
-            tips: '',
+            tips: '获取验证码',
             seconds: 60,
             passwordImg: '',
             codeImg: '',
@@ -265,14 +133,7 @@ export default {
             form: {
                 phone: '',
                 password: '',
-                passwordImgValue: '',
-                codeImgValue: '',
-                forgetImgValue: '',
-                code: '',
-                forgetCode: '',
-                newPassword: '',
-                newPassword2: '',
-                authPhoneCaptchaDetailId: undefined
+                code: ''
             },
             list: [
                 {
@@ -285,15 +146,37 @@ export default {
             current: 0,
             roles: [],
             checkRole: undefined,
-            logoImage: require('@/static/imgs/login/logo.png')
+            logoImage: require('@/static/imgs/login/logo.png'),
+            typeList: [
+                {
+                    value: 86,
+                    name: '中国大陆+86',
+                    checked: true
+                },
+                {
+                    value: 852,
+                    name: '中国香港+852',
+                    checked: false
+                },
+                {
+                    value: 853,
+                    name: '中国澳门+853',
+                    checked: false
+                },
+                {
+                    value: 886,
+                    name: '中国台湾+886',
+                    checked: false
+                }
+            ],
+            selectShow: false,
+            myValue: 86
         };
     },
     onLoad(options) {
-        // this.url = options.url;
-        // this.ptype = options.ptype;
-        // if (this.ptype == 1) {
-        //     this.changeType(3);
-        // }
+    },
+    created() {
+        // this.weChatLogin();
     },
     onShow() {
         if (uni.getStorageSync('token')) {
@@ -306,13 +189,21 @@ export default {
         change(e) {
             this.current = e;
         },
-        test() {
-            // apiLogin.index().then(
-            //     res => {
-            //         console.log(res);
-            //     },
-            //     err => {}
-            // );
+        toForget() {
+            uni.navigateTo({ url: '/pages/mine/views/reset-password?fromLogin=1' });
+        },
+        toRegister() {
+            uni.navigateTo({ url: '/pages/login/views/register' });
+        },
+        cellClick(index, item) {
+            console.log(index);
+            console.log(item);
+            for (let i = 0; i < this.typeList.length; i++) {
+                this.typeList[i].checked = false;
+            }
+            this.typeList[index].checked = !this.typeList[index].checked;
+            this.myValue = item.value;
+            this.selectShow = false;
         },
         async loginClick() {
             const msg = this.verify();
@@ -321,68 +212,138 @@ export default {
                 return;
             }
             this.go();
-            // #if MP-WEIXIN
+        },
+        weChatLogin(userInfo) {
             // eslint-disable-next-line no-undef
             let weixin = wx;
-            // let that = this;
-            weixin.getUserInfo({
-                desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-                success: (res) => {
-                    // let userInfo = res.userInfo;
-                    uni.setStorageSync('weChatUserInfo', res.userInfo);
-                    weixin.cloud.callFunction({
-                        name: 'getOpenId'
-                    }).then(
-                        res => {
-                            uni.setStorageSync('openId', res.result.openid);
-                            // let myData = {
-                            //     openId: res.result.openid,
-                            //     t: 2,
-                            //     userName: userInfo.nickName
-                            // };
-                            // apiLogin.getBindWxOpenid(myData).then(
-                            //     res => {
-                            //         if (res.code === 2) {
-                            //             that.$toast('账号已被绑定');
-                            //             return;
-                            //         } else {
-                            //             that.go();
-                            //         }
-                            //     },
-                            //     err => {
-                            //         that.$toast('账号已被绑定');
-                            //         return;
-                            //     }
-                            // );
-                        }
-                    );
+            let that = this;
+            that.$loading.close();
+            weixin.login({
+                success: function(res) {
+                    // var that = this;
+                    // var header = {
+                    //     'content-type': 'application/x-www-form-urlencoded'
+                    // };
+                    if (res.code) {
+                        console.log(res.code);
+                        apiLogin.wxLogin({ code: res.code }).then(
+                            res => {
+                                if (res.code === 1) {
+                                    that.$store.commit('updateToken', res.retObj);
+                                    if (!res.retObj.userNick && !res.retObj.headImg) {
+                                        let data = {
+                                            headImg: userInfo.avatarUrl,
+                                            userNick: userInfo.nickName
+                                        };
+                                        apiLogin.updateUserInfo(data).then(
+                                            res => {
+                                                that.$store.dispatch('loadUser');
+                                                uni.switchTab({
+                                                    url: '/pages/index/index'
+                                                });
+                                                that.$loading.close();
+                                                console.log(res);
+                                            }
+                                        );
+                                    } else if (!res.retObj.phone) {
+                                        that.$loading.close();
+                                        console.log(111);
+                                        // that.$store.dispatch('loadUser');
+                                        uni.reLaunch({ url: '/pages/mine/views/update-phone' });
+                                    } else {
+                                        that.$loading.close();
+                                        that.$store.dispatch('loadUser');
+                                        uni.switchTab({
+                                            url: '/pages/index/index'
+                                        });
+                                    }
+                                }
+                                // let data = {
+                                //     t: 2,
+                                //     userName: userInfo.nickName,
+                                //     openId: res.retObj.xcxOpenid
+                                // };
+                                // apiLogin.getBindWxOpenid(data).then(
+                                //     res => {
+                                //         console.log(res);
+                                //     }
+                                // );
+                                console.log(res);
+                            }
+                        );
+                        // weixin.request({ // getOpenid
+                        //     url: 'https://api.weixin.qq.com/sns/jscode2session',
+                        //     data: {
+                        //         appid: 'wx6db2e40f820b9c1d', // AppID
+                        //         secret: '9155061a9b16cd4d4ff6564c15f36fad', // secret密钥
+                        //         grant_type: 'authorization_code',
+                        //         js_code: res.code
+                        //     },
+                        //     method: 'GET',
+                        //     header: header,
+                        //     success: function(res) {
+                        //         var openid = res.data.openid;// 登录之后返回的openid
+                        //         // this.setData({
+                        //         //   openid: res.data.openid
+                        //         // });
+                        //         that.$loading.open();
+                        //         let data = {
+                        //             type: 1,
+                        //             t: 2,
+                        //             openid: openid
+                        //         };
+                        //         apiLogin.threeLogin(data).then(
+                        //             res => {
+                        //                 if (res.code === 1) {
+                        //                     that.$store.commit('updateToken', res.retObj);
+                        //                     that.$store.dispatch('loadUser');
+                        //                     uni.switchTab({
+                        //                         url: '/pages/index/index'
+                        //                     });
+                        //                     that.$loading.close();
+                        //                 }
+                        //             },
+                        //             err => {
+                        //                 that.$toast(err.msg);
+                        //                 that.$loading.close();
+                        //             }
+                        //         );
+                        //         // console.log(openid + '我的openid');
+                        //         weixin.setStorageSync('openid', openid);// 储存openid
+                        //     },
+                        //     fail: function(res) {
+                        //         console.info('获取用户openid失败');
+                        //         // console.log(error);
+                        //     }
+                        // });
+                    }
                 }
             });
-            // #endif
-            // #ifndef MP-WEIXIN
-            // this.go();
-            console.log(1111);
-            // #endif
         },
         async go() {
             // 登录
             const data = {
-                phone: this.form.phone,
-                pwd: this.form.password
+                phone: this.form.phone
             };
+            if (this.current === 0) {
+                data.pwd = this.form.password;
+            } else {
+                data.code = this.form.code;
+            }
             this.loading = true;
             try {
                 var res = await apiLogin.auth(data);
             } catch (e) {
                 console.log(e);
             }
-            if (res.code === 1) {
-                console.log(res.retObj.openid);
+            if (res.code === 1 && res.msg !== '未设置密码') {
                 this.$store.commit('updateToken', res.retObj);
                 this.$store.dispatch('loadUser');
                 uni.switchTab({
                     url: '/pages/index/index'
                 });
+            } else if (res.code === 1 && res.msg === '未设置密码') {
+                uni.navigateTo({ url: '/pages/mine/views/set-password' });
             }
             this.loading = false;
             this.$toast(res.msg);
@@ -454,37 +415,35 @@ export default {
         // codeChange(text) {
         //     this.tips = text;
         // },
-        async getCode(showMsg = true) {
-            if (!this.$u.test.mobile(this.form.phone)) {
+        async getCode() {
+            if (this.form.phone === '') {
                 return this.$toast('请输入正确的手机号');
             }
-            if (showMsg) {
-                if (this.loginType == 2) {
-                    if (this.codeImg && !this.form.codeImgValue) {
-                        return this.$toast('请输入图形验证码');
-                    }
-                } else if (this.loginType == 3) {
-                    if (this.forgetImg && !this.form.forgetImgValue) {
-                        return this.$toast('请输入图形验证码');
-                    }
-                }
-            }
             if (this.$refs.uCode.canGetCode) {
-                this.$loading.open();
-                // 获取验证码
-                const data = this.dataFormat();
-                try {
-                    var res = await apiLogin.getCode(data);
-                } catch (e) {
-                    if (e.message) {
-                        this.$toast(e.message);
+                // 模拟向后端请求验证码
+                uni.showLoading({
+                    title: '正在获取验证码'
+                });
+                let data = {
+                    phone: this.form.phone,
+                    type: this.myValue
+                };
+                apiLogin.sendCode(data, true).then(
+                    res => {
+                        if (res.code === 1) {
+                            uni.hideLoading();
+                            // 通知验证码组件内部开始倒计时
+                            this.$refs.uCode.start();
+                        } else {
+                            uni.hideLoading();
+                            this.$toast('获取验证码失败');
+                            this.$refs.uCode.reset();
+                        }
+                        console.log(res);
                     }
-                    return;
-                }
-                if (this.checkRes(res, showMsg)) {
-                    return;
-                }
-                this.$refs.uCode.start();
+                );
+            } else {
+                this.$u.toast('倒计时结束后再发送');
             }
         },
         async savePassword() {
@@ -521,40 +480,6 @@ export default {
             this.form.newPassword2 = '';
             this.form.password = '';
             this.loading = false;
-        },
-        voiceClick() {
-            // 发送语音验证码
-            if (!this.$u.test.mobile(this.form.phone)) {
-                return this.$toast('请输入正确的手机号');
-            }
-            if (this.loginType == 2) {
-                if (this.codeImg && !this.form.codeImgValue) {
-                    return this.$toast('请输入图形验证码');
-                }
-            } else if (this.loginType == 3) {
-                if (this.forgetImg && !this.form.forgetImgValue) {
-                    return this.$toast('请输入图形验证码');
-                }
-            }
-            uni.showModal({
-                title: '确认发送语音验证码',
-                success: async () => {
-                    const data = this.dataFormat();
-                    data.yzType = 1;
-                    try {
-                        var res = await apiLogin.getCode(data);
-                    } catch (e) {
-                        if (e.message) {
-                            this.$toast(e.message);
-                        }
-                        return;
-                    }
-                    if (this.checkRes(res, true)) {
-                        return;
-                    }
-                    this.$refs.uCode.start();
-                }
-            });
         },
         dataFormat() {
             // const data = {
@@ -603,7 +528,6 @@ export default {
             switch (type) {
                 case 1:
                     title = '登录';
-                    this.authCaptcha();
                     break;
                 case 2:
                     title = '验证码登录';
@@ -621,17 +545,68 @@ export default {
                 phoneNumber: '400-006-2020'
             });
         },
-        wxlogin() {
-            // return new Promise((resolve, reject) => {
-            //     uni.login({
-            //         success: res => {
-            //             resolve(res.code);
-            //         },
-            //         fail: err => {
-            //             reject(err);
-            //         }
-            //     });
-            // });
+        getUserProfile() {
+            // #if MP-WEIXIN
+        // uni.navigateTo({ url: '/pages/demo/demo' });
+            // eslint-disable-next-line no-undef
+            let weixin = wx;
+            console.log(weixin);
+            let that = this;
+            weixin.getUserProfile({
+                desc: '获取你的昵称、头像、地区及性别',
+                success: function(res) {
+                    console.log(res);
+                    // let userInfo = res.userInfo;
+                    that.weChatLogin(res.userInfo);
+                },
+                fail: function(res) {
+                    that.$toast('微信授权失败');
+                }
+            });
+            // eslint-disable-next-line no-undef
+            // eslint-disable-next-line no-undef
+        // let that = this;
+        // weixin.getUserInfo({
+        //     desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+        //     success: (res) => {
+        //         console.log(res);
+        //         // let userInfo = res.userInfo;
+        //         // uni.setStorageSync('weChatUserInfo', res.userInfo);
+        //         // weixin.cloud.callFunction({
+        //         //     name: 'getOpenId'
+        //         // }).then(
+        //         //     res => {
+        //         //         // uni.setStorageSync('openId', res.result.openid);
+        //         //         // let myData = {
+        //         //         //     openId: res.result.openid,
+        //         //         //     t: 2,
+        //         //         //     userName: userInfo.nickName
+        //         //         // };
+        //         //         // apiLogin.getBindWxOpenid(myData).then(
+        //         //         //     res => {
+        //         //         //         if (res.code === 2) {
+        //         //         //             that.$toast('账号已被绑定');
+        //         //         //             return;
+        //         //         //         } else {
+        //         //         //             that.go();
+        //         //         //         }
+        //         //         //     },
+        //         //         //     err => {
+        //         //         //         that.$toast('账号已被绑定');
+        //         //         //         return;
+        //         //         //     }
+        //         //         // );
+        //         //     }
+        //         // );
+        //     }
+        // });
+        // eslint-disable-next-line no-undef
+        // console.log(wx.cloud.CloudID());
+        // eslint-disable-next-line no-undef
+        // wx.cloud.callFunction({
+        //     name: 'message'
+        // }).then(console.log);
+        // #endif
         },
         base64(str) {
             var base64EncodeChars =
@@ -670,6 +645,9 @@ export default {
                 out += base64EncodeChars.charAt(c3 & 0x3f);
             }
             return out;
+        },
+        codeChange(text) {
+            this.tips = text;
         }
     }
 };
@@ -704,6 +682,15 @@ page {
             color: #333333;
         }
     }
+    .wechat_icon{
+        padding-top: 40rpx;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        color: #333333;
+        // font-size: 24rpx;
+    }
     .my_input {
         width: 570rpx;
         margin: 0 auto;
@@ -735,38 +722,90 @@ page {
             width: 100%;
         }
     }
-    .ll-img-code {
-        width: 160rpx;
-        height: 50rpx;
-    }
-    .ll-code {
-        width: 25%;
-        .u-btn {
-            width: 100%;
-        }
-    }
-    .ll-btns {
-        padding: 40rpx 30rpx 0 30rpx;
-    }
-    .llb-cont {
-        margin-bottom: 70rpx;
-    }
-    .ll-btn .u-btn {
-        height: 100rpx;
-        border-radius: 20rpx;
-    }
-    .ll-footer {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
-    .ll-bottom {
-        margin-bottom: env(safe-area-inset-bottom);
-    }
     input {
         font-size: 28rpx;
+    }
+    .code_box{
+        position: absolute;
+        right: 240rpx;
+        top: 50%;
+        transform: translate(0,-50%);
+        width: 60rpx;
+        z-index: 1000;
+        button{
+            width: auto;
+            height: 56rpx !important;
+            padding: 0 20rpx;
+        }
+    }
+    .forget_box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 570rpx;
+        margin: 0 auto;
+        padding-top: 20rpx;
+        .forget{
+            font-size: 24rpx;
+        }
+        .register{
+            span{
+                font-size: 24rpx;
+            }
+            :nth-child(2){
+                color: #ff2724;
+                border-bottom:2rpx solid #ff2724;
+                padding-bottom: 2rpx;
+            }
+        }
+    }
+    .code_input{
+        position: relative;
+        width: 610rpx;
+        margin: 0 auto;
+        border-radius: 60rpx;
+        // padding: 10rpx;
+        margin-top: 10rpx;
+        background: #f5f5f5;
+        margin-top: 20rpx;
+        font-size: 28rpx;
+        padding: 20rpx 28rpx;
+        text-align: left;
+        position: relative;
+        color: #5c636a;
+        display: flex;
+        align-items: center;
+        .type_icon{
+            // position: absolute;
+            // left: 30rpx;
+            // top: 50%;
+            // transform: translate(0,-50%);
+            height: 30rpx;
+            display: flex;
+            align-items: center;
+            position: relative;
+            .type_box{
+                padding: 0 10rpx;
+            }
+            .fixed_box{
+                position: absolute;
+                width: 300rpx;
+                top: 50rpx;
+                left: 30rpx;
+                background: #ffffff;
+                transition-duration: 0.2s;
+                box-shadow: 0 0 70rpx 5rpx #eeeeee;
+                z-index: 1000000;
+                padding: 0 30rpx;
+                .s_item{
+                    display: flex;
+                    height: 100rpx;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 2rpx solid #eeeeee;
+                }
+            }
+        }
     }
 }
 </style>

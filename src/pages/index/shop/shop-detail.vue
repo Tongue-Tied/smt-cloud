@@ -1,6 +1,6 @@
 <template>
     <div class="shop_detail">
-        <div class="navbar">
+        <!-- <div class="navbar">
             <div class="navbar_left" @click="back">
                 <u-icon color="#ffffff" name="arrow-left"></u-icon>
             </div>
@@ -12,7 +12,7 @@
                     <u-icon color="#ffffff" name="zhuanfa"></u-icon>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="swiper">
             <swiper
                 class="swiper-box"
@@ -27,7 +27,6 @@
                             :src="info.img"
                             class="swiper-item_img"
                             mode="aspectFill"
-                            @click="swiperClick(item)"
                         />
                     </view>
                 </swiper-item>
@@ -146,16 +145,22 @@
             </div>
         </u-popup>
         <div class="foot">
-            <div class="foot_item1">
+            <div class="foot_item1" @click="jump(1)">
                 <div>
                     <u-icon size="40" color="#ff2724" name="kefu-ermai"></u-icon>
                 </div>
                 <div>客服</div>
             </div>
+            <div class="foot_item1 car" @click="jump(2)">
+                <div>
+                    <u-icon size="41" color="#333333" name="shopping-cart"></u-icon>
+                </div>
+                <div>购物车</div>
+            </div>
             <div class="foot_item2" @click="show=true,addCar=true">
                 加入购物车
             </div>
-            <div @click="show=true" class="foot_item3">
+            <div @click="show=true,addCar=false" class="foot_item3">
                 立即购买
             </div>
         </div>
@@ -195,12 +200,18 @@ export default {
         }
         if (res) {
             this.info = res.retObj;
+            // eslint-disable-next-line no-useless-escape
+            this.info.content = this.info.content.replace(/\<img/gi, '<img class="rich-img"');
+
             if (this.info.goodsClassifyList.length) {
                 this.titleInfo = this.info.goodsClassifyList[0];
             }
         }
     },
     methods: {
+        jump(e) {
+            e === 1 ? uni.navigateTo({ url: '/pages/mine/views/help' }) : uni.navigateTo({ url: '/pages/shopping-car/shopping-car' });
+        },
         back() {
             uni.navigateBack({ delta: 1 });
         },
@@ -265,14 +276,47 @@ export default {
             );
             uni.navigateTo({ url: '/pages/index/shop/shop-pay' });
         }
+    },
+    onShareAppMessage: function(options) {
+        var that = this;
+        // 设置菜单中的转发按钮触发转发事件时的转发内容
+        var shareObj = {
+            title: that.info.title, // 默认是小程序的名称(可以写slogan等)
+            path: `/pages/index/shop/shop-detail?id=${that.info.id}`, // 默认是当前页面，必须是以‘/’开头的完整路径
+            imageUrl: that.info.img, // 自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+            success: function(res) {
+                // 转发成功之后的回调
+                if (res.errMsg == 'shareAppMessage:ok') {
+                    that.$toast('分享成功');
+                }
+            },
+            fail: function(res) {
+                // 转发失败之后的回调
+                if (res.errMsg == 'shareAppMessage:fail cancel') {
+                    // 用户取消转发
+                    that.$toast('取消分享');
+                } else if (res.errMsg == 'shareAppMessage:fail') {
+                    // 转发失败，其中 detail message 为详细失败信息
+                    that.$toast('分享失败');
+                }
+            }
+        };
+        return shareObj;
     }
 };
 </script>
 <style lang="less">
 page {
     background: #f3f3f3;
+    padding-bottom: calc(80rpx + env(safe-area-inset-bottom));
 }
 .shop_detail {
+    div,span{
+        font-size: 28rpx;
+    }
+    .sure_btn{
+        margin-bottom: calc(env(safe-area-inset-bottom));
+    }
     .swiper-box {
         width: 100%;
         height: 750rpx;
@@ -318,6 +362,7 @@ page {
                 align-items: center;
                 .my_price {
                     color: #ff2742;
+                    font-size: 26rpx;
                     :nth-child(1) {
                         font-size: 36rpx;
                     }
@@ -330,6 +375,7 @@ page {
             }
             .introduce_num {
                 color: #999999;
+                font-size: 26rpx;
             }
         }
     }
@@ -381,6 +427,7 @@ page {
                 justify-content: center;
                 border-radius: 6rpx;
                 padding: 5rpx 0 5rpx 0;
+                font-size: 24rpx;
             }
         }
     }
@@ -390,6 +437,11 @@ page {
         padding: 30rpx 20rpx 30rpx 20rpx;
         .content{
             width: 100%;
+            rich-text .rich-img {
+                width: 100% !important;
+                height: auto ;
+                border-radius: 30rpx;
+            }
             /deep/ img{
                 width: 100% !important;
             }
@@ -567,24 +619,29 @@ page {
     .foot{
         position: fixed;
         width: 100%;
-        height: 100rpx;
         display: flex;
         align-items: center;
         left: 0;
-        bottom:  env(safe-area-inset-bottom);
+        bottom: 0;
+        padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+        padding-top: 40rpx;
         right:0;
         background: #ffffff;
         .foot_item1{
+            height: 70rpx;
             text-align: center;
             padding:0 40rpx 0 20rpx;
             color: #ff2742;
             font-size: 24rpx;
         }
+        .car{
+            color: #333333;
+        }
         .foot_item2{
             width: 200rpx;
             background: #ff7f90;
             color: #ffffff;
-            height: 70%;
+            height: 70rpx;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -597,7 +654,7 @@ page {
             width: 200rpx;
             background: #ff2724;
             color: #ffffff;
-            height: 70%;
+            height: 70rpx;
             display: flex;
             justify-content: center;
             align-items: center;

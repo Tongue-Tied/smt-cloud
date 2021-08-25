@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "拼团详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-count-down": "/node-modules/uview-ui/components/u-count-down/u-count-down"
+  }
+}

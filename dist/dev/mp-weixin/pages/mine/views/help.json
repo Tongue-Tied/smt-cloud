@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "客服/帮助",
+  "navigationBarBackgroundColor": "#ffffff",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
+    "m-msg": "/components/m-msg"
+  }
+}

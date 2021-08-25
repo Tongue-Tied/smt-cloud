@@ -6,6 +6,12 @@ export const BOOKING_STATUS = [
     { name: '已失效', value: 5 },
     { name: '已失效', value: 4 }
 ];
+export default {
+    verify(data) {
+        var reg_tel = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/;
+        return reg_tel.test(data);
+    }
+};
 // 卡类型
 export const CARD_TYPE = [
     { name: '储值卡', value: 2 },

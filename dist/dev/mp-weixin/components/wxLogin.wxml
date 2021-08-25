@@ -1,0 +1,1 @@
+<view class="wx_login"><label for data-event-opts="{{[['tap',[['getUserProfile',['$event']]]]]}}" bindtap="__e"><view class="_div">立即登录</view></label></view>

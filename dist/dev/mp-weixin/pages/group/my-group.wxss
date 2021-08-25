@@ -1,0 +1,93 @@
+page {
+  background: #f5f5f5;
+}
+.my_group {
+  font-size: 28rpx;
+  padding: 0 30rpx;
+}
+.my_group .group_item {
+  background: #ffffff;
+  padding: 30rpx 40rpx;
+  border-radius: 60rpx;
+  box-shadow: 0 0 20rpx 10rpx #eeeeee;
+  margin-top: 40rpx;
+}
+.my_group .group_item .top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.my_group .group_item .top .top_right {
+  color: #ff2724;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
+}
+.my_group .group_item .bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.my_group .group_item .bottom .img_box {
+  width: 180rpx;
+  height: 180rpx;
+}
+.my_group .group_item .bottom .img_box image {
+  width: 100%;
+  height: 100%;
+  border-radius: 40rpx;
+}
+.my_group .group_item .bottom .bottom_info {
+  padding-left: 80rpx;
+}
+.my_group .group_item .bottom .bottom_info .title {
+  font-size: 28rpx;
+  color: #333333;
+}
+.my_group .group_item .bottom .bottom_info .subtitle {
+  color: #999999;
+}
+.my_group .group_item .bottom .bottom_info .orgin_price {
+  color: #999999;
+  padding-top: 25rpx;
+  text-decoration: line-through;
+}
+.my_group .group_item .bottom .bottom_info .tuan {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  margin-top: 10rpx;
+}
+.my_group .group_item .bottom .bottom_info .tuan :nth-child(1) {
+  color: #ff2724;
+  font-size: 28rpx;
+}
+.my_group .group_item .bottom .bottom_info .tuan :nth-child(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 5rpx 20rpx;
+  background: #FFE0E7;
+  border-radius: 40rpx;
+  color: #ff2724;
+  font-size: 22rpx;
+}
+/**
+* 颜色定义
+*/
+

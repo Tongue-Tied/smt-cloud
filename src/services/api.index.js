@@ -17,5 +17,12 @@ export default {
     },
     operScoreShopOrder(data) {
         return request.post('/api/operScoreShopOrder', data);
+    },
+    showDialog(data) {
+        return request.post('/api/showDialog', data);
+    },
+    xcxIndex(data) {
+        return request.post('/api/xcxIndex', data);
     }
+
 };

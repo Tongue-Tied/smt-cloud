@@ -6,13 +6,6 @@
     "cloud": true,
     "pages": [
         {
-            "path": "pages/login/login",
-            "style": {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-        },
-        {
             "path": "pages/index/index",
             "style": {
                 "navigationBarTitleText": "",
@@ -21,6 +14,13 @@
                 "app-plus": {
                     "titleNView": false // 去掉APP、H5的顶部导航
                 }
+            }
+        },
+        {
+            "path": "pages/login/login",
+            "style": {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
             }
         },
         {
@@ -46,33 +46,41 @@
             }
         },
         {
-            "path": "pages/index/shopping-car/shopping-car",
+            "path": "pages/web-view/web-view",
             "style": {
-                "navigationBarTitleText": "购物车",
-                "navigationBarBackgroundColor": "#ffffff",
-                "navigationBarTextStyle": "black",
-                "enablePullDownRefresh": true
-            }
-        },
-        {
-            "path": "pages/index/address/address",
-            "style": {
-                "navigationBarTitleText": "修改收货地址",
-                "navigationBarBackgroundColor": "#ffffff",
-                "navigationBarTextStyle": "black",
-                "enablePullDownRefresh": true
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+                "navigationStyle": "custom", 
+                "app-plus": {
+                    "titleNView": false
+                }
             }
         }
     ],
     "subPackages": [
         {
+            "independent": true,
+            "root":"pages/login/views/",
+            "pages": [
+                {
+                    "path": "register",
+                    "style": {
+                        "navigationBarTitleText": "注册",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        },
+        {
+            "independent": true,
             "root": "pages/index/shop/",
             "pages": [
                 
                 {
                     "path": "shop-list",
                     "style": {
-                        "navigationStyle": "custom",
                         "navigationBarTitleText": "弱视用品商城",
                         "navigationBarBackgroundColor": "#ffffff",
                         "navigationBarTextStyle": "black",
@@ -82,7 +90,9 @@
                 {
                     "path": "shop-detail",
                     "style": {
-                        "navigationStyle": "custom",
+                        "navigationBarTitleText": "商品详情",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
                         "enablePullDownRefresh": false
                     }
                 },
@@ -98,6 +108,7 @@
             ]
         },
         {
+            "independent": true,
             "root": "pages/score/",
             "pages": [
                 
@@ -125,6 +136,307 @@
                         "navigationBarTitleText": "积分兑换商城",
                         "navigationBarBackgroundColor": "#ffffff",
                         "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "exchange",
+                    "style": {
+                        "navigationBarTitleText": "积分兑换订单",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        },
+        {  
+            "independent": true,
+            "root": "pages/mine/views",
+            "pages": [
+                {
+                    "path": "about",
+                    "style": {
+                        "navigationBarTitleText": "关于我们",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "user-know",
+                    "style": {
+                        "navigationBarTitleText": "用户须知",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "help",
+                    "style": {
+                        "navigationBarTitleText": "客服/帮助",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "problem",
+                    "style": {
+                        "navigationBarTitleText": "配送问题",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "account",
+                    "style": {
+                        "navigationBarTitleText": "账号与安全",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "tutor",
+                    "style": {
+                        "navigationBarTitleText": "辅导老师",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "information",
+                    "style": {
+                        "navigationBarTitleText": "编辑个人资料",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "redeem",
+                    "style": {
+                        "navigationBarTitleText": "兑换码",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "my-order",
+                    "style": {
+                        "navigationBarTitleText": "我的订单",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "order-details",
+                    "style": {
+                        "navigationBarTitleText": "订单详情",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "update-phone",
+                    "style": {
+                        "navigationBarTitleText": "更换手机号",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "reset-password",
+                    "style": {
+                        "navigationBarTitleText": "重置密码",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "bind-phone",
+                    "style": {
+                        "navigationBarTitleText": "绑定手机号",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "message",
+                    "style": {
+                        "navigationBarTitleText": "消息通知",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "msg-detail",
+                    "style": {
+                        "navigationBarTitleText": "通知详情",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "set-password",
+                    "style": {
+                        "navigationBarTitleText": "设置密码",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        },
+        {
+            "root":"pages/index/address/",
+            "pages":[
+                {
+                    "path": "address",
+                    "style": {
+                        "navigationBarTitleText": "修改收货地址",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": true
+                    }
+                }
+            ]
+        },
+        {
+            "root":"pages/shopping-car/",
+            "pages":[
+                {
+                    "path": "shopping-car",
+                    "style": {
+                        "navigationBarTitleText": "购物车",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": true
+                    }
+                }
+            ]
+        },
+        {
+            "independent": true,
+            "root": "pages/training/views",
+            "pages":[
+                {
+                    "path": "training-log",
+                    "style": {
+                        "navigationBarTitleText": "训练日志",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "eyes-training",
+                    "style": {
+                        "navigationBarTitleText": "眼肌训练",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "three-dimensional",
+                    "style": {
+                        "navigationBarTitleText": "立体融像训练",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "vision-test",
+                    "style": {
+                        "navigationBarTitleText": "正在测试右眼视力",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "vision-result",
+                    "style": {
+                        "navigationBarTitleText": "查看孩子视力是否正常",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "vision-check",
+                    "style": {
+                        "navigationBarTitleText": "查看孩子视力是否正常",
+                        "navigationBarBackgroundColor": "#ffffff",
+                        "navigationBarTextStyle": "black",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        },
+        {
+            "independent": true,
+            "root": "pages/group",
+            "pages":[
+                {
+                    "path": "list",
+                    "style": {
+                        "navigationBarTitleText": "超值拼团",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "detail",
+                    "style": {
+                        "navigationBarTitleText": "拼团详情",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "pay",
+                    "style": {
+                        "navigationBarTitleText": "收银台",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "my-group",
+                    "style": {
+                        "navigationBarTitleText": "我的拼团",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "group-result",
+                    "style": {
+                        "navigationBarTitleText": "拼团详情",
+                        "enablePullDownRefresh": false
+                    }
+                },
+                {
+                    "path": "group-order",
+                    "style": {
+                        "navigationBarTitleText": "拼团订单详情",
+                        "enablePullDownRefresh": false
+                    }
+                }
+            ]
+        },
+        {
+            "independent": true,
+            "root": "pages/renew",
+            "pages":[
+                {
+                    "path": "index",
+                    "style": {
+                        "navigationBarTitleText": "开通课程",
                         "enablePullDownRefresh": false
                     }
                 }
@@ -168,5 +480,15 @@
                 "text": "我的"
             }
         ]
-    }
+    },
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "12", //模式名称
+				"path": "pages/login/login", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
 }

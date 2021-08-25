@@ -1,0 +1,18 @@
+.user_know .user_tabs .u-tab-item {
+  color: #333333 !important;
+}
+.user_know .title {
+  color: #333333;
+  text-align: center;
+  padding: 40rpx 0;
+  font-size: 40rpx;
+  font-weight: 500;
+}
+.user_know .insert_box {
+  width: 83%;
+  margin: 0 auto;
+}
+/**
+* 颜色定义
+*/
+

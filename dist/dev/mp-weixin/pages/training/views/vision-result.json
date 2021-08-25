@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "查看孩子视力是否正常",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {}
+}

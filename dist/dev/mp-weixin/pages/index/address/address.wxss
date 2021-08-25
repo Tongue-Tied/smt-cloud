@@ -1,0 +1,61 @@
+page {
+  background: #ffffff;
+}
+.address .address_container .address_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.address .address_container .address_item .u-cell_title {
+  width: 20% !important;
+}
+.address .address_container .address_item .my_input {
+  padding: 0 30rpx 0 30rpx;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.address .address_container .address_item .area {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.address .address_container .address_item .area .area_icon {
+  padding-right: 10rpx;
+}
+.address .address_container .number {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.address .address_container .number ._span {
+  padding-left: 10rpx;
+  font-weight: 500;
+}
+.address .sure_btn {
+  width: 95%;
+  margin: 70rpx auto;
+  height: 80rpx;
+  border-radius: 40rpx;
+  background: #ff2724;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #ffffff;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+/**
+* 颜色定义
+*/
+

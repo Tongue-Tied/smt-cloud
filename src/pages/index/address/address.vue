@@ -15,11 +15,11 @@
             <u-cell-item class="address_item" title="所在地区" @click="areaShow = true" :arrow="false" hover-class="none">
                 <div class="my_input area">
                     <u-icon class="area_icon" size="30" name="map-fill"></u-icon>
-                    <div style="font-size:26rpx;color:#333333">{{shArea}}</div>
+                    <div style="font-size:26rpx;color:#333333">{{shArea ? shArea : ''}}</div>
                 </div>
             </u-cell-item>
             <u-cell-item class="address_item" title="详细地址" :arrow="false" hover-class="none">
-                <div class="my_input"><u-input :clearable="false" placeholder="请输入收货人手机号码" v-model="shAddress" type="text" /></div>
+                <div class="my_input"><u-input :clearable="false" placeholder="例如：某某小区3号楼1单元201" v-model="shAddress" type="text" /></div>
             </u-cell-item>
         </div>
         <div class="sure_btn" @click="sure">
@@ -103,16 +103,20 @@ export default {
                 area: this.shArea,
                 name: this.name,
                 phone: this.phoneNumber,
-                sex: this.$state().user.sex
+                sex: 1
             };
             console.log(apiAddress);
             apiAddress.addReceivingAddress(data).then(
                 res => {
-                    this.$store.dispatch('loadUser').then(res => {
-                        if (res) {
-                            uni.navigateBack({ delta: 1 });
-                        }
-                    });
+                    if (res.code === 1) {
+                        this.$store.dispatch('loadUser').then(res => {
+                            if (res) {
+                                uni.navigateBack({ delta: 1 });
+                            }
+                        });
+                    } else {
+                        this.$toast(res.msg || '网络出错啦');
+                    }
                     // uni.navigateBack({ delta: 1 });
                 },
                 err => {

@@ -1,0 +1,73 @@
+page {
+  background: #f5f5f5;
+}
+.message {
+  padding: 0 30rpx;
+}
+.message .m_item {
+  background: #ffffff;
+  border-radius: 30rpx;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  box-shadow: 0 0 10rpx 5rpx #eeeeee;
+}
+.message .m_item .top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.message .m_item .bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding-top: 40rpx;
+}
+.message .m_item .bottom .b_left {
+  padding-right: 30rpx;
+}
+.message .m_item .bottom .b_left image {
+  width: 70rpx;
+}
+.message .m_item .bottom .b_right .br_top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.message .m_item .bottom .b_right .br_top :nth-child(1) {
+  font-size: 30rpx;
+  color: #333333;
+  padding-right: 20rpx;
+}
+.message .m_item .bottom .b_right .br_top :nth-child(2) {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  height: 36rpx;
+  padding: 0 20rpx;
+  background: #ff2742;
+  border-radius: 40rpx;
+  color: #ffffff;
+  font-size: 20rpx !important;
+}
+.message .m_item .bottom .b_right .br_bottom {
+  margin-top: 10rpx;
+  font-size: 20rpx !important;
+}
+/**
+* 颜色定义
+*/
+

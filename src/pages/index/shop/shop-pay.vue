@@ -103,8 +103,14 @@ export default {
             truePrice: 0,
             shName: this.$state().user.shName,
             shPhone: this.$state().user.shPhone,
-            address: this.$state().user.shArea + ' ' + this.$state().user.shAddress
+            address: this.$state().user.shArea + ' ' + this.$state().user.shAddress,
+            form: false
         };
+    },
+    onLoad(e) {
+        if (e.form === 'car') {
+            this.form = true;
+        }
     },
     created() {
         // uni.login({
@@ -117,12 +123,13 @@ export default {
             this.order = uni.getStorageSync('order');
             let price = 0;
             for (let i = 0; i < this.order.length; i++) {
-                this.totalOriginPrice = this.$big(this.totalOriginPrice).add(this.order[i].classify.origPrice * (this.order[i].classify.count || 1)).toNumber();
-                price = this.$big(price).add(this.order[i].classify.price * (this.order[i].classify.count || 1)).toNumber();
-                this.totalPrice = this.$big(this.totalOriginPrice).minus(price).toNumber();
-                this.truePrice = price;
+                this.totalOriginPrice = this.$big(this.totalOriginPrice).add(this.order[i].classify.origPrice * (this.order[i].classify.count || 1)).toNumber(2);
+                price = this.$big(price).add(this.order[i].classify.price * (this.order[i].classify.count || 1)).toNumber(2);
+                this.totalPrice = this.$big(this.totalOriginPrice).minus(price).toNumber(2).toFixed(2);
+                this.truePrice = price.toFixed(2);
                 // this.$big(this.totalOriginPrice).add(this.carList[i].origPrice).toNumber()
             }
+            console.log(price);
             // this.truePrice = price;
         }
     },
@@ -141,7 +148,7 @@ export default {
         toPay() {
             console.log(this.order, 1111);
             let data = {};
-            if (this.order.length === 1) {
+            if (!this.form) {
                 data = {
                     carIds: '',
                     classifyId: this.order[0].classify.carId,
@@ -174,32 +181,39 @@ export default {
             // };
             api.operGoodsOrder(data).then(
                 res => {
-                    let order = {
-                        orderId: res.retObj.id,
-                        orderType: 2,
-                        payType: 3
-                    };
-                    api.payOrder(order).then(
-                        res => {
-                            console.log(JSON.parse(res.retObj.no_use));
-                            let config = JSON.parse(res.retObj.no_use);
-                            uni.requestPayment({
-                                provider: 'wxpay',
-                                timeStamp: config.timeStamp,
-                                nonceStr: config.nonceStr,
-                                package: config.package,
-                                signType: 'MD5',
-                                paySign: config.paySign,
-                                success: function(res) {
-                                    console.log('success:' + JSON.stringify(res));
-                                },
-                                fail: function(err) {
-                                    console.log('fail:' + JSON.stringify(err));
-                                }
-                            });
-                        }
-                    );
+                    if (res.code === 1) {
+                        let order = {
+                            orderId: res.retObj.id,
+                            orderType: 2,
+                            payType: 3
+                        };
+                        api.payOrder(order).then(
+                            res => {
+                                console.log(JSON.parse(res.retObj.no_use));
+                                let config = JSON.parse(res.retObj.no_use);
+                                uni.requestPayment({
+                                    provider: 'wxpay',
+                                    timeStamp: config.timeStamp,
+                                    nonceStr: config.nonceStr,
+                                    package: config.package,
+                                    signType: 'MD5',
+                                    paySign: config.paySign,
+                                    success: function(res) {
+                                        console.log('success:' + JSON.stringify(res));
+                                    },
+                                    fail: function(err) {
+                                        console.log('fail:' + JSON.stringify(err));
+                                    }
+                                });
+                            }
+                        );
+                    } else {
+                        this.$toast(res.msg || '未知错误');
+                    }
                     console.log(res);
+                },
+                err => {
+                    this.$toast(err.msg || '未知错误');
                 }
             );
             // uni.requestPayment({
@@ -226,6 +240,9 @@ page{
     background: #f5f5f5;
 }
 .shopping_pay {
+    div,span{
+        font-size: 28rpx;
+    }
     .color_999 {
         color: #999999;
         font-size: 24rpx;
@@ -296,6 +313,7 @@ page{
                 .poi_item1_main_top {
                     font-size: 26rpx;
                     color: #333333;
+                    align-items: flex-start;
                 }
                 .poi_item1_main_middle {
                     padding: 10rpx 0;

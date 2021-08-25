@@ -1,6 +1,6 @@
 <template>
     <div class="score_record">
-        <div class="score_info" :style="'background-image:url('+ require('@/static/imgs/training/bgMy_02.png') +')'">
+        <div class="score_info" :style="'background-image:url(https://img.ruoshixunlianbao.com/bgMy_02.png)'">
             <div class="uib_top">
                 <div class="u_top_headimg">
                     <image :src="$state().user.headImg" alt="">
@@ -15,7 +15,7 @@
             </div>
             <div class="fixed_box">
                 <div class="fixed_left">
-                    <div>{{userInfo.shopScore}}</div>
+                    <div>{{userInfo.shopScore || 0}}</div>
                     <div>积分</div>
                     <div @click="toScoreShop">去兑换</div>
                 </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div slot="right-icon" class="right_score">
-                    <div>{{item.type === 1 ? '+' : '-'}}{{item.score}}</div>
+                    <div>{{item.type === 1 ? '+' : (item.score > 0) ? '-' : ''}}{{item.score}}</div>
                 </div>
             </u-cell-item>
         </div>

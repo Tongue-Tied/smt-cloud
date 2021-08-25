@@ -1,0 +1,386 @@
+.ruoshi_box {
+  padding: 30rpx;
+  width: 600rpx;
+}
+.training_box .info_box {
+  width: 100%;
+  height: 476rpx;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.training_box .info_box .info_center {
+  width: 100%;
+  padding-left: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.training_box .info_box .info_center .avatar .my_avatar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.training_box .info_box .info_center .user_info {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding: 0 40rpx;
+}
+.training_box .info_box .info_center .user_info .user_info_top {
+  color: #ffffff;
+  font-size: 40rpx ;
+  font-weight: 500;
+}
+.training_box .info_box .info_center .user_info .user_info_top .nick_name {
+  font-size: 40rpx;
+}
+.training_box .info_box .info_center .user_info .user_info_top .login_now {
+  padding: 30rpx 0;
+}
+.training_box .info_box .info_center .user_info .user_info_bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 80%;
+  font-size: 24rpx;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  padding-top: 10rpx;
+}
+.training_box .info_box .info_center .user_info .user_info_bottom ._div {
+  width: 140rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 10rpx 20rpx;
+  border-radius: 60rpx;
+  border: 1rpx solid #ffffff;
+}
+.training_box .info_box .info_center .login_box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.training_box .info_box .info_center .login_box .weixin_login ._div {
+  font-size: 28rpx !important;
+  padding: 5rpx 20rpx;
+  border: 3rpx solid #ffffff;
+  color: #ffffff;
+  border-radius: 40rpx;
+  margin-left: 40rpx;
+}
+.training_box .score_box {
+  width: 94%;
+  height: 160rpx;
+  position: relative;
+  top: -80rpx;
+  z-index: 1000;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 80rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.training_box .score_box .score_num {
+  color: #ff2724;
+  padding: 10rpx 56rpx;
+}
+.training_box .score_box .score_num .red_num {
+  font-size: 64rpx !important;
+  height: 80rpx;
+}
+.training_box .score_box .score_num :nth-child(2) {
+  font-size: 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.training_box .score_box .score_num :nth-child(2) :nth-child(1) {
+  color: #333333;
+  padding-right: 10rpx;
+}
+.training_box .score_box .score_num :nth-child(2) :nth-child(2) {
+  width: 110rpx;
+  border: 1rpx solid #ff2724;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 5rpx 0;
+  border-radius: 30rpx;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.training_box .score_box .uib_bottom_right {
+  color: #333333;
+  font-size: 24rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-top: 15rpx;
+  z-index: 1000;
+  position: relative;
+}
+.training_box .score_box .uib_bottom_right .ubr_left {
+  margin-left: 10rpx;
+}
+.training_box .score_box .uib_bottom_right .ubr_right {
+  padding-right: 100rpx;
+  padding-left: 40rpx;
+}
+.training_box .score_box .uib_bottom_right ._div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.training_box .score_box .uib_bottom_right image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.training_box .score_box .uib_bottom_right ._span {
+  margin-top: 20rpx;
+}
+.training_box .count_down_box {
+  background: #FCF0F2;
+  width: 100%;
+  z-index: -1;
+  -webkit-transform: translate(0, -160rpx);
+          transform: translate(0, -160rpx);
+  padding-top: 60rpx;
+  text-align: center;
+}
+.training_box .count_down_box .content_box {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 40rpx;
+}
+.training_box .count_down_box .content_box .content {
+  color: #ff2724;
+  font-size: 28rpx;
+}
+.training_box .count_down_box .content_box .coolapse_title {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.training_box .count_down_box .content_box .coolapse_title :nth-child(1) {
+  color: #990014;
+  font-size: 27rpx;
+}
+.training_box .count_down_box .content_box .coolapse_title ._div ._span {
+  color: #cc7a85 !important;
+}
+.training_box .count_down_box .cdb_title {
+  color: #ff2724;
+  font-size: 27rpx;
+}
+.training_box .count_down_box .cdb_box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  font-size: 27rpx;
+  color: #333333;
+  padding: 30rpx 0;
+}
+.training_box .game_list {
+  -webkit-transform: translate(0, -160rpx);
+          transform: translate(0, -160rpx);
+  padding-top: 30rpx;
+  background: #ffffff;
+}
+.training_box .game_list .game_item {
+  width: 90%;
+  height: 200rpx;
+  margin: 0 auto;
+  margin-top: 5rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.training_box .game_list .game_item .game_item_middle {
+  padding-left: 20rpx;
+  color: #333333;
+}
+.training_box .game_list .game_item .game_item_middle :nth-child(2) {
+  color: #999999;
+  font-size: 24rpx;
+  padding-top: 20rpx;
+}
+.training_box .game_list .game_item .game_item_right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  text-align: center;
+}
+.training_box .game_list .game_item .game_item_right .game_item_right_container :nth-child(1) {
+  width: 100%;
+  background: #BFBFBF;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  padding: 8rpx 10rpx;
+  margin-bottom: 5rpx;
+}
+.training_box .game_list .game_item .game_item_right .game_item_right_container :nth-child(2) {
+  color: #333333;
+  font-size: 24rpx;
+}
+.training_box .my_coll {
+  -webkit-transform: translate(0, -160rpx);
+          transform: translate(0, -160rpx);
+  width: 90%;
+  margin: 20rpx auto;
+}
+.training_box .my_coll .coll_title {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+}
+.training_box .d_type {
+  padding-top: 0;
+}
+.training_box .test_box {
+  padding: 40rpx;
+  width: 600rpx;
+}
+.training_box .test_box .age_box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-bottom: 20rpx;
+}
+.training_box .test_box .age_box ._span {
+  margin-right: 20rpx;
+}
+.training_box .test_box .age_box input {
+  font-size: 28rpx;
+  background: #f5f5f5;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  padding: 10rpx;
+  border-radius: 10rpx;
+}
+.training_box .test_box .hand_shelter {
+  width: 60%;
+  height: 100rpx;
+  background: #FBEAEC;
+  margin: 20rpx auto;
+  color: #ff2724;
+  font-size: 26rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  border-radius: 20rpx;
+}
+.training_box .test_box .tips .tishi-p {
+  width: 90%;
+  margin: auto;
+  color: #333333;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding-top: 8px;
+}
+.training_box .test_box .tips .tishi-p ._span {
+  color: #ff2742;
+}
+.training_box .test_box .wenxin_tips {
+  text-align: center;
+  color: #ff2724;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+/**
+* 颜色定义
+*/
+

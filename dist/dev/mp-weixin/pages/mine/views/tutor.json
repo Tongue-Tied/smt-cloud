@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "辅导老师",
+  "navigationBarBackgroundColor": "#ffffff",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "m-msg": "/components/m-msg"
+  }
+}

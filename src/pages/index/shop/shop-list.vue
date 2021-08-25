@@ -1,28 +1,7 @@
 <template>
     <div class="shop_list">
-        <div>
-            <u-navbar :is-back="false">
-                <view class="nav_container">
-                    <view class="nav_back" @click="back">
-                        <u-icon
-                            color="#C0BFC0"
-                            size="46"
-                            name="arrow-left"
-                        ></u-icon>
-                    </view>
-                    <view class="nav_title">
-                        弱视用品商城
-                    </view>
-                    <view class="nav_icon">
-                        <div @click="toCarList">
-                            <u-icon size="44" name="shopping-cart"></u-icon>
-                        </div>
-                        <div>
-                            <u-icon size="44" name="zhuanfa"></u-icon>
-                        </div>
-                    </view>
-                </view>
-            </u-navbar>
+        <div class="head_img" :style="'background-image:url('+bgImg+')'">
+            <image mode="widthFix" style="width:400rpx" :src="centerImg"></image>
         </div>
         <div class="goods_list">
             <div
@@ -46,12 +25,16 @@
                 </div>
             </div>
         </div>
-        <u-loadmore style="padding-top:20rpx" :status="status" :icon-type="iconType" :load-text="loadText" />
+        <div class="fixed_shop_car" @click="toCarList">
+            <u-icon style="padding-top:8rpx" name="shopping-cart" size="40" color="#ffffff"></u-icon>
+        </div>
+        <u-loadmore margin-top="40" :status="status" :icon-type="iconType" :load-text="loadText" />
     </div>
 </template>
 
 <script>
 import apiShop from '@/services/api.shop.js';
+import apiPublic from '@/services/api.public.js';
 export default {
     data() {
         return {
@@ -64,11 +47,24 @@ export default {
                 loadmore: '轻轻上拉',
                 loading: '努力加载中',
                 nomore: '没有更多了'
-            }
+            },
+            bgImg: require('@/static/imgs/index/shangchengtop.png'),
+            centerImg: require('@/static/imgs/index/mall05.png'),
+            shareConfig: null
         };
     },
     onShow() {
         this.getGoodsList();
+    },
+    created() {
+        apiPublic.shareConfigData({ type: 1 }).then(
+            res => {
+                if (res.code === 1) {
+                    this.shareConfig = res.retObj;
+                }
+                console.log(res);
+            }
+        );
     },
     methods: {
         back() {
@@ -108,7 +104,7 @@ export default {
             uni.navigateTo({ url: `/pages/index/shop/shop-detail?id=${JSON.stringify(item.id)}` });
         },
         toCarList() {
-            uni.navigateTo({ url: '/pages/index/shopping-car/shopping-car' });
+            uni.navigateTo({ url: '/pages/shopping-car/shopping-car' });
         }
     },
     async onPullDownRefresh() {
@@ -125,6 +121,17 @@ export default {
     },
     onReachBottom() {
         this.getGoodsList();
+    },
+    onShareAppMessage: function(res) {
+        if (res.from === 'button') {
+            // 来自页面内转发按钮
+        }
+        return {
+            title: this.shareConfig.title,
+            imageUrl: this.shareConfig.logo,
+            path: '/pages/group/list'
+        };
+        // shareSuccess
     }
 };
 </script>
@@ -134,6 +141,19 @@ page {
     background: #ffe0e6;
 }
 .shop_list {
+    .head_img{
+        width: 100%;
+        height: 200rpx;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        image{
+            margin-bottom: 20rpx;
+        }
+    }
     .nav_container {
         width: 100%;
         display: flex;
@@ -229,6 +249,18 @@ page {
                 }
             }
         }
+    }
+    .fixed_shop_car{
+        position: fixed;
+        right: 40rpx;
+        top: 40rpx;
+        width: 60rpx;
+        height: 60rpx;
+        background: #ff2724;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
     }
 }
 </style>

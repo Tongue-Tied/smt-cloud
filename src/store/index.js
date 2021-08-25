@@ -17,7 +17,7 @@ export default new Vuex.Store({
         token: uni.getStorageSync('token'),
         uid: uni.getStorageSync('uid'),
         // !user定义 http://showdoc.mei1.info/web/#/85?page_id=5309
-        user: {},
+        user: null,
         info: {},
         isInit: false,
         isBack: false,
@@ -44,7 +44,7 @@ export default new Vuex.Store({
             uni.removeStorageSync('token');
             state.token = undefined;
             state.isInit = false;
-            state.user = {};
+            state.user = null;
         }
     },
     actions: {
@@ -56,7 +56,7 @@ export default new Vuex.Store({
                 } catch (e) {
                     // TODO handle the exception
                 }
-                if (res) {
+                if (res.code === 1) {
                     context.commit('updateUser', res.retObj);
                     return new Promise(resolve => {
                         resolve(true);

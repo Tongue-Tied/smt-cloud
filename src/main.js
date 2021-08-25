@@ -5,7 +5,6 @@ import Big from 'big.js';
 import dayjs from 'dayjs';
 import objectSupport from 'dayjs/plugin/objectSupport';
 import store from '@/store';
-import pageSroll from '@/mixins/page-scroll.js';
 import 'dayjs/locale/zh-cn';
 import '@/filter/index.js';
 Vue.use(uView);
@@ -21,7 +20,6 @@ Vue.prototype.$loading = {
     close: () => uni.hideLoading()
 };
 App.mpType = 'app';
-Vue.mixin(pageSroll);
 const app = new Vue({
     ...App,
     store

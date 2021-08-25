@@ -1,0 +1,70 @@
+page {
+  background: #f5f5f5;
+}
+.group_pay_box ._div,
+.group_pay_box ._span {
+  font-size: 28rpx;
+}
+.group_pay_box .top {
+  text-align: center;
+  width: 100%;
+  border-top: 3rpx solid #f5f5f5;
+  padding: 40rpx 0;
+  background: #ffffff;
+}
+.group_pay_box .top .price {
+  font-size: 50rpx;
+  color: #ff2724;
+}
+.group_pay_box .top .buy_title {
+  padding: 30rpx 40rpx 0 40rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.group_pay_box .content {
+  background: #ffffff;
+  margin-top: 20rpx;
+  padding: 40rpx;
+}
+.group_pay_box .content .modify_address {
+  margin-top: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.group_pay_box .content .modify_address ._div {
+  border: 3rpx solid #ff2724;
+  border-radius: 100rpx;
+  color: #ff2724;
+  font-size: 24rpx;
+  padding: 10rpx 20rpx;
+}
+.group_pay_box .pay_now {
+  position: fixed;
+  left: 0;
+  bottom: calc(20rpx + env(safe-area-inset-bottom));
+  width: 100%;
+}
+.group_pay_box .pay_now ._div {
+  width: 90%;
+  margin: 0 auto;
+  height: 80rpx;
+  border-radius: 80rpx;
+  background: #ff2724;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  color: #ffffff;
+  font-weight: 500;
+}
+/**
+* 颜色定义
+*/
+

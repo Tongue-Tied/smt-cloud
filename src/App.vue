@@ -1,20 +1,17 @@
 <script>
 export default {
     onLaunch() {
-        // #if MP-WEIXIN
-        console.log(2);
-        // eslint-disable-next-line no-undef
-        wx.cloud.init({
-            traceUser: true,
-            env: 'ruoshibao-9gied7f3a7fe35ad'
-        });
-        // eslint-disable-next-line no-undef
-        // console.log(wx.cloud.CloudID());
-        // eslint-disable-next-line no-undef
-        // wx.cloud.callFunction({
-        //     name: 'message'
-        // }).then(console.log);
-        // #endif
+        // if (!uni.getStorageSync('token')) {
+
+        // }
+        try {
+            uni.getStorageSync('token');
+        } catch (error) {
+            uni.navigateTo('/pages/login/login');
+        }
+    },
+    onLoad() {
+
     },
     onShow() {
     },
@@ -28,5 +25,23 @@ export default {
 /* #endif */
 </style>
 <style lang="less">
+
+*{
+    font-size:28rpx
+}
 @import '~@/styles/style.less';
+.h-popup /deep/ .u-drawer{
+        overflow: visible!important;
+        .u-drawer-content{
+            overflow: visible!important;
+            display: flex;
+            .u-mode-center-box{
+                background-color: #99999900!important;
+                overflow: visible!important;
+            }
+            .uni-scroll-view{
+                overflow: visible!important;
+            }
+        }
+}
 </style>

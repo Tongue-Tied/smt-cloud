@@ -1,0 +1,147 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/training/index",
+    "pages/mine/index",
+    "pages/web-view/web-view"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/login/views/",
+      "pages": [
+        "register"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/index/shop/",
+      "pages": [
+        "shop-list",
+        "shop-detail",
+        "shop-pay"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/score/",
+      "pages": [
+        "score-record",
+        "score-strategy",
+        "score-shop",
+        "exchange"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/mine/views",
+      "pages": [
+        "about",
+        "user-know",
+        "help",
+        "problem",
+        "account",
+        "tutor",
+        "information",
+        "redeem",
+        "my-order",
+        "order-details",
+        "update-phone",
+        "reset-password",
+        "bind-phone",
+        "message",
+        "msg-detail",
+        "set-password"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/index/address/",
+      "pages": [
+        "address"
+      ]
+    },
+    {
+      "root": "pages/shopping-car/",
+      "pages": [
+        "shopping-car"
+      ]
+    },
+    {
+      "root": "pages/training/views",
+      "pages": [
+        "training-log",
+        "eyes-training",
+        "three-dimensional",
+        "vision-test",
+        "vision-result",
+        "vision-check"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/group",
+      "pages": [
+        "list",
+        "detail",
+        "pay",
+        "my-group",
+        "group-result",
+        "group-order"
+      ],
+      "independent": true
+    },
+    {
+      "root": "pages/renew",
+      "pages": [
+        "index"
+      ],
+      "independent": true
+    }
+  ],
+  "window": {
+    "navigationBarTitleText": "弱视训练宝",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "backgroundColorTop": "#eeeeee",
+    "backgroundColorBottom": "#efefef"
+  },
+  "tabBar": {
+    "color": "#9AA5B1",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/imgs/index/home.png",
+        "selectedIconPath": "static/imgs/index/homeActive.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/training/index",
+        "iconPath": "static/imgs/index/training.png",
+        "selectedIconPath": "static/imgs/index/trainingActive.png",
+        "text": "开始训练"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "static/imgs/index/mine.png",
+        "selectedIconPath": "static/imgs/index/mineActive.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "uniStatistics": {
+    "enable": true
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

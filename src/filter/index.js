@@ -195,3 +195,10 @@ Vue.filter('discount', value => {
     }
     return 0;
 });
+// 隐藏电话号码中间四位
+Vue.filter('phone', function(value) {
+    if (!value) return '';
+    let str = value;
+    str = str.toString().replace(/^(\d{3})(\d{4})(\d{4})/g, '$1****$3');
+    return str;
+});

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "训练日志",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs",
+    "u-select": "/node-modules/uview-ui/components/u-select/u-select",
+    "calendar": "/components/calendar"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-radio-group": "/node-modules/uview-ui/components/u-radio-group/u-radio-group",
+    "u-radio": "/node-modules/uview-ui/components/u-radio/u-radio",
+    "u-select": "/node-modules/uview-ui/components/u-select/u-select",
+    "m-popup": "/components/m-popup",
+    "m-notice": "/components/m-notice",
+    "weixin-login": "/components/wxLogin"
+  }
+}

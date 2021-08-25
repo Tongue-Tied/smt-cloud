@@ -1,0 +1,1 @@
+{"version":3,"sources":["uni-app:///src/main.js"],"names":["createPage","Page"],"mappings":";;;;;;;;;;;;AAAA;;AAAmB;;AACnB;;AACA;;;;AACAA,UAAU,CAACC,gBAAD,CAAV,C","file":"pages/mine/my-order.js","sourcesContent":["import 'uni-pages';import '@dcloudio/uni-stat';\nimport Vue from 'vue'\nimport Page from './pages/mine/my-order.vue'\ncreatePage(Page)"],"sourceRoot":""}

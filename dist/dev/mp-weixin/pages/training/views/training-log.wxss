@@ -1,0 +1,133 @@
+page {
+  background: #ffffff;
+}
+.t_log .calender .select_choose {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.t_log .calender .select_choose ._div {
+  width: 260rpx;
+  height: 60rpx;
+  background: #e6e6e6ce;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  border-radius: 10rpx;
+  color: #333333;
+  font-size: 28rpx;
+}
+.t_log .calender .top .title {
+  text-align: center;
+  padding: 30rpx 0;
+  font-weight: 600;
+  color: #333333;
+  font-size: 30rpx;
+}
+.t_log .calender .top .week {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  width: 100%;
+}
+.t_log .calender .top .week ._div {
+  width: 14%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.t_log .calender .calenter_box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  color: #333333;
+}
+.t_log .calender .calenter_box .calenter_item {
+  width: 14%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.t_log .calender .calenter_box .calenter_item ._div {
+  height: 120rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.t_log .log .log_item {
+  width: 84%;
+  margin: 20rpx auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  padding: 30rpx;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  border-radius: 30rpx;
+  border: 10rpx solid #e6e6e6ce;
+}
+.t_log .log .log_item .log_item_left {
+  color: #333333;
+  text-align: center;
+}
+.t_log .log .log_item .log_item_left :nth-child(2) {
+  font-size: 24rpx;
+}
+.t_log .log .log_item .log_item_middle {
+  color: #333333;
+  font-size: 26rpx;
+}
+.t_log .log .log_item .log_item_middle ._div {
+  padding: 8rpx 0;
+}
+/**
+* 颜色定义
+*/
+
