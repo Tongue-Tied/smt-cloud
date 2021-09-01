@@ -65,6 +65,8 @@ export default {
 </script>
 <style lang="less">
 .user_know{
+    width: 100%;
+    overflow-x: hidden;
     .user_tabs{
         .u-tab-item{
             color: #333333 !important;
@@ -80,6 +82,7 @@ export default {
     .insert_box{
         width: 83%;
         margin: 0 auto;
+        padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
     }
 }
 </style>

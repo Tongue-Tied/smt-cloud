@@ -1,6 +1,45 @@
 .wx_login ._div {
   font-size: 28rpx;
 }
+.wx_login ._div button::after {
+  border: none;
+  background-color: none!important;
+  position: relative;
+  display: unset!important;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
+  box-sizing: border-box;
+  font-size: 28rpx!important;
+  text-align: center;
+  text-decoration: none;
+  line-height: unset!important;
+  border-radius: 0!important;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: unset!important;
+  background-color: unset!important;
+}
+.wx_login ._div button {
+  background-color: none!important;
+  position: relative;
+  display: unset!important;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
+  box-sizing: border-box;
+  font-size: 28rpx!important;
+  text-align: center;
+  text-decoration: none;
+  line-height: unset!important;
+  border-radius: 0!important;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  color: unset!important;
+  background-color: unset!important;
+}
 /**
 * 颜色定义
 */

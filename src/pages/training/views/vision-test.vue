@@ -15,7 +15,8 @@
                     :autoplay="true"
                     circular="true"
                     @change="change"
-                    :disable-touch="true"
+                    :disable-touch="false"
+                    duration="1000"
                 >
                     <template v-for="(item, index) in list">
                         <swiper-item

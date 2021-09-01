@@ -145,8 +145,8 @@ page {
   position: fixed;
   right: 40rpx;
   top: 40rpx;
-  width: 60rpx;
-  height: 60rpx;
+  width: 80rpx;
+  height: 80rpx;
   background: #ff2724;
   display: -webkit-box;
   display: -webkit-flex;

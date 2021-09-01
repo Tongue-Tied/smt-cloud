@@ -133,7 +133,7 @@ page {
   color: #ff7f00;
 }
 .renew .middle .active {
-  border: 2rpx dashed #ff2724;
+  border: 4rpx dashed #ff2724;
 }
 .renew .bottom {
   width: 100%;

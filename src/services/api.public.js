@@ -24,7 +24,7 @@ export default {
         return request.post('/api/getOrderinfo', data);
     },
     exchangeCode(data) {
-        return request.post('/api/getOrderinfo', data);
+        return request.post('/api/exchangeCode', data);
     },
     addLeaveMsg(data) {
         return request.post('/api/addLeaveMsg', data);

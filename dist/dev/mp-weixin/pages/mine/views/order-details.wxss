@@ -1,13 +1,17 @@
 page {
   background: #f5f5f5;
 }
-.order_details .header {
+.order_details ._div,
+.order_details ._span {
+  font-size: 28rpx;
+}
+.order_details .order_header {
   padding: 40rpx;
   border-top: 2rpx solid #f5f5f5;
   border-bottom: 14rpx solid #f5f5f5;
   background: #ffffff;
 }
-.order_details .header .address_box {
+.order_details .order_header .address_box {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -26,12 +30,24 @@ page {
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+  margin-top: 20rpx;
+}
+.order_details .content .c_top .c_top_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  padding-bottom: 20rpx;
 }
 .order_details .content .c_top .c_top_right {
   padding-left: 20rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
@@ -151,6 +167,22 @@ page {
 }
 .order_details .icon_box {
   top: 12% !important;
+}
+.order_details .h-popup .u-drawer {
+  overflow: visible!important;
+}
+.order_details .h-popup .u-drawer .u-drawer-content {
+  overflow: visible!important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.order_details .h-popup .u-drawer .u-drawer-content .u-mode-center-box {
+  background-color: #99999900 !important;
+  overflow: visible!important;
+}
+.order_details .h-popup .u-drawer .u-drawer-content .uni-scroll-view {
+  overflow: visible!important;
 }
 /**
 * 颜色定义

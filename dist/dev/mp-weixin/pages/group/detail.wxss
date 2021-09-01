@@ -56,7 +56,7 @@ page {
   font-size: 24rpx;
 }
 .group_detail .group_list {
-  height: 480rpx;
+  max-height: 480rpx;
   background: #ffffff;
   margin-top: 20rpx;
   padding-bottom: 50rpx;
@@ -67,7 +67,7 @@ page {
   color: #333333;
 }
 .group_detail .group_list .scroll {
-  height: 85%;
+  max-height: 470rpx;
   background: #ffffff;
 }
 .group_detail .group_list .scroll .scroll-view-item {

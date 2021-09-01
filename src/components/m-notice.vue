@@ -44,8 +44,8 @@ export default {
             default: '#333333'
         },
         myStyle: {
-            type: Object,
-            default: null
+            type: String,
+            default: ''
         }
     }
 };
@@ -59,23 +59,27 @@ export default {
         margin: 0 auto;
         height: 40rpx;
         transform: translate(0,-100rpx);
-        padding-top: 60rpx;
+        margin-top: 60rpx;
         .u-left-icon{
             margin-right: 20rpx;
         }
     }
     .notice-box{
         height: 100%;
-        .swiper-item{
-            width: 100%;
+        swiper-item{
             display: flex;
-            flex-wrap: nowrap;
             align-items: center;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
-            font-size: 24rpx;
-            color: #666666;
+            .swiper-item{
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                font-size: 24rpx;
+                color: #666666;
+            }
         }
     }
 </style>

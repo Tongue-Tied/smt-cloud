@@ -8,17 +8,21 @@
                         <u-avatar :src="userInfo.headImg"></u-avatar>
                     </div>
                 </u-cell-item>
+                <u-line color="#dfdfdf" />
                 <u-cell-item title="昵称" @click="cellClick(1)">
                     <span>{{userInfo.userNick || ''}}</span>
                 </u-cell-item>
+                <u-line color="#dfdfdf" />
                 <u-cell-item title="性别" @click="cellClick(2)">
                     <span>{{userInfo.sex === 1 ? '男' : userInfo.sex === 2 ? '女' : '保密'}}</span>
                 </u-cell-item>
+                <u-line color="#dfdfdf" />
                 <u-cell-item title="生日" @click="cellClick(3)">
                     <span v-if="userInfo.birthday">{{userInfo.birthday}}&nbsp;&nbsp;{{ageNum}}周岁</span>
                 </u-cell-item>
-                <u-cell-item @click="cellClick(0)" :border-bottom="false" title="收货地址">
-                    <span>{{userInfo.shArea || ''}}{{userInfo.shAddress || ''}}</span>
+                <u-line color="#dfdfdf" />
+                <u-cell-item class="address" @click="cellClick(0)" :border-bottom="false" title="收货地址">
+                    <span class="address_span">{{userInfo.shArea || ''}}{{userInfo.shAddress || ''}}</span>
                 </u-cell-item>
             </div>
         </div>
@@ -28,6 +32,7 @@
                 <u-cell-item title="是否戴镜" @click="cellClick(4)">
                     <span>{{userInfo.isGrass === 1 ? '是' : '否'}}</span>
                 </u-cell-item>
+                <u-line color="#dfdfdf" />
                 <u-cell-item :border-bottom="false" @click="cellClick(5)" title="弱视情况">
                     <span>{{userInfo.sls || ''}}</span>
                 </u-cell-item>
@@ -70,13 +75,15 @@
                         {{item.text}}
                     </u-radio>
                 </u-radio-group> -->
-                <u-checkbox
+                <div class="content">
+                    <u-checkbox
                     @change="checkboxChange(item)"
                     v-model="item.checked"
                     v-for="(item, index) in slsList" :key="index"
                     :name="item.name"
                     class="my_checkbox"
                 >{{item.text}}</u-checkbox>
+                </div>
             </div>
         </mPopup>
         <u-picker mode="time" @confirm="pickerConfirm" v-model="dateShow" :default-time="defaultTime" end-year="2022"></u-picker>
@@ -385,6 +392,18 @@ page{
             background: #ffffff;
             border-radius: 40rpx;
             margin-top: 30rpx;
+            .address{
+                /deep/ .u-cell__value{
+                    text-align: left;
+                    padding: 0 20rpx;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .address_span{
+                    flex: 1;
+                }
+            }
             span{
                 color: #333333 !important;
             }
@@ -424,15 +443,37 @@ page{
             width: 30%;
             margin: 0 auto;
         }
+        /deep/ .u-radio__icon-wrap__icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
     .sls{
         width: 600rpx;
         margin: 0 auto;
-        display: flex;
-        padding-left: 13%;
-        flex-wrap: wrap;
-        .my_checkbox{
+        .content{
+            padding: 0 60rpx;
+            display: flex;
+            // justify-content: space-between;
+            flex-wrap: wrap;
+        /deep/ .u-checkbox__label{
+                margin-right: 0;
+                padding-right: 24rpx;
+            }
         }
+        /deep/ .u-checkbox__icon-wrap__icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .my_checkbox{
+            min-width: 30%;
+        }
+        // .content:after{
+        //     content: '';
+        //     width: 30%;
+        // }
     }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="update-phone">
+    <div class="update-phone" v-if="show">
         <div class="bind_phone_box">
             您可以通过绑定的手机重置密码
         </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="code_box" v-if="!pwdShow">
             <div class="code_left">
-                <u-icon size="40" name="phone"></u-icon>
+                <u-icon size="30" name="email"></u-icon>
                 <div class="select">
                     <div class="icon_box">
                     </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <u-field :border-bottom="false" v-model="password" label-width="0" placeholder="请输入新密码(6位以上)">
+            <u-field :border-bottom="false" type="password" v-model="password" label-width="0" placeholder="请输入新密码(6位以上)">
             </u-field>
             <u-verification-code
                 ref="uCode"
@@ -70,6 +70,11 @@
         </div>
         <div class="sure" @click="updatePwd">{{pwdShow ? '确定' : '立即更换'}}</div>
     </div>
+    <div v-else class="update-phone success">
+        <image :src="successImg" mode="widthFix"></image>
+        <div class="reset_title">您已成功重置密码</div>
+        <div class="sure" @click="turnBack">返回</div>
+    </div>
 </template>
 <script>
 import mixins from '@/mixins/global.js';
@@ -77,6 +82,7 @@ import api from '@/services/api.public.js';
 export default {
     data() {
         return {
+            successImg: require('@/static/imgs/my/lock.png'),
             mobile: '',
             code: '',
             phone: this.$state().user.phone,
@@ -107,7 +113,8 @@ export default {
                 }
             ],
             selectShow: false,
-            fromLogin: false
+            fromLogin: false,
+            show: true
         };
     },
     created() {
@@ -118,6 +125,9 @@ export default {
         }
     },
     methods: {
+        turnBack() {
+            uni.navigateBack({ delta: 1 });
+        },
         getCode() {
             if (!mixins.verify(this.phone)) {
                 return this.$toast('请输入正确的手机号');
@@ -208,10 +218,11 @@ export default {
                     api.zhPassword(data).then(
                         res => {
                             if (res.code === 1) {
-                                this.$toast('密码修改成功');
-                                setTimeout(() => {
-                                    uni.navigateBack({ delta: 1 });
-                                }, 3000);
+                                // this.$toast('密码修改成功');
+                                this.show = false;
+                                // setTimeout(() => {
+                                //     uni.navigateBack({ delta: 1 });
+                                // }, 3000);
                             }
                             console.log(res);
                         }
@@ -222,10 +233,11 @@ export default {
                 api.updatePwd(data).then(
                     res => {
                         if (res.code === 1) {
-                            this.$toast('密码修改成功');
-                            setTimeout(() => {
-                                uni.navigateBack({ delta: 1 });
-                            }, 3000);
+                            // this.$toast('密码修改成功');
+                            this.show = false;
+                            // setTimeout(() => {
+                            //     uni.navigateBack({ delta: 1 });
+                            // }, 3000);
                         }
                         console.log(res);
                     }
@@ -245,7 +257,24 @@ page{
 input{
     font-size: 28rpx;
 }
+.success{
+    text-align: center;
+}
 .update-phone{
+    div,span{
+        font-size: 28rpx;
+    }
+    image{
+        width: 200rpx;
+        margin: 0 auto;
+        padding-top: 60rpx;
+    }
+    .reset_title{
+        margin: 0 auto;
+        color: #999999;
+        padding-top: 40rpx;
+        text-align: center;
+    }
     .bind_phone_box{
         width: 100%;
         text-align: center;
@@ -291,6 +320,7 @@ input{
                 }
                 .icon_box{
                     display: flex;
+                    font-size: 28rpx;
                     align-items: center;
 
                 }

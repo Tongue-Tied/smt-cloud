@@ -87,6 +87,7 @@ page {
 .shopping_pay .pay_order_info .poi_item1 .poi_item1_img image {
   width: 100%;
   height: 100%;
+  border-radius: 30rpx;
 }
 .shopping_pay .pay_order_info .poi_item1 .poi_item1_main {
   -webkit-box-flex: 1;

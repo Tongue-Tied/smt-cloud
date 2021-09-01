@@ -8,7 +8,7 @@
                 <input v-model="phone" placeholder="电话" type="text">
             </div>
             <div class="input_box text_area" style="margin:0 auto">
-                <u-field
+                <!-- <u-field
                     label-width="0"
                     v-model="msg"
                     :field-style="{
@@ -18,10 +18,10 @@
                     type="textarea"
                     :maxlength="50"
                     :clearable="false"
-                    placeholder-style="font-size:26rpx"
+                    placeholder-style="font-size:28rpx"
                 >
-                </u-field>
-                <!-- <textarea maxlength="50" v-model="msg" placeholder-style="color:#333333;" placeholder="留言"></textarea> -->
+                </u-field> -->
+                <textarea v-if="flag" maxlength="50" v-model="msg" placeholder-class="textarea_p" placeholder="留言"></textarea>
                 <div style="padding-right:20rpx">{{msg.length || 0}}/50</div>
             </div>
         </div>
@@ -40,7 +40,8 @@ export default {
             name: '',
             phone: '',
             content: '',
-            msg: ''
+            msg: '',
+            flag: false
         };
     },
     props: {
@@ -58,12 +59,18 @@ export default {
                 return;
             }
         }
+        // this.$nextTick(() => {
+        //     this.flag = true;
+        // });
+        setTimeout(() => {
+            this.flag = true;
+        }, 1000);
     },
     methods: {
         closePopup(e) {
             // console.log(e);
             this.show = false;
-            // this.$emit('closeMsg', true);
+            this.$emit('closeMsg', true);
         },
         updateMsg(e) {
             if (this.name === '') {
@@ -104,7 +111,7 @@ export default {
     .fk_box{
         background: #ffffff;
         width: 600rpx;
-        height: 600rpx;
+        // height: 600rpx;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -118,30 +125,34 @@ export default {
             margin: 0 auto;
             margin-bottom: 30rpx;
             input{
-                padding-left: 20rpx;
+                padding-left: 40rpx;
                 width: 100%;
                 height: 100%;
+                font-size: 28rpx!important;
+                color: #5c636a;
+            }
+            /deep/ input{
+                font-size: 28rpx;
+                color: #5c636a;
+            }
+            /deep/ textarea{
+                font-size: 28rpx;
+                color: #5c636a;
             }
         }
         .text_area{
             height: 240rpx;
             position: relative;
             font-size: 28rpx!important;
-            /deep/ u-field{
-                width: 100%;
-                height: 100%;
-                .u-field{
-                    width: 100%;
-                    height: 100%;
-                    .fild-page.data-v-578c626d{
-                        width: 100%;
-                        height: 100%;
-                        .u-flex.data-v-568c626d{
-                            width: 100%!important;
-                            height: 100%;
-                        }
-                    }
-                }
+            textarea{
+                color: #5c636a;
+                width: 90%;
+                padding: 20rpx 38rpx;
+                font-size: 28rpx!important;
+            }
+            /deep/ .textarea_p{
+                color: #808080!important;
+                font-size: 28rpx!important;
             }
             div{
                 position: absolute;

@@ -1,3 +1,7 @@
+.user_know {
+  width: 100%;
+  overflow-x: hidden;
+}
 .user_know .user_tabs .u-tab-item {
   color: #333333 !important;
 }
@@ -11,6 +15,7 @@
 .user_know .insert_box {
   width: 83%;
   margin: 0 auto;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
 }
 /**
 * 颜色定义

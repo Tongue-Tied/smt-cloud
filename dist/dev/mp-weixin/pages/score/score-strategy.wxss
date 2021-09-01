@@ -17,6 +17,10 @@ page {
 .score_strategy ._img {
   width: 100%;
 }
+.score_strategy rich-text .rich-img {
+  width: 100% !important;
+  height: auto ;
+}
 /**
 * 颜色定义
 */

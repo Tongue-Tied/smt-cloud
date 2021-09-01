@@ -41,7 +41,6 @@ export default {
     onLoad(e) {
         if (e) {
             this.groupInfo = e;
-            console.log(this.$state().user);
         }
     },
     onShow() {
@@ -73,6 +72,7 @@ export default {
                         api.payOrder(order).then(
                             res => {
                                 let config = JSON.parse(res.retObj.no_use);
+                                let that = this;
                                 uni.requestPayment({
                                     provider: 'wxpay',
                                     timeStamp: config.timeStamp,
@@ -82,11 +82,15 @@ export default {
                                     paySign: config.paySign,
                                     success: function(res) {
                                         if (res.errMsg === 'requestPayment:ok') {
-                                            uni.navigateTo({ url: '/pages/group/my-group' });
+                                            that.$toast('购买成功，即将到跳转我的拼团');
+                                            setTimeout(() => {
+                                                uni.navigateTo({ url: '/pages/group/my-group' });
+                                            }, 3000);
                                         }
                                         console.log('success:' + JSON.stringify(res));
                                     },
                                     fail: function(err) {
+                                        that.$toast('支付失败');
                                         console.log('fail:' + JSON.stringify(err));
                                     }
                                 });

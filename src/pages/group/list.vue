@@ -6,13 +6,7 @@
             </div>
             <div class="notice_box">
                 <mNotice :list="group.msgList"
-                :myStyle="{
-                    transform: 'translate(0,0)',
-                    paddingTop: '0',
-                    background:'rgba(0, 0, 0, 0.3)',
-                    padding:'25rpx 0 25rpx 25rpx',
-                    borderRadius:'25rpx'
-                }"
+                :myStyle="'padding-top: 0;background:rgba(0, 0, 0, 0.3);padding:10rpx;border-radius:85rpx'"
                 :color="'#ffffff'" />
             </div>
         </div>
@@ -46,7 +40,11 @@
             </div>
         </div>
         <div class="bottom">
-            <div class="title">拼团说明</div>
+            <div class="title">
+                <image :src="left" mode="widthFix"></image>
+                <div>拼团玩法</div>
+                <image :src="right" mode="widthFix"></image>
+            </div>
             <div class="bottom_item" v-for="(item, index) in content" :key="index">
                 {{item.content}}
             </div>
@@ -73,7 +71,9 @@ export default {
             group: null,
             content: null,
             flag: false,
-            shareConfig: null
+            shareConfig: null,
+            left: require('@/static/imgs/my/zhuangshi.png'),
+            right: require('@/static/imgs/my/zhuangshi1.png')
         };
     },
     async created() {
@@ -144,7 +144,7 @@ page{
             }
         }
         .notice_box{
-            position: absolute;
+            position: fixed;
             width: 62%;
             left: 20rpx;
             top: calc(50rpx + env(safe-area-inset-top));
@@ -273,10 +273,17 @@ page{
             font-size: 36rpx;
             font-weight: 500;
             text-align: center;
+            padding-bottom: 20rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            image{
+                width: 20rpx;
+            }
         }
         .bottom_item{
             position: relative;
-            padding:30rpx 50rpx;
+            padding: 0 50rpx 20rpx 50rpx;
             font-size: 28rpx;
         }
         .bottom_item::before{
@@ -295,7 +302,7 @@ page{
             align-items: center;
             justify-content: center;
             background: #ffffff;
-            height: 80rpx;
+            height: 90rpx;
             color: #ff2724;
             padding-bottom: calc(env(safe-area-inset-bottom));
             image{

@@ -1,6 +1,6 @@
 <template>
     <div class="order_details" v-if="flag">
-        <div class="header">
+        <div class="order_header">
             <div class="address_box">
                 <div>
                     <u-icon name="map-fill" color="#FF2250" size="46"></u-icon>
@@ -17,34 +17,36 @@
             </div>
         </div>
         <div class="content">
-            <div class="c_top u-flex">
-                <div>
-                    <image style="width:240rpx;height:240rpx;border-radius:40rpx" :src="result.goodsLists[0].img"></image>
-                </div>
-                <div class="u-flex c_top_right">
-                    <div class="u-p-r-30" style="padding-right:30rpx">
-                        <div class="u-font-24 title" style="color:#333333">{{result.goodsLists[0].title}}</div>
-                        <div class="u-font-24" style="color:#999999;padding-top:10rpx">颜色分类: {{result.goodsLists[0].goodsClassifyList[0].color}}</div>
-                        <div class="u-font-24" style="color:#999999;padding-top:10rpx">尺码: {{result.goodsLists[0].goodsClassifyList[0].size}}</div>
+            <div class="c_top u-flex" v-for="(goodsLists,index) in options.list" :key="index">
+                <!-- <div v-for="(goodsLists,goodsIndex) in item.goodsClassifyList" :key="goodsIndex" class="c_top_item"> -->
+                    <div>
+                        <image mode="widthFix" style="width:160rpx;height:160rpx;border-radius:30rpx" :src="goodsLists.img"></image>
                     </div>
-                    <div class="price_box">
-                        <div>¥{{result.order.price}}</div>
-                        <div style="padding-top:10rpx" class="u-p-t-10">¥{{result.goodsLists[0].goodsClassifyList[0].classifyPriceTemp}}</div>
-                        <div style="padding-top:10rpx" class="u-p-t-10">x{{result.order.number}}</div>
+                    <div class="u-flex c_top_right">
+                        <div class="u-p-r-30" style="padding-right:30rpx">
+                            <div class="title" style="font-size:24rpx;color:#333333">{{goodsLists.title || goodsLists.productType}}</div>
+                            <div style="font-size:24rpx;color:#999999;padding-top:10rpx">颜色分类: {{goodsLists.color}}</div>
+                            <div style="font-size:24rpx;color:#999999;padding-top:10rpx">尺码: {{goodsLists.size || goodsLists.productSize}}</div>
+                        </div>
+                        <div class="price_box">
+                            <div style="font-size:24rpx;">¥{{goodsLists.classifyPrice || goodsLists.price}}</div>
+                            <div style="font-size:24rpx;padding-top:10rpx" class="u-p-t-10">¥{{goodsLists.classifyPriceTemp || goodsLists.origPrice}}</div>
+                            <div style="font-size:24rpx;padding-top:10rpx" class="u-p-t-10">x{{goodsLists.count || goodsLists.number}}</div>
+                        </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
             <div class="flex-between u-p-t-10" style="color:#999999;padding-top:10rpx">
                 <span>总价</span>
-                <span>¥{{result.goodsLists[0].goodsClassifyList[0].classifyPriceTemp}}</span>
+                <span>¥{{options.totalPrice}}</span>
             </div>
             <div style="color:#999999;padding-top:10rpx" class="u-p-t-10 flex-between">
                 <span>优惠</span>
-                <span>¥{{$big(result.goodsLists[0].goodsClassifyList[0].classifyPriceTemp).minus($big(result.order.price))}}</span>
+                <span>¥{{options.discount}}</span>
             </div>
             <div class="flex-between u-p-t-10" style="padding-top:10rpx">
                 <span style="color:#333333">实付款</span>
-                <span style="color:#ff2724">¥{{result.order.price}}</span>
+                <span style="color:#ff2724">¥{{options.price}}</span>
             </div>
             <div class="order_info u-p-t-60" style="padding-top:60rpx">
                 <div class="order_item u-p-t-20" style="padding-top:20rpx">
@@ -58,8 +60,8 @@
                 </div>
                 <div class="order_item u-p-t-20" style="padding-top:20rpx">
                     <span>发货单号</span>
-                    <span>{{result.order.iapId || ''}}</span>
-                    <span @click="copy(result.order.iapId)">复制</span>
+                    <span>{{result.order.logistics || ''}}</span>
+                    <span @click="copy(result.order.logistics)">复制</span>
                 </div>
             </div>
             <div class="footer">
@@ -79,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <mPopup :show="show" @closePopup="closePopup" @updateUser="updateMsg" :title="'在线留言'">
+        <!-- <mPopup :show="show" @closePopup="closePopup" @updateUser="updateMsg" :title="'在线留言'">
             <div class="fk_box">
                 <div class="input_box">
                     <input v-model="name" placeholder="姓名" type="text">
@@ -92,13 +94,14 @@
                     <div>{{msg.length || 0}}/50</div>
                 </div>
             </div>
-        </mPopup>
+        </mPopup> -->
+        <mMsg @success="show = false" @closeMsg="show = false" :show="show" />
     </div>
     <div v-else></div>
 </template>
 <script>
 import api from '@/services/api.public.js';
-import mPopup from '@/components/m-popup';
+import mMsg from '@/components/m-msg';
 export default {
     data() {
         return {
@@ -112,15 +115,20 @@ export default {
             phone: '',
             msg: '',
             show: false,
-            flag: false
+            flag: false,
+            goodsLists: [],
+            options: null
         };
     },
     components: {
-        mPopup
+        mMsg
     },
     onLoad(e) {
-        if (e.id) {
+        if (e) {
             this.id = e.id;
+            this.options = e;
+            this.options.list = JSON.parse(this.options.list);
+            console.log(this.options);
         }
     },
     mounted() {
@@ -130,6 +138,17 @@ export default {
         api.getOrderinfo(data).then(
             res => {
                 this.result = res.retObj;
+                this.goodsLists = res.retObj.goodsLists;
+                let arr = [];
+                for (let i = 0; i < this.goodsLists.length; i++) {
+                    console.log(arr.indexOf(this.goodsLists[i].id));
+                    if (arr.indexOf(this.goodsLists[i].id) < 0) {
+                        arr.push(this.goodsLists[i].id);
+                    } else {
+                        this.goodsLists.splice(i, 1);
+                    }
+                }
+                console.log(this.goodsLists);
                 this.flag = true;
             }
         );
@@ -147,6 +166,9 @@ export default {
                     }
                 }
             );
+        },
+        success() {
+            this.show = false;
         },
         tel(e) {
             uni.makePhoneCall({
@@ -203,7 +225,10 @@ page{
     background: #f5f5f5;
 }
 .order_details{
-    .header{
+    div,span{
+        font-size: 28rpx;
+    }
+    .order_header{
         padding: 40rpx;
         border-top: 2rpx solid #f5f5f5;
         border-bottom: 14rpx solid #f5f5f5;
@@ -219,9 +244,16 @@ page{
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-top: 20rpx;
+            .c_top_item{
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 20rpx;
+            }
             .c_top_right{
                 padding-left: 20rpx;
                 display: flex;
+                flex: 1;
                 justify-content: space-between;
                 align-items: flex-start;
                 .price_box{
@@ -317,6 +349,20 @@ page{
     }
     /deep/ .icon_box{
         top: 12% !important;
+    }
+    .h-popup /deep/ .u-drawer{
+            overflow: visible!important;
+            .u-drawer-content{
+                overflow: visible!important;
+                display: flex;
+                .u-mode-center-box{
+                    background-color: #99999900!important;
+                    overflow: visible!important;
+                }
+                .uni-scroll-view{
+                    overflow: visible!important;
+                }
+            }
     }
 }
 </style>

@@ -19,6 +19,10 @@ export default {
         api.getSocreStrategy(data).then(
             res => {
                 this.arr = res.retArr;
+                for (let i = 0; i < this.arr.length; i++) {
+                    // eslint-disable-next-line no-useless-escape
+                    this.arr[i].content = this.arr[i].content.replace(/\<img/gi, '<img class="rich-img"');
+                }
             }
         );
     }
@@ -42,6 +46,10 @@ page{
     }
     /deep/ img{
         width: 100%;
+    }
+    rich-text .rich-img {
+        width: 100% !important;
+        height: auto ;
     }
 }
 </style>

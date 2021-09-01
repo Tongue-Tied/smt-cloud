@@ -21,7 +21,7 @@
             <div class="headimg">
                 <div v-for="(item, index) in info.groupUserList" :key="index">
                     <image @error="imageError(item)" :src="item.headImg"></image>
-                    <image mode="widthFix" class="lianjie" v-if="index === 0 && info.groupType === 1" :src="lianjie"></image>
+                    <image mode="widthFix" class="lianjie" v-if="index === 0 && info.groupType === 1 && info.groupUserList.length > 1" :src="lianjie"></image>
                     <image class="default" :src="defaultUrl" mode="heightFix" v-if="info.groupType === 3"></image>
                 </div>
                 <!-- <div class="default">
@@ -60,7 +60,9 @@
         </div>
         <div class="footer">
             <div class="title">
-                拼团玩法
+                <image :src="left" mode="widthFix"></image>
+                <div>拼团玩法</div>
+                <image :src="right" mode="widthFix"></image>
             </div>
             <div class="img">
                 <image mode="widthFix" :src="play"></image>
@@ -85,7 +87,9 @@ export default {
             play: require('@/static/imgs/group/my_group.png'),
             content: null,
             defaultUrl: require('@/static/imgs/group/group_one.png'),
-            flag: false
+            flag: false,
+            left: require('@/static/imgs/my/zhuangshi.png'),
+            right: require('@/static/imgs/my/zhuangshi1.png')
         };
     },
     onLoad(e) {
@@ -118,7 +122,8 @@ export default {
     },
     methods: {
         imageError(e) {
-            if (e.headImg === '/upload/head1.png') {
+            console.log(e.headImg.substr(0, 1));
+            if (e.headImg.substr(0, 1) === '/') {
                 e.headImg = require('@/static/imgs/group/cat.png');
             }
         },
@@ -145,6 +150,9 @@ page{
     background: #f5f5f5;
 }
 .group_result{
+    div,span{
+        font-size: 28rpx;
+    }
     .header{
         text-align: center;
         background: #ffffff;
@@ -249,6 +257,7 @@ page{
                 :nth-child(1){
                     color: #ff2724;
                     font-size: 28rpx;
+                    padding-right: 30rpx;
                 }
                 :nth-child(2){
                     display: flex;
@@ -270,6 +279,12 @@ page{
             font-size: 32rpx;
             font-weight: 600;
             padding: 30rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            image{
+                width: 20rpx;
+            }
         }
         .img{
             display: flex;

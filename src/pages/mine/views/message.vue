@@ -57,6 +57,9 @@ page{
     background: #f5f5f5;
 }
 .message{
+    div,span{
+        font-size: 28rpx;
+    }
     padding: 0 30rpx;
     .m_item{
         background: #ffffff;
@@ -101,7 +104,7 @@ page{
                 }
                 .br_bottom{
                     margin-top: 10rpx;
-                    font-size: 20rpx !important;
+                    font-size: 26rpx !important;
                 }
             }
         }

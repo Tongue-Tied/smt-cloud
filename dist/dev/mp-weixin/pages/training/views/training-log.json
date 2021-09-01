@@ -6,6 +6,7 @@
   "usingComponents": {
     "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs",
     "u-select": "/node-modules/uview-ui/components/u-select/u-select",
+    "u-empty": "/node-modules/uview-ui/components/u-empty/u-empty",
     "calendar": "/components/calendar"
   }
 }

@@ -31,12 +31,12 @@
                     <div class="top_item1">
                         <u-icon name="map-fill" size="40" color="#FF5979"></u-icon>
                     </div>
-                    <div class="top_item2 u-p-l-10">
+                    <div class="top_item2">
                         <div>
                             <span style="color:#333333;font-weight:500">{{orderInfo.order.shName}}</span>
-                            <span class="u-p-l-10" style="color:#999999">{{orderInfo.order.phone}}</span>
+                            <span style="color:#999999;padding-left:10rpx">{{orderInfo.order.phone}}</span>
                         </div>
-                        <div class="u-m-t-10">{{orderInfo.order.address}}</div>
+                        <div style="margin-top:10rpx">{{orderInfo.order.address}}</div>
                     </div>
                 </div>
                 <div class="middle"></div>
@@ -51,10 +51,10 @@
                         <span>{{orderInfo.order.sendTime || '暂时没有物流信息'}}</span>
                         <span></span>
                     </div>
-                    <div>
+                    <div v-if="orderInfo.order.sendTime">
                         <span>发货单号</span>
-                        <span>{{orderInfo.order.iapId || '暂时没有物流信息'}}</span>
-                        <span @click="copy(orderInfo.order.iapId)">复制</span>
+                        <span>{{orderInfo.order.logistics || '暂时没有物流信息'}}</span>
+                        <span @click="copy(orderInfo.order.logistics)">复制</span>
                     </div>
                 </div>
             </div>
@@ -172,6 +172,9 @@ page{
     background: #f5f5f5;
     padding-bottom: calc(10rpx + env(safe-area-inset-bottom));
 }
+div,span{
+    font-size: 26rpx;
+}
 .exchange_box{
     .container{
         .container_item{
@@ -193,7 +196,7 @@ page{
                     flex-direction: column;
                     justify-content: space-between;
                     .title{
-                        font-size: 30rpx;
+                        font-size: 28rpx;
                         color: #333333;
                     }
                     .content{
@@ -236,6 +239,7 @@ page{
             }
             .top_item2{
                 flex: 1;
+                padding-left: 10rpx;
             }
         }
         .middle{

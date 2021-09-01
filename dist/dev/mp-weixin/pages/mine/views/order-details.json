@@ -5,6 +5,6 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
-    "m-popup": "/components/m-popup"
+    "m-msg": "/components/m-msg"
   }
 }

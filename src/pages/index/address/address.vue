@@ -19,7 +19,7 @@
                 </div>
             </u-cell-item>
             <u-cell-item class="address_item" title="详细地址" :arrow="false" hover-class="none">
-                <div class="my_input"><u-input :clearable="false" placeholder="例如：某某小区3号楼1单元201" v-model="shAddress" type="text" /></div>
+                <div class="my_input"><u-input :auto-height="true" :height="100" :clearable="false" placeholder="例如：某某小区3号楼1单元201" v-model="shAddress" type="text" /></div>
             </u-cell-item>
         </div>
         <div class="sure_btn" @click="sure">

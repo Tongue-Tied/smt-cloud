@@ -9,7 +9,7 @@
                 </div>
                 <div class="user_info" style="color:#ffffff" v-if="show">
                     <div class="user_info_top" v-if="show">
-                        <!-- <div class="nick_name">{{$state().user.userNick || ''}}</div> -->
+                        <div class="nick_name">{{$state().user.userNick || ''}}</div>
                         <div v-if="vipTimeShow">
                             <image style="width:24rpx;height:24rpx" :src="require('@/static/imgs/index/会员icon.png')" alt="">
                             <span style="padding-left:20rpx;color:#ffffff;font-size:24rpx">{{$state().user.vipTime || ''}}会员到期</span>
@@ -64,7 +64,7 @@
                 </u-collapse>
             </div>
         </div>
-        <div class="count_down_box" v-if="gameData && gameData.type === 1">
+        <div class="count_down_box" style="padding-top:10rpx" v-if="gameData && gameData.type === 1">
             <div class="cdb_title">第{{gameData.group}}组训练进行中</div>
             <div class="cdb_box">
                 <span>已训练</span>
@@ -80,7 +80,7 @@
                 <span>内完成本组训练</span>
             </div>
         </div>
-        <div class="count_down_box" v-if="gameData && gameData.type === 2">
+        <div class="count_down_box" style="padding-top:10rpx" v-if="gameData && gameData.type === 2">
             <div class="cdb_title">今日已进行 1 组训练</div>
             <div class="cdb_box">
                 <span>下一组训练即将开始 倒计时</span>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="count_down_box" v-if="gameData && gameData.type === 3">
+        <div class="count_down_box" style="padding-top:10rpx" v-if="gameData && gameData.type === 3">
             <div class="cdb_title">今日训练已全部完成</div>
             <div class="cdb_box">
                 <span>你很棒，请坚持下去！</span>
@@ -151,7 +151,8 @@
                                  {{item.isFin === 0 ? '未开始' : item.isFin === 1 ? '已完成' : item.isFin === 2 ? '去挑战' : '继续挑战'}}
                             </div>
                             <label @click="share(item)" name="share_btn1">
-                                <button :data-item="item" id="share_btn1" v-show="false" open-type="share"></button>
+                                <button :data-item="item" id="share_btn1" v-if="show" v-show="false" open-type="share"></button>
+                                <button v-else v-show="false"></button>
                                 <div>分享赚积分</div>
                             </label>
                         </div>
@@ -188,14 +189,16 @@
                 </div>
                 <div class="wenxin_tips">温馨提示</div>
                 <div class="tips">
-                    <p class="tishi-p" style="display:flex">
-                        <span style="padding-right: 5px;height:100%;display:flex">•</span
-                        >本功能测出的视力，仅供参考，如果你想了解更准确的视力数据，请带孩子去医院做散瞳检测
-                    </p>
-                    <p class="tishi-p" style="display:flex">
-                        <span style="margin-right: 5px;height:100%;display:flex">•</span
-                        >如果孩子眼睛弱视，请一定要<span>戴镜检测</span>
-                    </p>
+                    <div class="tishi-p" style="display:flex">
+                        <span style="padding-right: 5px;height:100%;display:flex">•</span>
+                        <div>本功能测出的视力，仅供参考，如果你想了解更准确的视力数据，请带孩子去医院做散瞳检测</div>
+                    </div>
+                    <div class="tishi-p" style="display:flex">
+                        <span style="margin-right: 5px;height:100%;display:flex">•</span>
+                        <div>
+                            如果孩子眼睛弱视，请一定要<span>戴镜检测</span>
+                        </div>
+                    </div>
                 </div>
                 <div></div>
                 <div></div>
@@ -263,6 +266,7 @@ export default {
     },
     onShow() {
         let tmp = this.$state().user;
+        this.testShow = false;
         if (tmp) {
             this.show = true;
             this.vipTimeShow = true;
@@ -353,6 +357,7 @@ export default {
                 res => {
                     if (res.code === 1) {
                         this.gameData = res.retObj;
+                        // this.gameData.type = 1;
                         this.flag = true;
                         this.$forceUpdate();
                     }
@@ -387,6 +392,9 @@ export default {
             this.isLogin() ? uni.navigateTo({ url: '/pages/score/score-shop' }) : this.$toast('您还未登陆，请先登陆');
         },
         cellClick(item) {
+            if (!this.isLogin()) {
+                return this.$toast('您还未登陆，请先登陆');
+            }
             if (item.isFin === 0) {
                 return;
             }
@@ -539,7 +547,7 @@ page{
                         align-items: center;
                         padding: 10rpx 20rpx;
                         border-radius: 60rpx;
-                        border: 1rpx solid #ffffff;
+                        border: 1px solid #ffffff;
                     }
                 }
             }
@@ -645,7 +653,7 @@ page{
                 justify-content: space-between;
                 :nth-child(1){
                     color: #990014;
-                    font-size: 27rpx;
+                    font-size: 28rpx;
                 }
                 div {
                     span{
@@ -656,13 +664,13 @@ page{
         }
         .cdb_title{
             color: #ff2724;
-            font-size: 27rpx;
+            font-size: 28rpx;
         }
         .cdb_box{
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 27rpx;
+            font-size: 28rpx;
             color: #333333;
             padding: 30rpx 0;
         }
@@ -682,6 +690,7 @@ page{
             .game_item_middle{
                 // padding-right: 2;
                 padding-left: 20rpx;
+                font-size: 30rpx;
                 color: #333333;
                 :nth-child(2){
                     color: #999999;
@@ -703,7 +712,7 @@ page{
                         color: #ffffff;
                         font-size: 28rpx;
                         border-radius: 30rpx;
-                        padding: 8rpx 10rpx;
+                        padding: 8rpx 38rpx;
                         margin-bottom: 5rpx;
                     }
                     :nth-child(2){

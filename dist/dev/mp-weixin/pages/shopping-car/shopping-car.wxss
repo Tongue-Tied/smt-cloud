@@ -8,7 +8,7 @@ page {
 .shopping_car .all_chose {
   width: 92%;
   margin: 0 auto;
-  padding: 20rpx 0 0 30rpx;
+  padding: 20rpx 0 0 15rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;

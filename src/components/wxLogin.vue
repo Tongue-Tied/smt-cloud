@@ -1,7 +1,16 @@
 <template>
     <view class="wx_login">
-        <label for="" @tap="getUserProfile">
-            <div>立即登录</div>
+        <label for="btn">
+            <!-- <div>立即登录</div> -->
+            <div>
+                <button id="btn"
+                    @tap="getUserProfile"
+                    @getphonenumber="getPhoneNumber"
+                    v-show="true"
+                    open-type="getPhoneNumber">
+                    立即登录
+                </button>
+            </div>
         </label>
     </view>
 </template>
@@ -9,7 +18,9 @@
 import apiLogin from '@/services/api.login.js';
 export default {
     data() {
-        return {};
+        return {
+            userInfo: null
+        };
     },
     name: 'WeixinLogin',
     methods: {
@@ -21,8 +32,8 @@ export default {
                 desc: '获取你的昵称、头像、地区及性别',
                 success: function(res) {
                     console.log(res);
-                    // let userInfo = res.userInfo;
-                    that.weChatLogin(res.userInfo);
+                    that.userInfo = res.userInfo;
+                    // that.weChatLogin(res.userInfo);
                 },
                 fail: function(res) {
                     that.$toast('微信授权失败');
@@ -74,6 +85,12 @@ export default {
                     }
                 }
             });
+        },
+        getPhoneNumber(e) {
+            console.log(e);
+            if (e) {
+                this.weChatLogin(this.userInfo);
+            }
         }
     }
 };
@@ -82,6 +99,48 @@ export default {
 .wx_login{
     div{
         font-size: 28rpx;
-    }
+        button::after {
+            border: none;
+            border-radius:0!important;
+            background-color: none!important;
+            position:relative;
+            display:unset!important;
+            margin-left:0!important;
+            margin-right:0!important;
+            padding-left:0!important;
+            padding-right:0!important;
+            box-sizing:border-box;
+            font-size:28rpx!important;
+            text-align:center;
+            text-decoration:none;
+            line-height:unset!important;
+            border-radius:0!important;
+            -webkit-tap-highlight-color:transparent;
+            overflow:hidden;
+            color:unset!important;
+            background-color:unset!important;
+        }
+        button{
+            font-size: 28rpx!important;
+            border-radius:0!important;
+            background-color: none!important;
+            position:relative;
+            display:unset!important;
+            margin-left:0!important;
+            margin-right:0!important;
+            padding-left:0!important;
+            padding-right:0!important;
+            box-sizing:border-box;
+            font-size:28rpx!important;
+            text-align:center;
+            text-decoration:none;
+            line-height:unset!important;
+            border-radius:0!important;
+            -webkit-tap-highlight-color:transparent;
+            overflow:hidden;
+            color:unset!important;
+            background-color:unset!important;
+        }
+  }
 }
 </style>

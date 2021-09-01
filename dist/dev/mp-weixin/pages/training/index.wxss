@@ -79,7 +79,7 @@
           align-items: center;
   padding: 10rpx 20rpx;
   border-radius: 60rpx;
-  border: 1rpx solid #ffffff;
+  border: 1px solid #ffffff;
 }
 .training_box .info_box .info_center .login_box {
   display: -webkit-box;
@@ -217,14 +217,14 @@
 }
 .training_box .count_down_box .content_box .coolapse_title :nth-child(1) {
   color: #990014;
-  font-size: 27rpx;
+  font-size: 28rpx;
 }
 .training_box .count_down_box .content_box .coolapse_title ._div ._span {
   color: #cc7a85 !important;
 }
 .training_box .count_down_box .cdb_title {
   color: #ff2724;
-  font-size: 27rpx;
+  font-size: 28rpx;
 }
 .training_box .count_down_box .cdb_box {
   display: -webkit-box;
@@ -236,7 +236,7 @@
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
-  font-size: 27rpx;
+  font-size: 28rpx;
   color: #333333;
   padding: 30rpx 0;
 }
@@ -263,6 +263,7 @@
 }
 .training_box .game_list .game_item .game_item_middle {
   padding-left: 20rpx;
+  font-size: 30rpx;
   color: #333333;
 }
 .training_box .game_list .game_item .game_item_middle :nth-child(2) {
@@ -295,7 +296,7 @@
   color: #ffffff;
   font-size: 28rpx;
   border-radius: 30rpx;
-  padding: 8rpx 10rpx;
+  padding: 8rpx 38rpx;
   margin-bottom: 5rpx;
 }
 .training_box .game_list .game_item .game_item_right .game_item_right_container :nth-child(2) {

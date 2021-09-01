@@ -6,19 +6,44 @@
         </div>
         <div class="sure_btn" @click="redeem">立即兑换</div>
         <div class="img_box">
-            兑换说明
+            <image :src="left" mode="widthFix"></image>
+            <div>兑换说明</div>
+            <image :src="right" mode="widthFix"></image>
         </div>
         <div class="tips" v-html="content">
         </div>
+        <mPopup
+            :show="show"
+            :bgUrl="img"
+            :headerBg="false"
+            :btnText="'知道了'"
+            @updateUser="show = false"
+            @closePopup="show = false"
+        >
+        <div class="container">
+            <div style="font-size:34rpx;color:#ff2724;padding-top:30rpx">{{success ? '兑换成功' : '兑换失败'}}</div>
+            <div style="font-size:26rpx;color:#999999;padding:20rpx" v-if="success">课程已自动添加到您的账号</div>
+            <div style="font-size:26rpx;color:#999999" v-else>不是有效的兑换码</div>
+        </div>
+        </mPopup>
     </div>
 </template>
 <script>
 import api from '@/services/api.public.js';
+import mPopup from '@/components/m-popup';
 export default {
+    components: {
+        mPopup
+    },
     data() {
         return {
             code: '',
-            content: ''
+            content: '',
+            show: false,
+            img: require('@/static/imgs/my/tan_03.png'),
+            success: true,
+            left: require('@/static/imgs/my/zhuangshi.png'),
+            right: require('@/static/imgs/my/zhuangshi1.png')
         };
     },
     created() {
@@ -39,14 +64,14 @@ export default {
                 };
                 api.exchangeCode(data).then(
                     res => {
-                        console.log(res);
                         if (res.code === 1) {
-                            this.$toast('兑换成功');
-                            setTimeout(() => {
-                                uni.navigateBack({ delta: 1 });
-                            }, 2000);
+                            this.success = true;
+                            this.show = true;
+                            this.img = require('@/static/imgs/my/tan_03.png');
                         } else {
-                            this.$toast('兑换失败');
+                            this.success = false;
+                            this.show = true;
+                            this.img = require('@/static/imgs/my/tan_05.png');
                         }
                     },
                     err => {
@@ -66,6 +91,11 @@ page{
 }
 .redeem_box{
     padding: 60rpx;
+    .container{
+        width: 600rpx;
+        text-align: center;
+        background: #ffffff;
+    }
     .input_box{
         width: 100%;
         height: 80rpx;
@@ -77,6 +107,7 @@ page{
             border-radius: 50rpx;
             width: 100%;
             padding-left: 20rpx;
+            font-size: 28rpx;
         }
     }
     .sure_btn{
@@ -99,10 +130,28 @@ page{
         display: flex;
         justify-content: center;
         align-items: center;
+        image{
+            width: 20rpx;
+        }
     }
     .tips{
         color: #333333;
         margin-top: 20rpx;
+        font-size: 24rpx;
+    }
+    .h-popup /deep/ .u-drawer{
+            overflow: visible!important;
+            .u-drawer-content{
+                overflow: visible!important;
+                display: flex;
+                .u-mode-center-box{
+                    background-color: #99999900!important;
+                    overflow: visible!important;
+                }
+                .uni-scroll-view{
+                    overflow: visible!important;
+                }
+            }
     }
 }
 </style>

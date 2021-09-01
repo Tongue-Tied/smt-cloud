@@ -23,5 +23,8 @@ export default {
     },
     joinCar(data) {
         return request.post('/api/joinCar', data);
+    },
+    updateCarNunber(data) {
+        return request.post('/api/updateCarNunber', data);
     }
 };

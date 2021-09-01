@@ -1,8 +1,9 @@
 <template>
     <div class="my_group">
+        <!-- <u-navbar back-text=" " title="剑未配妥，出门已是江湖"></u-navbar> -->
         <div class="group_item" @click="goDetails(item.id)" v-for="(item, index) in myList" :key="index">
             <div class="top">
-                <div class="top_left" v-if="item.cha">
+                <div class="top_left" v-if="item.cha && item.groupType === 3">
                     <div>剩余时间</div>
                     <div>
                         <u-count-down font-size="25" color="#333333" bg-color="#ffffff00" :timestamp="item.cha"></u-count-down>
@@ -20,7 +21,7 @@
             </div>
             <div class="bottom">
                 <div class="img_box">
-                    <image :src="item.groupLogo"></image>
+                    <image mode="widthFix" :src="item.groupLogo"></image>
                 </div>
                 <div class="bottom_info">
                     <div class="title">{{item.title}}</div>
@@ -41,8 +42,23 @@ import api from '@/services/api.group.js';
 export default {
     data() {
         return {
-            myList: []
+            myList: [],
+            isPay: false
         };
+    },
+    onLoad() {
+        // eslint-disable-next-line no-undef
+        let pages = getCurrentPages();
+        let prevpage = pages[pages.length - 2];
+        console.log(prevpage.route);
+        if (prevpage.route === 'pages/group/pay') {
+            this.isPay = true;
+        }
+    },
+    onUnload() {
+        if (this.isPay) {
+            uni.switchTab({ url: '/pages/mine/index' });
+        }
     },
     created() {
         let data = {
@@ -67,6 +83,7 @@ export default {
 <style lang="less">
 page{
     background: #f5f5f5;
+    padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
 }
 .my_group{
     font-size: 28rpx;
@@ -85,6 +102,7 @@ page{
                 flex: 1;
                 display: flex;
                 justify-content: flex-end;
+                padding-bottom: 20rpx;
             }
         }
         .bottom{
@@ -94,12 +112,13 @@ page{
                 height: 180rpx;
                 image{
                     width: 100%;
-                    height: 100%;
+                    height: 180rpx;
                     border-radius: 40rpx;
                 }
             }
             .bottom_info{
                 padding-left: 80rpx;
+                flex: .7;
                 .title{
                     font-size: 28rpx;
                     color: #333333;

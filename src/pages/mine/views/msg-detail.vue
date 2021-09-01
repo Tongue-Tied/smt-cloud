@@ -60,6 +60,9 @@ page{
     background: #f5f5f5;
 }
 .message_detail{
+    div,span{
+        font-size: 28rpx;
+    }
     padding: 0 30rpx;
     .m_item{
         background: #ffffff;
@@ -76,18 +79,19 @@ page{
             border-bottom: 2rpx solid #e9e9e9;
             :nth-child(1){
                 color: #333333;
-                font-size: 30rpx;
+                font-size: 32rpx;
             }
             :nth-child(2){
                 padding-top: 20rpx;
                 color: #999999;
+                font-size: 26rpx;
             }
         }
         .bottom{
             display: flex;
             padding-top: 40rpx;
             color: #333333;
-            font-size: 28rpx;
+            font-size: 26rpx;
         }
     }
 }

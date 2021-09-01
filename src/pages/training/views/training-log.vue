@@ -29,13 +29,14 @@
                     </div>
                 </div>
                 <div class="log_item_right">
-                    <span class="u-font-38 u-p-r-10" style="color:#ff2724">{{(item.minute / 60).toFixed(0)}}</span>
+                    <span style="font-size:40rpx;padding-right:10rpx;color:#ff2724" class="u-font-38 u-p-r-10">{{(item.minute / 60).toFixed(0)}}</span>
                     <span>分</span>
-                    <span class="u-p-r-10 u-p-l-10" style="color:#ff2724">{{item.minute - ((item.minute / 60).toFixed(0) * 60)}}</span>
+                    <span style="padding:0 10rpx;color:#ff2724" class="u-p-r-10 u-p-l-10">{{((item.minute / 60).toFixed(0) * 60) - item.minute}}</span>
                     <span>秒</span>
                 </div>
             </div>
         </div>
+        <u-empty margin-top="40" v-if="current && !logList.length" text="暂时没有训练记录" mode="list"></u-empty>
     </div>
 </template>
 <script>
@@ -171,10 +172,11 @@ export default {
 </script>
 <style lang="less">
 page{
-    background: #ffffff;
+    background: #f5f5f5;
 }
 .t_log{
     .calender{
+        background: #ffffff;
         .select_choose{
             width: 100%;
             display: flex;
@@ -237,11 +239,12 @@ page{
             width: 84%;
             margin: 20rpx auto;
             display: flex;
-            padding: 30rpx;
+            padding: 60rpx 30rpx;
             justify-content: space-between;
             align-items: center;
             border-radius: 30rpx;
-            border: 10rpx solid #e6e6e6ce;
+            // border: 10rpx solid #e6e6e6ce;
+            background: #ffffff;
             .log_item_left{
                 color: #333333;
                 text-align: center;

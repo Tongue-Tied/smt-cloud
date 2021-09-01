@@ -16,19 +16,19 @@
                 <span>微信号: &nbsp;{{teacherInfo.wx}}</span><span @click="copy">复制</span>
             </div>
         </div>
-        <div class="footer" style="background: #ffffff;width:100%">
-            <div @click="show=true">
+        <div class="tutor_footer" style="background: #ffffff;width:100%">
+            <div @click="openMsg">
                 <image style="width:120rpx;height:120rpx;padding-bottom:10rpx" :src="msgIcon"></image>
-                <div style="font-size:34rpx">在线留言</div>
-                <div @click="phoneCall" class="phone_num">{{obj.content}}</div>
+                <div style="font-size:32rpx">在线留言</div>
+                <div class="phone_num">{{obj.content}}</div>
             </div>
-            <div>
+            <div @click="phoneCall">
                 <image style="width:120rpx;height:120rpx;padding-bottom:10rpx" :src="telIcon"></image>
-                <div style="font-size:34rpx">热线电话</div>
-                <div @click="phoneCall" style="text-decoration: underline;" class="phone_num">{{teacherInfo.phone}}</div>
+                <div style="font-size:32rpx">热线电话</div>
+                <div style="text-decoration: underline;" class="phone_num">{{teacherInfo.phone}}</div>
             </div>
         </div>
-        <mMsg @success="success" :show="show" />
+        <mMsg @success="success" @closeMsg="closeMsg" :show="show" />
     </div>
     <div v-else></div>
 </template>
@@ -73,6 +73,19 @@ export default {
                 phoneNumber: this.teacherInfo.phone // 仅为示例
             });
         },
+        closeMsg() {
+            this.show = false;
+        },
+        openMsg() {
+            if (!uni.getStorageSync('token')) {
+                this.$toast('您还未登陆,请先登陆');
+                setTimeout(() => {
+                    uni.switchTab({ url: '/pages/index/index' });
+                }, 2000);
+            } else {
+                this.show = true;
+            }
+        },
         copy() {
             let that = this;
             uni.setClipboardData({
@@ -102,10 +115,12 @@ page{
     }
 }
 .tutor{
-    text-align: center;
+    // text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    overflow-x: hidden;
     .top_back{
         width: 100%;
         height: 220rpx;
@@ -169,7 +184,7 @@ page{
         border-radius: 100rpx;
         margin-top: 10rpx;
     }
-    .footer{
+    .tutor_footer{
         transform: translate(0,-100rpx);
         display: flex;
         justify-content: space-around;

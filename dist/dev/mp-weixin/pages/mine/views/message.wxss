@@ -4,6 +4,10 @@ page {
 .message {
   padding: 0 30rpx;
 }
+.message ._div,
+.message ._span {
+  font-size: 28rpx;
+}
 .message .m_item {
   background: #ffffff;
   border-radius: 30rpx;
@@ -65,7 +69,7 @@ page {
 }
 .message .m_item .bottom .b_right .br_bottom {
   margin-top: 10rpx;
-  font-size: 20rpx !important;
+  font-size: 26rpx !important;
 }
 /**
 * 颜色定义

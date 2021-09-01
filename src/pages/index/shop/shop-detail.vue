@@ -210,7 +210,7 @@ export default {
     },
     methods: {
         jump(e) {
-            e === 1 ? uni.navigateTo({ url: '/pages/mine/views/help' }) : uni.navigateTo({ url: '/pages/shopping-car/shopping-car' });
+            e === 1 ? uni.navigateTo({ url: '/pages/mine/views/tutor' }) : uni.navigateTo({ url: '/pages/shopping-car/shopping-car' });
         },
         back() {
             uni.navigateBack({ delta: 1 });

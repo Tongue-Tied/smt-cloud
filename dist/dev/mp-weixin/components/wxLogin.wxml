@@ -1,1 +1,1 @@
-<view class="wx_login"><label for data-event-opts="{{[['tap',[['getUserProfile',['$event']]]]]}}" bindtap="__e"><view class="_div">立即登录</view></label></view>
+<view class="wx_login"><label for="btn"><view class="_div"><button hidden="{{!(true)}}" id="btn" open-type="getPhoneNumber" data-event-opts="{{[['tap',[['getUserProfile',['$event']]]],['getphonenumber',[['getPhoneNumber',['$event']]]]]}}" bindtap="__e" bindgetphonenumber="__e">立即登录</button></view></label></view>

@@ -1,6 +1,5 @@
 .h-popup .u-drawer {
   overflow: visible!important;
-  background: chartreuse;
 }
 .h-popup .u-drawer .u-drawer-content {
   overflow: visible!important;
@@ -42,7 +41,6 @@
   background-position: top;
   background-size: 100%,50%;
   background-repeat: no-repeat;
-  background-color: #ffffff;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -64,7 +62,6 @@
 }
 .popup_container .header :nth-child(1) {
   font-size: 40rpx;
-  margin-top: 20rpx;
 }
 .popup_container .header :nth-child(2) {
   font-size: 26rpx;

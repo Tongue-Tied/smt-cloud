@@ -5,6 +5,7 @@
   "usingComponents": {
     "u-cell-item": "/node-modules/uview-ui/components/u-cell-item/u-cell-item",
     "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
+    "u-line": "/node-modules/uview-ui/components/u-line/u-line",
     "u-radio-group": "/node-modules/uview-ui/components/u-radio-group/u-radio-group",
     "u-radio": "/node-modules/uview-ui/components/u-radio/u-radio",
     "u-checkbox": "/node-modules/uview-ui/components/u-checkbox/u-checkbox",

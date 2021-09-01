@@ -38,7 +38,7 @@
                     <u-avatar size="150" :src="$state().user ? $state().user.headImg : ''"></u-avatar>
                 </div>
                 <div class="u_top_info" v-if="$state().user ? $state().user.userNick : false">
-                    <div>{{$state().user.userNick || ''}}</div>
+                    <div class="info_usernick">{{$state().user.userNick || ''}}</div>
                     <div>
                         <image style="width:24rpx;height:24rpx" :src="require('@/static/imgs/index/会员icon.png')" alt="">
                         <span>{{$state().user.vipTime}}会员到期</span>
@@ -74,7 +74,7 @@
                 <image :src="item.img"></image>
             </view>
         </view>
-        <mPopup :show="testShow" :top="'12%'" :title="'儿童对数视力表'" @updateUser="goTest" @closePopup="testShow = false" :subTitle="'请坐在距离视力表 3 米处'">
+        <mPopup :show="testShow" :contentStyle="'padding-top:calc(20rpx + env(safe-area-inset-bottom))'" :top="'12%'" :title="'儿童对数视力表'" @updateUser="goTest" @closePopup="testShow = false" :subTitle="'请坐在距离视力表 3 米处'">
             <div class="test_box">
                 <div class="age_box">
                     <span>孩子年龄:</span>
@@ -130,7 +130,7 @@
         <mPopup :show="tutorShow"
                 :imgUrl="teacher.img"
                 :imgStyle="'border-radius:100%;width:180rpx'"
-                :myStyle="'padding-top:80rpx;font-size:32rpx'"
+                :myStyle="'padding-top:100rpx;font-size:32rpx'"
                 :top="'25%'"
                 :btnText="'知道了'"
                 :title="'辅导老师： '+ teacher.userName"
@@ -218,7 +218,7 @@ export default {
             current: 0,
             icon1: require('@/static/imgs/index/icon1.png'),
             icon2: require('@/static/imgs/index/icon2.png'),
-            show: false,
+            show: true,
             tutorShow: false,
             teacher: null
         };
@@ -233,6 +233,8 @@ export default {
     },
     async onShow() {
         // xcxIndex
+        this.tutorShow = false;
+        this.testShow = false;
         // this.$loading.open();
         if (uni.getStorageSync('token')) {
             this.show = true;
@@ -518,7 +520,7 @@ page {
             .u_top_headimg{
                 width:140rpx;
                 height: 140rpx;
-                margin-right: 20rpx;
+                margin-right: 40rpx;
                 image{
                     width: 100%;
                     height: 100%;
@@ -529,13 +531,24 @@ page {
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
+                .info_usernick{
+                    flex: 1;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
                 .weixin_login /deep/ div{
                     font-size: 28rpx !important;
-                    padding: 5rpx 20rpx;
+                    // padding: 5rpx 20rpx;
+                    width: 160rpx;
+                    height: 55rpx;
                     border: 2rpx solid #ff2724;
                     color: #ff2724;
                     border-radius: 40rpx;
                     margin-left: 20rpx;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
                 :nth-child(1){
                     font-size: 32rpx;
@@ -579,7 +592,7 @@ page {
             justify-content: space-between;
             font-size: 24rpx;
             color: #333333;
-            padding: 0 20rpx 30rpx 20rpx;
+            padding: 20rpx 20rpx 30rpx 20rpx;
             .uib_bottom_left{
                 display: flex;
                 flex-direction: column;

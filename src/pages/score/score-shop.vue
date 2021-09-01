@@ -9,7 +9,7 @@
                 </div>
                 <div class="user_info" style="color:#ffffff">
                     <div class="user_info_top">
-                        <div>{{$state().user.userNick}}</div>
+                        <div class="nick_name">{{$state().user.userNick}}</div>
                         <div>
                             <image style="width:24rpx;height:24rpx" :src="require('@/static/imgs/index/会员icon.png')" alt="">
                             <span style="padding-left:20rpx;color:#ffffff;font-size:24rpx">{{$state().user.vipTime}}会员到期</span>
@@ -91,9 +91,9 @@
                 </div>
                 <div class="pc_middle">
                     <div>兑换确认</div>
-                    <div>确认用 <span>{{goodsItem.goodsScore || goodsItem.cardScore}}</span>积分兑换{{goodsItem.title || goodsItem.name}}吗?</div>
+                    <div style="padding:20rpx 50rpx">确认用 <span>{{goodsItem.goodsScore || goodsItem.cardScore}}</span>积分兑换{{goodsItem.title || goodsItem.name}}吗?</div>
                     <div>
-                        <image v-if="goodsItem" style="width:225rpx;height:225rpx;" :src="goodsItem.img"></image>
+                        <image mode="widthFix" v-if="goodsItem" style="width:225rpx;" :src="goodsItem.img"></image>
                     </div>
                 </div>
                 <div class="pc_address">
@@ -275,13 +275,27 @@ page{
             display: flex;
             padding-top: 60rpx;
             // align-items: center;
+            .avatar{
+                u-avatar{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
             .user_info{
                 flex: 1;
                 padding: 0 40rpx;
                 .user_info_top{
                     color: #ffffff;
+                    padding-top: 40rpx;
                     font-size: 40rpx;
-                    font-weight: 500;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    .nick_name{
+                        font-weight: 500;
+                        font-size: 40rpx;
+                    }
                 }
                 .user_info_bottom{
                     display: flex;
@@ -534,7 +548,7 @@ page{
                 justify-content: center;
                 align-items: center;
                 border-radius: 30rpx;
-                border: 2rpx solid #ff2724;
+                border: 2px solid #ff2724;
             }
         }
         .pc_foot{

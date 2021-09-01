@@ -23,13 +23,13 @@
                 </div>
                 <div class="u-flex c_top_right">
                     <div class="u-p-r-30" style="padding-right:30rpx">
-                        <div class="u-font-24 title" style="color:#333333">{{result.groupTitle}}</div>
-                        <div class="u-font-24" style="color:#999999;padding-top:10rpx">{{result.subtitle}}</div>
+                        <div class="u-font-24 title" style="font-size:24rpx;color:#333333">{{result.groupTitle}}</div>
+                        <div class="u-font-24" style="color:#999999;font-size:24rpx;padding-top:10rpx">{{result.subtitle}}</div>
                     </div>
                     <div class="price_box">
                         <div>¥{{result.price}}</div>
-                        <div style="padding-top:10rpx" class="u-p-t-10">¥{{result.origPrice}}</div>
-                        <div style="padding-top:10rpx" class="u-p-t-10">x{{result.number}}</div>
+                        <div style="padding-top:10rpx;font-size:24rpx;" class="u-p-t-10">¥{{result.origPrice}}</div>
+                        <div style="font-size:24rpx;padding-top:10rpx" class="u-p-t-10">x{{result.number}}</div>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="footer">
-                <div class="foot_item" @click="show = true">
+                <div class="foot_item" @click="openMsg">
                     <image style="width:60rpx;height:60rpx;" :src="msgIcon"></image>
                     <div class="u-p-l-10" style="padding-left:10rpx">
                         <div>在线留言</div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <mPopup :show="show" @closePopup="closePopup" @updateUser="updateMsg" :title="'在线留言'">
+        <!-- <mPopup :show="show" @closePopup="closePopup" @updateUser="updateMsg" :title="'在线留言'">
             <div class="fk_box">
                 <div class="input_box">
                     <input v-model="name" placeholder="姓名" type="text">
@@ -91,13 +91,14 @@
                     <div>{{msg.length || 0}}/50</div>
                 </div>
             </div>
-        </mPopup>
+        </mPopup> -->
+        <mMsg @success="success" @closeMsg="closeMsg" :show="show" />
     </div>
     <div v-else></div>
 </template>
 <script>
 import api from '@/services/api.group.js';
-import mPopup from '@/components/m-popup';
+import mMsg from '@/components/m-msg';
 export default {
     data() {
         return {
@@ -115,7 +116,7 @@ export default {
         };
     },
     components: {
-        mPopup
+        mMsg
     },
     onLoad(e) {
         if (e.id) {
@@ -137,6 +138,22 @@ export default {
         this.getContent(9);
     },
     methods: {
+        closeMsg() {
+            this.show = false;
+        },
+        openMsg() {
+            if (!uni.getStorageSync('token')) {
+                this.$toast('您还未登陆,请先登陆');
+                setTimeout(() => {
+                    uni.switchTab({ url: '/pages/index/index' });
+                }, 2000);
+            } else {
+                this.show = true;
+            }
+        },
+        success() {
+            this.show = false;
+        },
         getContent(type) {
             api.getContent({ type: type }).then(
                 res => {
@@ -203,6 +220,9 @@ page{
     background: #f5f5f5;
 }
 .order_details{
+    div,span{
+        font-size: 28rpx;
+    }
     .header{
         padding: 40rpx;
         border-top: 2rpx solid #f5f5f5;
@@ -317,6 +337,20 @@ page{
     }
     /deep/ .icon_box{
         top: 12% !important;
+    }
+    .h-popup /deep/ .u-drawer{
+            overflow: visible!important;
+            .u-drawer-content{
+                overflow: visible!important;
+                display: flex;
+                .u-mode-center-box{
+                    background-color: #99999900!important;
+                    overflow: visible!important;
+                }
+                .uni-scroll-view{
+                    overflow: visible!important;
+                }
+            }
     }
 }
 </style>

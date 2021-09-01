@@ -1,12 +1,14 @@
 <template>
     <div class="account_box">
         <div class="account_container">
-            <u-cell-item title="用户名" @click="show = true">
+            <u-cell-item title="用户名" @click="show = true" :title-style="{color:'#333333',fontSize:'28rpx'}" :border-bottom="true">
                 <div style="color:#333333">{{userInfo.userNick}}</div>
             </u-cell-item>
-            <u-cell-item title="重置密码" @click="resetPwd">
+            <u-line color="#dfdfdf" />
+            <u-cell-item :title-style="{color:'#333333',fontSize:'28rpx'}" title="重置密码" @click="resetPwd">
             </u-cell-item>
-            <u-cell-item title="绑定/更改手机号" @click="bindPhone">
+            <u-line color="#dfdfdf" />
+            <u-cell-item :title-style="{color:'#333333',fontSize:'28rpx'}" title="绑定/更改手机号" @click="bindPhone">
                 <div v-if="userInfo.phone" style="color:#333333">{{userInfo.phone | phone}}</div>
             </u-cell-item>
             <!-- <u-cell-item title="绑定微信" :border-bottom="false" :arrow="!userInfo.wxName">

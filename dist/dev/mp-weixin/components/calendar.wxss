@@ -84,6 +84,7 @@
 }
 .fu-calendar-data .fu-title.data-v-e9e7bf0e {
   padding: 0 10rpx;
+  font-weight: bold;
   font-size: 28rpx;
 }
 .fu-calendar-data .fu-arrow.data-v-e9e7bf0e {
@@ -112,6 +113,17 @@
 }
 .fu-calendar.data-v-e9e7bf0e {
   font-size: 28rpx;
+  position: relative;
+}
+.fu-calendar .fu-bg.data-v-e9e7bf0e {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 400rpx;
+  z-index: 100;
+  color: rgba(65, 65, 65, 0.233);
 }
 .fu-calendar .fu-calendar-item.data-v-e9e7bf0e {
   width: calc(100% / 7);

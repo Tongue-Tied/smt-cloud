@@ -15,6 +15,9 @@ export default {
     },
     onShow() {
     },
+    onBackPress(e) {
+        console.log(e);
+    },
     onHide() {}
 };
 </script>

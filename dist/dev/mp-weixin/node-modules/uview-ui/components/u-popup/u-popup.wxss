@@ -40,7 +40,6 @@
   z-index: 1003;
   -webkit-transition: all 0.25s linear;
   transition: all 0.25s linear;
-  overflow: visible;
 }
 .u-drawer__scroll-view.data-v-52d4ddd1 {
   width: 100%;

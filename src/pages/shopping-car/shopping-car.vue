@@ -31,7 +31,13 @@
                         <span>¥{{item.origPrice}}</span>
                     </div>
                     <div class="cb_num">
-                        <u-number-box :min="1" v-model="item.carNumber" @change="valChange(index, $event)"></u-number-box>
+                        <u-number-box
+                            :min="1"
+                            v-model="item.carNumber"
+                            @plus="numberChange(index,$event)"
+                            @minus="numberChange(index,$event)"
+                            @change="valChange(index, $event)">
+                        </u-number-box>
                     </div>
                 </div>
             </div>
@@ -153,7 +159,22 @@ export default {
                     this.totalOriginPrice = this.$big(this.totalOriginPrice).add(this.carList[index].origPrice).toNumber(2).toFixed(2);
                 }
             }
+            console.log(this.carList[index]);
+            // let data = {
+            //     carId: this.carList[index].carId,
+            //     number: this.carList[index].count
+            // };
+            // let res = await apiCar.updateCarNunber(data);
+            // console.log(res);
             this.carList[index].count = e.value;
+        },
+        async numberChange(index, e) {
+            let data = {
+                carId: this.carList[index].carId,
+                number: e.value
+            };
+            let res = await apiCar.updateCarNunber(data);
+            console.log(res);
         },
         deleteItem() {
             if (this.totalPrice === 0) {
@@ -193,7 +214,7 @@ page{
     .all_chose{
         width: 92%;
         margin: 0 auto;
-        padding: 20rpx 0 0 30rpx;
+        padding: 20rpx 0 0 15rpx;
         display: flex;
         align-items: center;
         justify-content: space-between;

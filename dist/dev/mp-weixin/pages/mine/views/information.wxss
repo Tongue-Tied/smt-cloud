@@ -32,6 +32,18 @@ page {
   border-radius: 40rpx;
   margin-top: 30rpx;
 }
+.information_box .basic_box .basic_content .address .u-cell__value {
+  text-align: left;
+  padding: 0 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.information_box .basic_box .basic_content .address .address_span {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
 .information_box .basic_box .basic_content ._span {
   color: #333333 !important;
 }
@@ -89,15 +101,46 @@ page {
   width: 30%;
   margin: 0 auto;
 }
-.information_box .sls {
-  width: 600rpx;
-  margin: 0 auto;
+.information_box .sex .u-radio__icon-wrap__icon {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
-  padding-left: 13%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.information_box .sls {
+  width: 600rpx;
+  margin: 0 auto;
+}
+.information_box .sls .content {
+  padding: 0 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
+}
+.information_box .sls .content .u-checkbox__label {
+  margin-right: 0;
+  padding-right: 24rpx;
+}
+.information_box .sls .u-checkbox__icon-wrap__icon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.information_box .sls .my_checkbox {
+  min-width: 30%;
 }
 /**
 * 颜色定义

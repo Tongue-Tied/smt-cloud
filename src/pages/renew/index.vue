@@ -95,6 +95,7 @@ export default {
                                 console.log(res);
                                 if (res.code === 1) {
                                     let config = JSON.parse(res.retObj.no_use);
+                                    let that = this;
                                     uni.requestPayment({
                                         provider: 'wxpay',
                                         timeStamp: config.timeStamp,
@@ -106,9 +107,12 @@ export default {
                                             uni.navigateTo({ url: '/pages/mine/views/my-order?current=0' });
                                         },
                                         fail: function(err) {
+                                            that.$toast('支付失败');
                                             console.log('fail:' + JSON.stringify(err));
                                         }
                                     });
+                                } else {
+                                    this.$toast(res.msg);
                                 }
                             }
                         );
@@ -241,7 +245,7 @@ page{
             }
         }
         .active{
-            border: 2rpx dashed #ff2724;
+            border: 4rpx dashed #ff2724;
         }
     }
     .bottom{

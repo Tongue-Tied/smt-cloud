@@ -1,1 +1,0 @@
-page{background:#fff;padding-bottom:calc(40rpx + env(safe-area-inset-bottom))}.score_strategy{width:90%;margin:0 auto;font-size:24rpx!important;color:#333!important}.score_strategy ._p{padding-top:10rpx!important}.score_strategy ._div{width:100%}.score_strategy ._img{width:100%}

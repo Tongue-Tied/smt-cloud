@@ -4,7 +4,6 @@
 .m-msg .fk_box {
   background: #ffffff;
   width: 600rpx;
-  height: 600rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -27,30 +26,34 @@
   margin-bottom: 30rpx;
 }
 .m-msg .fk_box .input_box input {
-  padding-left: 20rpx;
+  padding-left: 40rpx;
   width: 100%;
   height: 100%;
+  font-size: 28rpx!important;
+  color: #5c636a;
+}
+.m-msg .fk_box .input_box input {
+  font-size: 28rpx;
+  color: #5c636a;
+}
+.m-msg .fk_box .input_box textarea {
+  font-size: 28rpx;
+  color: #5c636a;
 }
 .m-msg .fk_box .text_area {
   height: 240rpx;
   position: relative;
   font-size: 28rpx!important;
 }
-.m-msg .fk_box .text_area u-field {
-  width: 100%;
-  height: 100%;
+.m-msg .fk_box .text_area textarea {
+  color: #5c636a;
+  width: 90%;
+  padding: 20rpx 38rpx;
+  font-size: 28rpx!important;
 }
-.m-msg .fk_box .text_area u-field .u-field {
-  width: 100%;
-  height: 100%;
-}
-.m-msg .fk_box .text_area u-field .u-field .fild-page.data-v-578c626d {
-  width: 100%;
-  height: 100%;
-}
-.m-msg .fk_box .text_area u-field .u-field .fild-page.data-v-578c626d .u-flex.data-v-568c626d {
-  width: 100%!important;
-  height: 100%;
+.m-msg .fk_box .text_area .textarea_p {
+  color: #808080 !important;
+  font-size: 28rpx!important;
 }
 .m-msg .fk_box .text_area ._div {
   position: absolute;

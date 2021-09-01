@@ -23,11 +23,13 @@
                 <div class="title">孩子现在的视力情况</div>
                 <div class="u-p-t-20 u-p-l-20">
                     <span>右眼视力:&nbsp;&nbsp;{{result.right}}</span>
-                    <span>偏低</span>
+                    <span v-if="result.rightStatus===2">偏低</span>
+                    <span v-else style="background-color:#ff2724">正常</span>
                 </div>
                 <div class="u-p-t-20 u-p-l-20">
                     <span>左眼视力:&nbsp;&nbsp;{{result.left}}</span>
-                    <span>偏低</span>
+                    <span v-if="result.leftStatus===2">偏低</span>
+                    <span v-else style="background-color:#ff2724">正常</span>
                 </div>
             </div>
             <div class="bottom_item u-m-t-40">
@@ -61,8 +63,11 @@ export default {
         };
     },
     onLoad(e) {
-        console.log(e);
         this.parmas = e;
+    },
+    beforeDestroy(e) {
+        uni.switchTab({ url: '/pages/index/index' });
+        // uni.navigateTo({ url: '/pages/training/views/' });
     },
     async mounted() {
         let res = await api.getVisualResult(this.parmas);

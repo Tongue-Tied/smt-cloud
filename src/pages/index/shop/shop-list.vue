@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="fixed_shop_car" @click="toCarList">
-            <u-icon style="padding-top:8rpx" name="shopping-cart" size="40" color="#ffffff"></u-icon>
+            <u-icon style="padding-top:8rpx" name="shopping-cart" size="45" color="#ffffff"></u-icon>
         </div>
         <u-loadmore margin-top="40" :status="status" :icon-type="iconType" :load-text="loadText" />
     </div>
@@ -129,7 +129,7 @@ export default {
         return {
             title: this.shareConfig.title,
             imageUrl: this.shareConfig.logo,
-            path: '/pages/group/list'
+            path: '/pages/index/shop/shop-list'
         };
         // shareSuccess
     }
@@ -254,8 +254,8 @@ page {
         position: fixed;
         right: 40rpx;
         top: 40rpx;
-        width: 60rpx;
-        height: 60rpx;
+        width: 80rpx;
+        height: 80rpx;
         background: #ff2724;
         display: flex;
         align-items: center;

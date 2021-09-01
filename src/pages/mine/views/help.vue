@@ -22,7 +22,7 @@
                 </div>
             </u-cell-item>
         </div>
-        <mMsg @success="success" :show="show" />
+        <mMsg @success="success" @closeMsg="closeMsg" :show="show" />
     </div>
 </template>
 <script>
@@ -63,6 +63,9 @@ export default {
         },
         success() {
             this.show = false;
+        },
+        closeMsg() {
+            this.show = false;
         }
     }
 };
@@ -71,11 +74,25 @@ export default {
 page{
     background: #f5f5f5;
 }
+.h-popup /deep/ .u-drawer{
+    overflow: visible!important;
+    .u-drawer-content{
+        overflow: visible!important;
+        display: flex;
+        .u-mode-center-box{
+            background-color: #99999900!important;
+            overflow: visible!important;
+        }
+        .uni-scroll-view{
+            overflow: visible!important;
+        }
+    }
+}
 .help{
     .help_header{
-        width: 100%;
+        // width: 100%;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         display: flex;
         text-align: center;
         background: #ffffff;

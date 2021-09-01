@@ -59,7 +59,7 @@
             <div>{{details.group.subtitle}}</div>
         </div>
         <div class="group_list" v-if="details.group.groupUserList.length">
-            <div class="list_title">4人开团，可直接参与</div>
+            <div class="list_title">{{details.group.groupUserList.length}}人开团，可直接参与</div>
             <scroll-view
                 scroll-y="true" class="scroll"
             >
@@ -155,19 +155,18 @@ export default {
         toPay(e) {
             let data;
             if (e) {
-                data = `?orderId=${0}&groupId=${this.details.group.id}&type=${1}&price=${this.details.group.price}&title=${this.details.group.title}&number=${1}`;
+                data = `?orderId=${0}&groupId=${this.details.group.id}&type=${1}&price=${this.details.group.origPrice}&title=${this.details.group.title}&number=${1}`;
             } else {
                 data = `?orderId=${0}&groupId=${this.details.group.id}&type=${2}&price=${this.details.group.price}&title=${this.details.group.title}&number=${1}`;
             }
             uni.navigateTo({ url: `/pages/group/pay${data}` });
         },
         toGroup(e) {
-            if (e.uid === this.$state().user.uid) {
+            if (e.uid === uni.getStorageSync('uid')) {
                 return this.$toast('不能拼自己的团哟');
             }
             let data = `?orderId=${e.orderId}&groupId=${e.groupId}&type=${3}&price=${e.price}&title=${e.title}&number=${1}`;
             uni.navigateTo({ url: `/pages/group/pay${data}` });
-            console.log(e);
         }
     },
     onShareAppMessage: function(options) {
@@ -254,7 +253,7 @@ page{
         }
     }
     .group_list{
-        height: 480rpx;
+        max-height: 480rpx;
         background: #ffffff;
         margin-top: 20rpx;
         padding-bottom: 50rpx;
@@ -264,7 +263,7 @@ page{
             color: #333333;
         }
         .scroll{
-            height: 85%;
+            max-height: 470rpx;
             background: #ffffff;
             .scroll-view-item{
                 display: flex;

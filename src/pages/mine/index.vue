@@ -1,7 +1,7 @@
 <template>
     <div class="mine_container" v-if="flag">
         <div class="mine_container_box">
-            <div class="mc_top" :style="'background-image:url(https://img.ruoshixunlianbao.com/bgMy_02.png)'">
+            <div class="mc_top" :style="userInfo?'padding-bottom:0':''" style="background-image:url(https://img.ruoshixunlianbao.com/bgMy_02.png);">
                 <div class="mc_top_info">
                     <div class="mc_top_info_img">
                         <!-- <image v-if="userInfo" :src="userInfo.headImg"></image> -->
@@ -11,9 +11,9 @@
                         <div>{{userInfo.userNick || ''}}</div>
                         <div>
                             <image style="width:24rpx;height:24rpx" :src="require('@/static/imgs/index/会员icon.png')" alt="">
-                            <span v-if="userInfo">{{userInfo.vipTime || ''}}会员到期</span>
+                            <span v-if="userInfo" style="padding-left:22rpx">{{userInfo.vipTime || ''}}会员到期</span>
                         </div>
-                        <div @click="toRenew">立即续费</div>
+                        <div class="renew" @click="toRenew">立即续费</div>
                     </div>
                     <div class="mc_top_info_title" v-else>
                         <div class="login_now">
@@ -171,9 +171,9 @@ export default {
             this.flag = false;
             setTimeout(() => {
                 this.userInfo = this.$state().user;
-                // this.getData();
+                this.getData();
                 this.flag = true;
-            }, 10);
+            }, 100);
         },
         isLogin() {
             if (!uni.getStorageSync('token')) {
@@ -283,16 +283,16 @@ page{
     .mine_container_box{
         .mc_top{
             width: 100%;
-            height: 476rpx;
+            // height: 426rpx;
             background-size: contain;
             background-repeat: repeat;
-            padding: 0 30rpx 0 30rpx;
+            padding: calc(130rpx + env(safe-area-inset-top)) 30rpx 80rpx 30rpx;
+            display: flex;
+            // align-items: center;
+            flex-direction: column;
             .mc_top_info{
                 display: flex;
-                // #ifndef MP-WEIXIN
-                padding-top: 200rpx;
-                // #endif
-                padding-top: calc(100rpx + env(safe-area-inset-top));
+                // padding-top: calc(130rpx + env(safe-area-inset-top));
                 .mc_top_info_img{
                     width: 158rpx;
                     height: 158rpx;
@@ -326,10 +326,12 @@ page{
                         font-size: 40rpx;
                     }
                     :nth-child(3){
-                        width: 140rpx;
+                        width: 190rpx;
+                        margin-top: 10rpx;
                         border: 1rpx solid #ffffff;
-                        padding: 4rpx 0;
+                        padding: 6rpx 0;
                         display: flex;
+                        font-size: 29rpx;
                         border-radius: 30rpx;
                         align-items: center;
                         justify-content: center;
@@ -340,7 +342,9 @@ page{
                 color: #ffffff;
                 display: flex;
                 align-items: center;
-                margin-top: 100rpx;
+                margin-top: 40rpx;
+                padding-bottom: 70rpx;
+                // transform: translate(0,-50rpx);
                 div{
                     padding-right: 10rpx;
                     display: flex;
@@ -426,11 +430,17 @@ page{
     .msg_box{
         position: fixed;
         right: 30rpx;
-        top: calc(105rpx + env(safe-area-inset-top));
+        height: 476rpx;
+        top: calc(10rpx + env(safe-area-inset-top));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000000;
         .msg_num{
             position: absolute;
-            right: -20rpx;
-            top: -10rpx;
+            right: -10rpx;
+            top: 50%;
+            transform: translate(0,-90%);
             width: 30rpx;
             height: 30rpx;
             background: #FFCE11;

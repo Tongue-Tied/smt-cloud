@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="score_list">
-            <u-cell-item :arrow="false" class="score_list_item" v-for="(item,index) in scoreList" :key="index">
+            <!-- <u-cell-item :arrow="false" class="score_list_item" v-for="(item,index) in scoreList" :key="index">
                 <div slot="icon" class="score_list_item_left">
                     <div class="time">
                         <div>{{$dayjs(item.createTime).format('MM-DD')}}</div>
@@ -44,7 +44,17 @@
                 <div slot="right-icon" class="right_score">
                     <div>{{item.type === 1 ? '+' : (item.score > 0) ? '-' : ''}}{{item.score}}</div>
                 </div>
-            </u-cell-item>
+            </u-cell-item> -->
+            <div class="score_list_item" v-for="(item,index) in scoreList" :key="index">
+                <div class="time">
+                    <div>{{$dayjs(item.createTime).format('MM-DD')}}</div>
+                    <div>{{$dayjs(item.createTime).format('HH:ss')}}</div>
+                </div>
+                <div class="content">
+                    {{item.content}}
+                </div>
+                <div class="right_score">{{item.type === 1 ? '+' : (item.score > 0) ? '-' : ''}}{{item.score}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -89,7 +99,7 @@ export default {
 <style lang="less">
 page{
     padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
-    background-color: #ffffff;
+    // background-color: #ffffff;
 }
 .score_record{
     .score_info{
@@ -194,15 +204,16 @@ page{
     .score_list{
         height: auto;
         .score_list_item{
-            .score_list_item_left{
-                display: flex;
-                align-items: center;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 30rpx;
+            border-bottom: 2rpx solid #e2dfdf;
                 .time{
                     width: 100rpx;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    justify-content: center;
                     color: #999999;
                     font-size: 24rpx;
                     div{
@@ -213,17 +224,17 @@ page{
                     flex: 1;
                     padding: 0 30rpx 0 20rpx;
                     display: flex;
+                    font-size: 24rpx;
                     // align-items: center;
-                    justify-content: center;
                 }
             }
             .right_score{
                 color: #ff2724;
+                height: 68rpx;
                 font-size: 36rpx;
                 display: flex;
                 justify-content: flex-start;
             }
-        }
     }
 }
 </style>

@@ -5,7 +5,6 @@ page ._div {
   font-size: 28rpx;
 }
 .tutor {
-  text-align: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -16,6 +15,8 @@ page ._div {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+  width: 100%;
+  overflow-x: hidden;
 }
 .tutor .top_back {
   width: 100%;
@@ -106,7 +107,7 @@ page ._div {
   border-radius: 100rpx;
   margin-top: 10rpx;
 }
-.tutor .footer {
+.tutor .tutor_footer {
   -webkit-transform: translate(0, -100rpx);
           transform: translate(0, -100rpx);
   display: -webkit-box;

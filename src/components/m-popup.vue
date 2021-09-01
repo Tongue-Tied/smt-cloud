@@ -1,11 +1,11 @@
 <template>
-        <u-popup v-model="show" z-index="1000000" :closeable="true" close-icon-size="60" close-icon="close-circle" close-icon-color="#ffffff" @close="close" class="h-popup" :custom-style="{background:'#99999900'}" mode="center">
-            <div class="popup_container">
+        <u-popup v-model="show" negative-top="-40" z-index="1000000" :closeable="true" close-icon-size="60" close-icon="close-circle" close-icon-color="#ffffff" @close="close" class="h-popup" :custom-style="{background:'#99999900'}" mode="center">
+            <div class="popup_container" :style="contentStyle">
                 <div class="title_img" v-if="imgUrl">
                     <image mode="widthFix" :style="imgStyle" :src="imgUrl"></image>
                 </div>
-                <div class="header" :style="'background-image:url('+ backImg + ')'">
-                        <div :style="myStyle">{{title}}</div>
+                <div class="header" :style="[{backgroundImage:'url('+ (bgUrl!=='' ? bgUrl : backImg) + ')'},{backgroundColor: headerBg ? '#ffffff' : 'none'}]">
+                        <div :style="myStyle ? myStyle : !subTitle ? 'padding-top:50rpx' : 'padding-top:20rpx'">{{title}}</div>
                         <div v-if="subTitle">{{subTitle}}</div>
                 </div>
                 <div class="middle">
@@ -59,6 +59,18 @@ export default {
         imgStyle: {
             type: String,
             default: ''
+        },
+        contentStyle: {
+            type: String,
+            default: ''
+        },
+        bgUrl: {
+            type: String,
+            default: ''
+        },
+        headerBg: {
+            type: Boolean,
+            default: true
         }
     },
     methods: {
@@ -96,10 +108,10 @@ export default {
 //         }
     .h-popup /deep/ .u-drawer{
             overflow: visible!important;
-            background: chartreuse;
             .u-drawer-content{
                 overflow: visible!important;
                 display: flex;
+                // transform: translate(0,calc(env(safe-area-inset-bottom)));
                 .u-mode-center-box{
                     background-color: #99999900!important;
                     overflow: visible!important;
@@ -128,7 +140,6 @@ export default {
             background-position: top;
             background-size: 100%,50%;
             background-repeat: no-repeat;
-            background-color: #ffffff;
             display: flex;
             flex-direction: column;
             border-top-left-radius: 70rpx;
@@ -141,7 +152,7 @@ export default {
             overflow: visible;
             :nth-child(1){
                 font-size: 40rpx;
-                margin-top: 20rpx;
+                // margin-top: 20rpx;
             }
             :nth-child(2){
                 font-size: 26rpx;

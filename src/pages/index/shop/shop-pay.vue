@@ -23,7 +23,7 @@
             <div class="poi_item1" v-for="(item, index) in order"
             :key="index">
                 <div class="poi_item1_img">
-                    <image :src="item.classify.goodsImg"></image>
+                    <image mode="widthFix" :src="item.classify.goodsImg"></image>
                 </div>
                 <div class="poi_item1_main">
                     <div class="poi_item1_main_top flex">
@@ -146,7 +146,6 @@ export default {
             uni.navigateTo({ url: '/pages/index/address/address' });
         },
         toPay() {
-            console.log(this.order, 1111);
             let data = {};
             if (!this.form) {
                 data = {
@@ -191,6 +190,7 @@ export default {
                             res => {
                                 console.log(JSON.parse(res.retObj.no_use));
                                 let config = JSON.parse(res.retObj.no_use);
+                                let that = this;
                                 uni.requestPayment({
                                     provider: 'wxpay',
                                     timeStamp: config.timeStamp,
@@ -200,9 +200,14 @@ export default {
                                     paySign: config.paySign,
                                     success: function(res) {
                                         console.log('success:' + JSON.stringify(res));
+                                        that.$toast('购买成功，即将到跳转我的订单');
+                                        setTimeout(() => {
+                                            uni.navigateTo({ url: '/pages/mine/views/my-order?current=1' });
+                                        }, 3000);
                                     },
                                     fail: function(err) {
                                         console.log('fail:' + JSON.stringify(err));
+                                        that.$toast('支付失败');
                                     }
                                 });
                             }
@@ -303,6 +308,7 @@ page{
                 image {
                     width: 100%;
                     height: 100%;
+                    border-radius: 30rpx;
                 }
             }
             .poi_item1_main {

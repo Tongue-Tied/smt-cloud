@@ -1,11 +1,11 @@
 <template>
-    <div class="update-phone">
+    <div class="update-phone" v-if="show">
         <div class="bind_phone_box" v-if="isUpdate">
             当前绑定手机号: {{$state().user.phone || ''}}
         </div>
         <div class="code_box">
             <div class="code_left">
-                <u-icon size="40" name="phone"></u-icon>
+                <u-icon size="40" name="phone" color="#848484"></u-icon>
                 <div class="select">
                     <div :style="selectShow ? 'color:#ff2724' : 'color:#333333'" class="icon_box" @click="selectShow = !selectShow">
                         <span>+</span><span>{{myValue}}</span>
@@ -32,7 +32,7 @@
         </div>
         <div class="code_box">
             <div class="code_left">
-                <u-icon size="40" name="email"></u-icon>
+                <u-icon size="40" name="email" color="#848484"></u-icon>
                 <div class="select">
                     <div class="icon_box">
                     </div>
@@ -54,6 +54,11 @@
             ></u-verification-code>
         </div>
         <div class="sure" @click="updatePhone">立即更换</div>
+    </div>
+    <div v-else class="success_box update-phone">
+        <image :src="successImg" mode="widthFix"></image>
+        <div class="s_title">您已成功更换手机号</div>
+        <div class="sure" @click="turnback">返回</div>
     </div>
 </template>
 <script>
@@ -91,7 +96,9 @@ export default {
             ],
             selectShow: false,
             isUpdate: true,
-            isBind: false
+            isBind: false,
+            show: true,
+            successImg: require('@/static/imgs/my/genghuan.png')
         };
     },
     created() {
@@ -117,6 +124,9 @@ export default {
         }
     },
     methods: {
+        turnback() {
+            uni.navigateBack({ delta: 1 });
+        },
         getCode() {
             if (!mixins.verify(this.phone)) {
                 return this.$toast('请输入正确的手机号');
@@ -178,10 +188,11 @@ export default {
                             api.updatePhone(data).then(
                                 res => {
                                     if (res.code === 1) {
-                                        this.$toast('手机号更新成功');
-                                        setTimeout(() => {
-                                            uni.navigateBack({ delta: 1 });
-                                        }, 2000);
+                                        this.show = false;
+                                        // this.$toast('手机号更新成功');
+                                        // setTimeout(() => {
+                                        //     uni.navigateBack({ delta: 1 });
+                                        // }, 2000);
                                     } else {
                                         this.$toast(res.msg);
                                     }
@@ -225,11 +236,16 @@ page{
     background: #ffffff;
 }
 .update-phone{
+    div,span{
+        font-size: 28rpx;
+    }
     .bind_phone_box{
         width: 100%;
         text-align: center;
         padding: 30rpx 0;
         border-top: 2rpx solid #e0e0e0;
+        font-size: 26rpx;
+        color: #848484;
     }
     .code_box{
         width: 90%;
@@ -289,6 +305,17 @@ page{
         color: #ffffff;
         border-radius: 40rpx;
         margin-top: 80rpx;
+    }
+}
+.success_box{
+    text-align: center;
+    image{
+        padding-top: 40rpx;
+        width: 200rpx;
+    }
+    .s_title{
+        padding-top: 40rpx;
+        color: #999999;
     }
 }
 </style>

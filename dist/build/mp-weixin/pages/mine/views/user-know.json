@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "用户须知",
-  "navigationBarBackgroundColor": "#ffffff",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs"
-  }
-}

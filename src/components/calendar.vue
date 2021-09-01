@@ -1,5 +1,5 @@
 <template>
-  <view class="fu-calendar-wrap">
+  <view class="fu-calendar-wrap" style="background:#ffffff">
     <!-- 日历选择 start -->
     <div class="own_fu_title">
         <view class="fu-calendar-data fu-flex fu-justify-center fu-align-center fu-margin fu-height-72" v-if="changeTitle">
@@ -13,6 +13,7 @@
     <!-- 日历 start -->
     <view class="fu-calendar fu-flex fu-justify-between fu-align-center fu-flex-wrap fu-text-333">
       <!-- mode == date || mode == range -->
+      <view v-if="calendar" class="fu-bg">{{date}}</view>
       <view
         class="fu-calendar-item  fu-text-center"
         @click="changeCalendar(item, index)"
@@ -143,7 +144,7 @@ export default {
     computed: {
     // 背景色
         dayBg() {
-            return { background: '#ff2724', color: '#ffffff' };
+            return { background: '#ff2724', color: '#333333' };
         },
         // 时间段背景色
         activeBg() {
@@ -605,6 +606,7 @@ div,span{
     box-shadow: 0px -5px 10px -5px #f5f5f5;
   .fu-title{
     padding: 0 10rpx;
+    font-weight: bold;
     font-size: 28rpx;
   }
   .fu-arrow {
@@ -641,6 +643,16 @@ div,span{
 // 日历 start
 .fu-calendar {
     font-size: 28rpx;
+    position: relative;
+    .fu-bg{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 400rpx;
+        z-index: 100;
+        color: rgba(65, 65, 65, 0.233);
+    }
   .fu-calendar-item {
     width: calc(100% / 7);
     padding-bottom: calc(100% / 7);

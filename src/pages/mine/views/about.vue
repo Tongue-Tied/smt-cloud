@@ -47,9 +47,11 @@ export default {
 <style lang="less">
 page{
     background: #f5f5f5;
-    padding-bottom: calc(30rpx + env(safe-area-inset-bottom));
+    padding-bottom: calc(60rpx + env(safe-area-inset-bottom));
 }
 .about{
+    width: 100%;
+    overflow-x: hidden;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -76,7 +78,7 @@ page{
         transform: translate(0,-110rpx);
         border-radius: 40rpx;
         text-align: left;
-        width: 90%;
+        width: 74%;
         padding: 60rpx 60rpx;
         background: #ffffff;
         rich-text .rich-img {

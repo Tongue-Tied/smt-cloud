@@ -11,7 +11,7 @@
   height: 40rpx;
   -webkit-transform: translate(0, -100rpx);
           transform: translate(0, -100rpx);
-  padding-top: 60rpx;
+  margin-top: 60rpx;
 }
 .notice_bar .u-left-icon {
   margin-right: 20rpx;
@@ -19,7 +19,15 @@
 .notice-box {
   height: 100%;
 }
-.notice-box .swiper-item {
+.notice-box swiper-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.notice-box swiper-item .swiper-item {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
