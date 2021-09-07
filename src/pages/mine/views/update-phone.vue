@@ -1,7 +1,7 @@
 <template>
     <div class="update-phone" v-if="show">
-        <div class="bind_phone_box" v-if="isUpdate">
-            当前绑定手机号: {{$state().user.phone || ''}}
+        <div class="bind_phone_box" v-if="$state().user">
+            当前绑定手机号: {{$state().user ? $state().user.phone : ''}}
         </div>
         <div class="code_box">
             <div class="code_left">
@@ -53,7 +53,7 @@
                 @change="codeChange"
             ></u-verification-code>
         </div>
-        <div class="sure" @click="updatePhone">立即更换</div>
+        <div class="sure" @click="updatePhone">立即绑定</div>
     </div>
     <div v-else class="success_box update-phone">
         <image :src="successImg" mode="widthFix"></image>
@@ -214,10 +214,11 @@ export default {
                             api.bindPhone(data).then(
                                 res => {
                                     if (res.code === 1) {
-                                        this.$toast('手机号绑定成功');
-                                        setTimeout(() => {
-                                            uni.navigateBack({ delta: 1 });
-                                        }, 2000);
+                                        // this.$toast('手机号绑定成功');
+                                        this.show = false;
+                                        // setTimeout(() => {
+                                        //     uni.navigateBack({ delta: 1 });
+                                        // }, 2000);
                                     } else {
                                         this.$toast(res.msg);
                                     }

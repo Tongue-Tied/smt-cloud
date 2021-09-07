@@ -32,7 +32,7 @@
                     <span v-else style="background-color:#ff2724">正常</span>
                 </div>
             </div>
-            <div class="bottom_item u-m-t-40">
+            <div class="bottom_item u-m-t-40" style="margin-top:40rpx">
                 <div class="title">孩子现在的视力正常应为</div>
                 <div class="u-p-t-20 u-p-l-20">
                     <span>右眼视力:&nbsp;&nbsp;{{result.visionScope.rightMin}}~{{result.visionScope.rightMax}}</span>
